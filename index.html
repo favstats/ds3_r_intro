@@ -3,7 +3,6 @@
   <head>
     <title>A {fun} Intro to R Programming</title>
     <meta charset="utf-8" />
-    <meta name="author" content=" Fabio Votta    favstats    @favstats   www.favstats.eu  develop-rpkgs.netlify.app   2021-07-09" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <meta name="description" content="Intro to R Programming"/>
     <meta name="generator" content="xaringan and remark.js"/>
@@ -192,14 +191,7 @@ July 09 2021
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;!-- #### What is &lt;img src="images/rstudio.png" style="display: inline-block; margin: 0"; width="80px"/&gt;? --&gt;
 
-&lt;!-- RStudio is an IDE (Integrated Development Environment). --&gt;
-
-&lt;!-- * Write, save and open R Code (.R/.Rmd files) --&gt;
-
-
-&lt;!-- Through features like .red[syntax highlighting] and .green[auto-completion] RStudio enables a more intuitive usage of R. --&gt;
 
 &lt;!-- Other IDEs are available of course but in this case we go with the "standard" model. --&gt;
 
@@ -215,17 +207,14 @@ July 09 2021
 
 R is a .fancy[statistical] programming language developed for data analysis and visualization.
 
---
+#### What is &lt;img src="images/rstudio.png" style="display: inline-block; margin: 0"; width="80px"/&gt;?
 
-.
+RStudio is an IDE (Integrated Development Environment).
 
---
+* Write, save and open R Code (.R/.Rmd files)
 
-..
 
---
-
-...
+Through features like .red[syntax highlighting] and .green[auto-completion] RStudio enables a more intuitive usage of R.
 
 --
 
@@ -1537,7 +1526,7 @@ There are many more functions in R and we will get to learn some of them during 
 ---
 class: inverse, middle, center
 
-## R Basics
+# R Basics
 
 ### Creating our own Functions
 
@@ -1603,11 +1592,8 @@ Let's try this basic example:
 
 ```r
 my_function_name &lt;- function(argument){
-
   # function body
-    
   output &lt;- argument
-    
   return(output)
 }
 ```
@@ -1621,13 +1607,15 @@ my_function_name("I am output!")
 #&gt; [1] "I am output!"
 ```
 
+&gt; Tip: In RStudio we can just type `fun` and enter after the popup and RStudio will just automatically generate a template for a function.
+
 
 ---
 
 
 ## Creating our own functions
 
-Let's create a slightly more useful function: a function which squares numeric values.  `{}`
+Let's create a slightly more useful function: a function which squares numeric values.
 
 
 ```r
@@ -1649,9 +1637,301 @@ square(2)
 
 
 
-&gt; Tip: In RStudio we can just type `fun` and enter after the popup and RStudio will just automatically generate a template for a function.
 
 ---
+
+
+## Creating our own functions
+
+Let's create a function that is able to calculate dog years into human years. We call the function `dog_to_human_years`.
+
+
+```r
+dog_to_human_years &lt;- function(animal_years){
+
+  human_lifespan &lt;- 122.5
+  dog_lifespan &lt;- 24
+
+  ratio &lt;- human_lifespan/dog_lifespan
+
+  human_years &lt;- animal_years*ratio
+
+  return(human_years)
+}
+```
+
+
+```r
+dog_to_human_years(15)
+```
+
+```
+#&gt; [1] 76.5625
+```
+
+
+
+---
+class: center, middle, inverse
+
+# Exercises
+
+### It's time to type some R code
+
+
+
+
+&lt;center&gt;
+&lt;img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%" /&gt;
+&lt;/center&gt;
+
+Google Colab: [https://tinyurl.com/hackr1234](https://tinyurl.com/hackr1234)
+
+---
+class: center, middle, inverse
+
+# Data frames
+
+---
+
+# Data frames
+
+Data frames are the main R object that we will be interacting with. In many ways you already know about them too. 
+
+An example for a dataframe would be the table from the [Animal Ageing and Longevity Database](https://www.johnsnowlabs.com/marketplace/the-animal-aging-and-longevity-database/) we already saw earlier.
+
+
+| Animal | Maximum Longevity (in years)|
+| --- | --- | 
+| Human | 122.5.5 | 
+| Domestic dog | 24.0 | 
+| Domestic cat | 30.0 | 
+| American alligator | 77.0 | 
+
+
+
+
+---
+
+## Data frames
+
+To create a data frame from scratch we can simply pass two (same-sized) vectors to the function `data.frame`. 
+
+
+```r
+animals_data &lt;- data.frame(animals, animal_lifespans)
+
+animals_data
+```
+
+```
+#&gt;              animals animal_lifespans
+#&gt; 1    greenland_shark            392.0
+#&gt; 2                dog             24.0
+#&gt; 3 galapagos_tortoise            177.0
+#&gt; 4              mouse              4.0
+#&gt; 5                fly              0.3
+#&gt; 6               lion             27.0
+#&gt; 7               boar             27.0
+#&gt; 8          alligator             77.0
+#&gt; 9              human            122.5
+```
+
+
+
+---
+
+## Data frames
+
+To create a data frame from scratch we can simply pass two (same-sized) vectors to the function `data.frame`. 
+
+
+```r
+animals_data &lt;- data.frame(animals, animal_lifespans)
+
+animals_data
+```
+
+```
+#&gt;              animals animal_lifespans
+#&gt; 1    greenland_shark            392.0
+#&gt; 2                dog             24.0
+#&gt; 3 galapagos_tortoise            177.0
+#&gt; 4              mouse              4.0
+#&gt; 5                fly              0.3
+#&gt; 6               lion             27.0
+#&gt; 7               boar             27.0
+#&gt; 8          alligator             77.0
+#&gt; 9              human            122.5
+```
+
+
+
+---
+
+## Variable Names
+
+We can also retrieve the variable names of any data frame by passing it to `names()`.
+
+
+```r
+names(animals_data)
+```
+
+```
+#&gt; [1] "animals"          "animal_lifespans"
+```
+
+
+
+---
+
+## Retrieve variables
+
+If we want to retrieve specific variables from a data frame we can do that via the `$` operator. 
+
+$$\color{red}{\text{dataset}}$\color{orange}{\text{variable_name}}$$
+
+
+Think of the `$` symbol as a door opener that helps you check what is inside an object.
+
+
+```r
+animals_data$animal_lifespans
+```
+
+```
+#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0 122.5
+```
+
+
+
+```r
+animals_data$animals
+```
+
+```
+#&gt; [1] "greenland_shark"    "dog"                "galapagos_tortoise"
+#&gt; [4] "mouse"              "fly"                "lion"              
+#&gt; [7] "boar"               "alligator"          "human"
+```
+
+---
+
+## (Re-)Code variables
+
+We can also use the `$` data access to add **new variables**.
+
+In the below case we create a variable called `animal_to_human` which holds all the human to animal years conversions. 
+
+We do that by simply assigning a vector containing that information to `animals_data$animal_to_human` even if that variable doesn't exist yet.
+
+
+```r
+animals_data$animal_to_human &lt;- animals_data$animal_lifespans / human_lifespan
+```
+
+
+```r
+animals_data
+```
+
+```
+#&gt;              animals animal_lifespans animal_to_human
+#&gt; 1    greenland_shark            392.0      3.20000000
+#&gt; 2                dog             24.0      0.19591837
+#&gt; 3 galapagos_tortoise            177.0      1.44489796
+#&gt; 4              mouse              4.0      0.03265306
+#&gt; 5                fly              0.3      0.00244898
+#&gt; 6               lion             27.0      0.22040816
+#&gt; 7               boar             27.0      0.22040816
+#&gt; 8          alligator             77.0      0.62857143
+#&gt; 9              human            122.5      1.00000000
+```
+
+
+
+---
+
+
+## Indexing
+
+Just as we did before with vectors we can also index data frames with square brackets: `[]`. However, unlike vectors, data frames have **two dimensions**.
+
+So that is why the square brackets in this case take two inputs, separated by a comma:
+
+`$$\color{red}{\text{dataset}}[\color{orange}{\text{rows}},\color{lightblue}{\text{columns}}]$$`
+
+* The first value after the opening square bracket refers to `\(\color{orange}{\text{which rows}}\)` you want to keep.
+
+* The second value refers to `\(\color{lightblue}{\text{which columns}}\)` you want to keep.
+
+---
+
+
+## Indexing
+
+
+So if we only want to keep the first row of the first column of our `animals_data` that is how we would do that:
+
+
+
+```r
+animals_data[1, 1]
+```
+
+```
+#&gt; [1] "greenland_shark"
+```
+
+*If* we want to keep a certain row but all columns we can do this by leaving the *second* value within the square brackets empty.
+
+
+```r
+animals_data[1, ]
+```
+
+```
+#&gt;           animals animal_lifespans animal_to_human
+#&gt; 1 greenland_shark              392             3.2
+```
+
+The same works for columns but all rows:
+
+
+```r
+animals_data[, 1]
+```
+
+```
+#&gt; [1] "greenland_shark"    "dog"                "galapagos_tortoise"
+#&gt; [4] "mouse"              "fly"                "lion"              
+#&gt; [7] "boar"               "alligator"          "human"
+```
+
+
+---
+
+## Indexing with logical tests
+
+
+We can also do more complex indexing by keeping only the rows that fulfill a certain condition. Let's say we only want to keep the rows that contain animals that have longer lifespans than humans.
+
+
+```r
+animals_to_check &lt;- animals_data$animal_lifespans &gt; human_lifespan
+```
+
+
+```r
+animals_data[animals_to_check, ]
+```
+
+```
+#&gt;              animals animal_lifespans animal_to_human
+#&gt; 1    greenland_shark              392        3.200000
+#&gt; 3 galapagos_tortoise              177        1.444898
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
