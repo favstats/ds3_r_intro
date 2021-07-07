@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --font-body:   inter,-apple-system,BlinkMacSystemFont,roboto,segoe ui,Helvetica,Arial,sans-serif;
+  --font-header: "Fira Sans Condensed",Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-mono:   SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --font-fancy:  'Lobster Two',cursive;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: #000;
+}
+
+strong {
+  font-family: var(--font-body);
+  font-weight: 900;
+  color: #000;
+}
+
+.inverse strong {
+  font-family: var(--font-body);
+  font-weight: 900;
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h1, h2, h3, {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+blockquote {
+  border-left: solid 5px lightgray;
+  padding-left: 1em;
+  border: 3px solid var(--color-blue);
+  border-radius: 10px; /* Rounded edges */
+  background-color: var(--color-lightblue);
+  font-family: var(--font-header);
+  box-shadow: 4px 4px 8px 0 rgba(0,0,0,.2);
+}
+
+.fira {
+  font-family: var(--font-header);
+}
+
+.fancy{
+  font-family: var(--font-fancy);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.remark-slide-content {
+  font-size: 20pt;
+}
+
+.remark-slide-content h1 {
+  font-size: 42pt;
+}
+
+.remark-slide-content h2 {
+  font-size: 34pt;
+}
+
+.remark-slide-content h3 {
+  font-size: 27pt;
+}
+
+.remark-slide-content h4 {
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+.slimtitle {
+  font-family: var(--font-header);
+  font-weight: 500;
+  font-size: 55px;
+  margin-block-start: 0em;
+  margin-block-end: 0.1em;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: var(--font-mono);
+}
+
+.remark-code {
+  font-size: 20px;
+}
+
+.white {
+  color: var(--color-white);
+}
+.red {
+  color: var(--color-red);
+}
+.orange {
+  color: var(--color-orange);
+}
+.yellow {
+  color: var(--color-yellow);
+}
+.green {
+  color: var(--color-green);
+}
+.darkgreen {
+  color: var(--color-darkgreen);
+}
+.blue {
+  color: var(--color-blue);
+}
+.darkblue {
+  color: var(--color-darkblue);
+}
+.purple {
+  color: var(--color-purple);
+}
+.black {
+  color: var(--color-black);
+}
+.gray {
+  color: var(--color-gray);
+}
+
+/* Additional font sizes */
+.small {
+  font-size: 70%;
+}
+.large {
+  font-size: 160%;
+}
+.code10 .remark-code {
+  font-size: 10%;
+}
+.code20 .remark-code {
+  font-size: 20%;
+}
+.code30 .remark-code {
+  font-size: 30%;
+}
+.code40 .remark-code {
+  font-size: 40%;
+}
+.code50 .remark-code {
+  font-size: 50%;
+}
+.code60 .remark-code {
+  font-size: 60%;
+}
+.code70 .remark-code {
+  font-size: 70%;
+}
+.code80 .remark-code {
+  font-size: 80%;
+}
+.code90 .remark-code {
+  font-size: 90%;
+}
+.code100 .remark-code {
+  font-size: 100%;
+}
+.font10 {
+  font-size: 10%;
+}
+.font20 {
+  font-size: 20%;
+}
+.font30 {
+  font-size: 30%;
+}
+.font40 {
+  font-size: 40%;
+}
+.font50 {
+  font-size: 50%;
+}
+.font60 {
+  font-size: 60%;
+}
+.font70 {
+  font-size: 70%;
+}
+.font80 {
+  font-size: 80%;
+}
+.font90 {
+  font-size: 90%;
+}
+.font100 {
+  font-size: 100%;
+}
+.font110 {
+  font-size: 110%;
+}
+.font120 {
+  font-size: 120%;
+}
+.font130 {
+  font-size: 130%;
+}
+.font140 {
+  font-size: 140%;
+}
+.font150 {
+  font-size: 150%;
+}
+.font160 {
+  font-size: 160%;
+}
+.font170 {
+  font-size: 170%;
+}
+.font180 {
+  font-size: 180%;
+}
+.font190 {
+  font-size: 190%;
+}
+.font200 {
+  font-size: 200%;
+}

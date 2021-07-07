@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>A {fun} Intro to R Programming</title>
+    <meta charset="utf-8" />
+    <meta name="author" content=" Fabio Votta    favstats    @favstats   www.favstats.eu  develop-rpkgs.netlify.app   2021-07-09" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <meta name="description" content="Intro to R Programming"/>
+    <meta name="generator" content="xaringan and remark.js"/>
+    <meta name="github-repo" content="favstats/xxx"/>
+    <meta name="twitter:title" content="Intro to R Programming"/>
+    <meta name="twitter:description" content="Intro to R Programming"/>
+    <meta name="twitter:url" content="https://www.favstats.eu"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@favstats"/>
+    <meta name="twitter:site" content="@favstats"/>
+    <meta property="og:title" content="Intro to R Programming"/>
+    <meta property="og:description" content="Intro to R Programming"/>
+    <meta property="og:url" content="https://www.favstats.eu"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Fabio Votta"/>
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/lexis.css" type="text/css" />
+    <link rel="stylesheet" href="css/lexis-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+layout: true
+
+&lt;style&gt;
+.onehundredtwenty {
+  font-size: 120%;
+   }
+
+&lt;style&gt;
+.ninety {
+  font-size: 90%;
+   }
+
+.eightyfive {
+  font-size: 85%;
+   }
+   
+.eighty {
+  font-size: 80%;
+   }
+   
+.seventyfive {
+  font-size: 75%;
+   }
+   
+.seventy {
+  font-size: 70%;
+   }
+   
+.fifty {
+  font-size: 50%;
+   }
+   
+.forty {
+  font-size: 40%;
+   }
+&lt;/style&gt;
+
+
+
+
+
+
+---
+class: banner
+
+
+---
+name: title-slide
+class: primary
+
+
+#.fancy[A {fun} Intro to R Programming] 
+
+###.fancy[The basics,&lt;br&gt;data wrangling,&lt;br&gt;and more!]
+
+
+&lt;br&gt;
+
+
+Fabio Votta
+
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> @favstats](http://twitter.com/favstats)&lt;br&gt;
+[<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> @favstats](http://github.com/favstats)&lt;br&gt;
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg> favstats.eu](https://www.favstats.eu)
+
+
+July 09 2021
+
+
+
+---
+
+### Your friendly neighborhood R Instructor
+
+.leftcol20[
+![](images/me.jpg)&lt;!-- --&gt;
+]
+
+.rightcol80[
++ Ph.D. Candidate in Political Communication at University of Amsterdam
+
++ Passionate about Data Science
+
++ Passonate about memes
+
++ Passionate about Data Science, R and memes together
+]
+
+---
+
+### It's normal to struggle at first but it gets better!
+
+&lt;img src="images/r_first_then_new.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+&lt;!-- ![](images/r_first_then_new.png){width=50%} --&gt;
+
+.fifty[Illustration adapted from [Allison Horst](https://twitter.com/allison_horst)]
+
+--
+
+  + My experience is that this stuff isn't super easy... but it gets better!
+  
+--
+  
++ Awesome inclusive community that is always ready to help
++ Active blogosphere with use cases and examples
+
+
+
+---
+ 
+
+
+## Overview
+
+
+
+&lt;!-- 10 am to around 2.15-2.30 pm  --&gt;
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Time Schedule       &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Activites &amp;amp; Topics       &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 10:05 - 10:30 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; R &amp;amp; RStudio &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 10:30 - 11:30 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; R Basics &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 11:30 - noon &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Functions &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; noon - 1 pm &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; tidyverse &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1 - 2:30 pm &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; dplyr verbs &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- #### What is &lt;img src="images/rstudio.png" style="display: inline-block; margin: 0"; width="80px"/&gt;? --&gt;
+
+&lt;!-- RStudio is an IDE (Integrated Development Environment). --&gt;
+
+&lt;!-- * Write, save and open R Code (.R/.Rmd files) --&gt;
+
+
+&lt;!-- Through features like .red[syntax highlighting] and .green[auto-completion] RStudio enables a more intuitive usage of R. --&gt;
+
+&lt;!-- Other IDEs are available of course but in this case we go with the "standard" model. --&gt;
+
+
+---
+
+
+
+&lt;!-- #### What is &lt;img src="images/Rlogo.svg" width="30px" inline-block/&gt; ? --&gt;
+
+
+#### What is &lt;img src="images/Rlogo.svg" style="display: inline-block; margin: 0"; width="30px"/&gt;?
+
+R is a .fancy[statistical] programming language developed for data analysis and visualization.
+
+--
+
+## But why learn it?
+
+&lt;!-- ![](http://www.favstats.eu/img/headers/season_views.png) --&gt;
+
+
+
+
+
+
+
+
+---
+
+
+
+&lt;!-- #### What is &lt;img src="images/Rlogo.svg" width="30px" inline-block/&gt; ? --&gt;
+
+
+.leftcol[
+
+#### But why even learn it?
+
+&lt;!-- ![](http://www.favstats.eu/img/headers/season_views.png) --&gt;
+
+
+
++ Amazing Community .forty[(but I already said that)]
+
+&lt;!-- + Outstanding repertoire of statistical &amp; computational methods --&gt;
+
+&lt;!-- -- --&gt;
+
+&lt;!-- + Integrates well with other programming languages (like Python) --&gt;
+
+&lt;!-- -- --&gt;
+
+&lt;!-- + Beautiful Data Visualization with `ggplot2` and more --&gt;
+
+]
+
+.rightcol[
+
+![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/welcome_to_rstats_twitter.png)
+
+]
+---
+
+
+
+## RStudio Cloud
+
+For the purposes of this workshop we are going to use **RStudio Cloud**.
+
+RStudio Cloud provides an online environment for teaching.
+
+.blue[Upsides] 
+
++ No need to set up R and RStudio on your own computer
+
+.red[Downsides]
+
++ You will have to set up R and RStudio on your own computer (when you want to use R on your own)
+
+Why are we using it? For me it's important that you will have a smooth and easy experience in this workshop. RStudio Cloud allows us to have that.
+
+---
+
+class: inverse, middle, center
+
+# R Basics
+
+--
+
+### Operators
+
+
+---
+
+## Operators
+
+At its core R is just a fancy *calculator*
+
+You can do:
+
+`+` addition
+
+`-` subtraction
+
+`*` multiplication
+
+`/` division
+
+`^` exponentiate
+
+---
+
+## Operators
+
+At its core R is just a fancy *calculator*
+
+###  `+` addition
+
+
+.details[
+
+```r
+15 + 5
+```
+
+```
+#&gt; [1] 20
+```
+]
+
+
+--
+
+### Mixing operators
+
+
+.details[
+
+```r
+(15 + 5) / (2 * 5)
+```
+
+```
+#&gt; [1] 2
+```
+]
+
+---
+
+## Operators
+
+Say I want to know how much time of my life I spent at university so far.
+
+--
+
+First I find the difference between 2021 and the year I started my Bachelor (`2013`)
+
+--
+
+.details[
+
+```r
+2021 - 2013
+```
+
+```
+#&gt; [1] 8
+```
+]
+
+--
+
+Then I divide that by the years since my birth: current year minus my birth year (`1991`). Finally multiply by 100 so I get percent.
+
+.details[
+
+```r
+8 / (2021-1991) * 100
+```
+
+```
+#&gt; [1] 26.66667
+```
+]
+
+
+---
+
+## Operators
+
+So how much time of my life did I spent at universities so far?
+
+
+```r
+8 / (2021-1991) * 100
+```
+
+```
+#&gt; [1] 26.66667
+```
+
+I spent more than a quarter of my life in higher education!
+
+
+But wait there are more! R knows a range of operators.
+
+For example:
+
+**Logical operators**
+
+---
+
+## Logical Operators
+
+
+`Logical` operators are used for logical tests and can be either `TRUE` or `FALSE`:
+
+`==` asks whether two values are the same or **equal**
+
+.details[
+
+```r
+20 == 20
+```
+
+```
+#&gt; [1] TRUE
+```
+]
+
+The code above tests the following statement: 20 equals 20. This is of course a `TRUE` statement.
+
+---
+
+## Logical Operators
+
+`!=`  asks whether two values are the *not* the same or **unequal**
+
+.details[
+
+```r
+20 != 20
+```
+
+```
+#&gt; [1] FALSE
+```
+]
+
+The code above tests the statement: 20 does not equal 20. This is of course a `FALSE` statement.
+
+
+---
+
+
+## Logical Operators
+
+We can also test whether certain values are greater or smaller than others:
+
+`&gt;` greater than
+
+.details[
+
+```r
+20 &gt; 10
+```
+
+```
+#&gt; [1] TRUE
+```
+]
+
+
+`&lt;` smaller than
+
+.details[
+
+```r
+20 &lt; 10
+```
+
+```
+#&gt; [1] FALSE
+```
+]
+
+--
+
+Also note the following options:
+
+`&gt;=` greater or equals and `&lt;=` smaller or equals
+
+---
+
+
+## Logical Operators
+
+Now it can be quite tedious to juggle all those numbers around. 
+
+Especially if we want to keep reusing numbers we calculated before.
+
+--
+
+Here to simplify that process are:
+
+**Objects**
+
+
+---
+
+class: inverse, middle, center
+
+# R Basics
+
+### R Objects
+
+---
+
+## R Objects
+
+
+You can think of R objects as *placeholders for information*, for example simple numbers or just plain text.
+
+We create R objects by using the assignment operator: 
+
+&lt;center&gt;
+.large[**`&lt;-`**]
+&lt;/center&gt;
+
+.right[
+.fifty[You can also assign with the **`=`** sign but we will not be using this here.]
+]
+
+--
+
+Here is an example:
+
+
+```r
+current_year &lt;- 2021
+start_year &lt;- 2013
+birth_year &lt;- 1991
+```
+
+---
+
+## R Objects
+
+If we now run the respective objects we retrieve the saved numbers.
+
+.details[
+
+```r
+current_year
+```
+
+```
+#&gt; [1] 2021
+```
+]
+
+.details[
+
+```r
+start_year
+```
+
+```
+#&gt; [1] 2013
+```
+]
+
+.details[
+
+```r
+birth_year
+```
+
+```
+#&gt; [1] 1991
+```
+]
+
+---
+
+
+## R Objects
+
+Now we can perform the same calculation as before but this time using objects!
+
+
+```r
+years_since_start &lt;- current_year - start_year
+years_since_birth &lt;- current_year - birth_year
+```
+
+
+.details[
+
+```r
+years_since_start / years_since_birth * 100
+```
+
+```
+#&gt; [1] 26.66667
+```
+]
+
+--
+
+&gt; Note that object names could be *anything* here! I chose to go with short but self-explanatory names but I could have chosen to just name them `x`, `y` and `z`.
+ 
+---
+
+## R Objects
+
+Now we can perform the same calculation as before but this time using objects!
+
+
+```r
+years_since_start &lt;- current_year - start_year
+years_since_birth &lt;- current_year - birth_year
+```
+
+
+.details[
+
+```r
+years_since_start / years_since_birth * 100
+```
+
+```
+#&gt; [1] 26.66667
+```
+]
+
+---
+
+## R Objects
+
+Now we learned about objects. But so far they have only ever held a single numeric value. 
+
+R is of course much more powerful than that and objects can hold any number and types of data.
+
+In fact it is good to remember that:
+
+&gt; Everything that exists in R is *.red[an object]*.
+
+--
+
+Now we will take a look at **vectors**, or objects that include more than one value.
+
+---
+
+class: inverse, middle, center
+
+# R Basics
+
+### Vectors
+
+---
+
+## Vectors
+
+You can simply imagine vectors as a list of values. They can consist of numbers but also *strings* (or: text).
+
+In order to create a vector in R we make use of `c()` (which stands for *concatenate*)
+
+
+.details[
+
+```r
+c(1, 100, 1000, 2000, 5000)
+```
+
+```
+#&gt; [1]    1  100 1000 2000 5000
+```
+]
+
+We can also create a vector of strings by using quotes:
+
+
+.details[
+
+```r
+c("I", "am", "a", "vector", "of", "strings")
+```
+
+```
+#&gt; [1] "I"       "am"      "a"       "vector" 
+#&gt; [5] "of"      "strings"
+```
+]
+
+---
+
+
+## Vectors
+
+Of course we can also assign these vectors to objects.
+
+Let's say we have a vector `times` with different time measures in *seconds*:
+
+
+```r
+times &lt;- c(120, 60, 180, 360, 600)
+```
+
+If we wanted the times in minutes rather than seconds we would simply do the following:
+
+
+
+```r
+times / 60 
+```
+
+```
+#&gt; [1]  2  1  3  6 10
+```
+
+
+Notice how the operation is performed for each item separately and the result is yet another vector.
+
+---
+
+
+## Vectors
+
+We can also use *logical* operators with vectors:
+
+
+```r
+times == 600
+```
+
+```
+#&gt; [1] FALSE FALSE FALSE FALSE  TRUE
+```
+
+Again, notice how the operation is performed for each item separately and the result is yet another vector, this time consisting of `TRUE`s and `FALSE`s.
+
+---
+
+
+## Vectors
+
+An incredibly useful operator for vectors is `%in%`. This checks whether a certain value occurs within your vector.
+
+
+```r
+fruits &lt;- c("bananas", "apples", "oranges")
+```
+
+
+Does `apples` occur within our `fruits` vectors?
+
+
+```r
+"apples" %in% fruits
+```
+
+```
+#&gt; [1] TRUE
+```
+
+Does `pears` occur within our `fruits` vectors?
+
+
+```r
+"pears" %in% fruits
+```
+
+```
+#&gt; [1] FALSE
+```
+
+---
+
+
+## Functions
+
+The goal of a function is to process data. There is also an entrance and an exit.
+
+Let's define a function which squares numeric values. To do this, we use `function()` and encoded what is supposed to happen curly brackets `{}`
+
+
+```r
+square &lt;- function(input) { 
+  output &lt;- input^2        
+  output                  
+}
+```
+
+
+```r
+square(2)   
+```
+
+```
+#&gt; [1] 4
+```
+
+
+
+&gt; Tip: In RStudio we can just type `fun` and enter after the popup and RStudio will just automatically generate a template for a function.
+
+---
+
+### Why Even Create an R Package
+
++ R packages are a wonderful way to make functions and datasets easily accessible for everyone
+
+--
+
++ R really comes alive because of the many awesome packages that hundreds and hundreds of volunteers help create and maintain
+
+--
+
++ It's a great way to become active in the R community &amp; give back
+
+--
+
+.center[
+
+![](https://media1.giphy.com/media/5yWTr8kc2O7zaTDhW9/giphy.gif)
+
+]
+
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": "%current%<br>",
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<script>
+  (function() {
+    var divHTML = document.querySelectorAll(".details-open");
+    divHTML.forEach(function (el) {
+      var preNodes = el.getElementsByTagName("pre");
+      var outputNode = preNodes[1];
+      outputNode.outerHTML = "<details open class='output'><summary>Run</summary>" + outputNode.outerHTML + "</details>";
+    })
+  })();
+(function() {
+  var divHTML = document.querySelectorAll(".details");
+  divHTML.forEach(function (el) {
+    var preNodes = el.getElementsByTagName("pre");
+    var outputNode = preNodes[1];
+    outputNode.outerHTML = "<details class='output'><summary>Run</summary>" + outputNode.outerHTML + "</details>";
+  })
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

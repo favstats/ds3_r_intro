@@ -1,0 +1,734 @@
+---
+title: "A {fun} Intro to R Programming"
+subtitle: "The basics,<br>data wrangling,<br>and more!"
+author: '<br>Fabio Votta <br><br> <a href="http://github.com/favstats"><i class="fa fa-github fa-fw"></i>favstats</a> <br> <a href="https://twitter.com/favstats"> <i class="fa fa-twitter fa-fw"></i>@favstats</a> <br> <a href="http://www.favstats.eu/"><i class="fa fa-address-card"></i>www.favstats.eu</a><br> <a href="https://develop-rpkgs.netlify.app"/><i class="fa fa-paper-plane fa-fw"></i>develop-rpkgs.netlify.app</a> <br><br>2021-07-09'
+output: 
+  xaringan::moon_reader:
+    css:
+      - default
+      - css/lexis.css
+      - css/lexis-fonts.css
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      slideNumberFormat: "%current%<br>"
+      ratio: "16:9"
+    includes:
+      after_body: "collapseoutput.js"
+---
+
+
+layout: true
+
+<style>
+.onehundredtwenty {
+  font-size: 120%;
+   }
+
+<style>
+.ninety {
+  font-size: 90%;
+   }
+
+.eightyfive {
+  font-size: 85%;
+   }
+   
+.eighty {
+  font-size: 80%;
+   }
+   
+.seventyfive {
+  font-size: 75%;
+   }
+   
+.seventy {
+  font-size: 70%;
+   }
+   
+.fifty {
+  font-size: 50%;
+   }
+   
+.forty {
+  font-size: 40%;
+   }
+</style>
+
+
+```{r meta, echo=FALSE}
+library(metathis)
+meta() %>%
+  meta_general(
+    description = "Intro to R Programming",
+    generator = "xaringan and remark.js"
+  ) %>%
+  meta_name("github-repo" = "favstats/xxx") %>%
+  meta_social(
+    title = "Intro to R Programming",
+    url = "https://www.favstats.eu",
+    og_type = "website",
+    og_author = "Fabio Votta",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@favstats"
+  )
+```
+
+```{r setup, include=FALSE}
+# dateWritten <- format(as.Date('2020-05-04'), format="%B %d %Y")
+workshop_day <- format(as.Date("2021-07-09"), format="%B %d %Y")
+pacman::p_load(tidyverse, fontawesome, tidyverse, knitr)
+
+options(
+    htmltools.dir.version = FALSE,
+    knitr.table.format = "html",
+    knitr.kable.NA = ''
+)
+knitr::opts_chunk$set(
+    warning = FALSE,
+    message = FALSE,
+    fig.path = "figs/",
+    fig.width = 7.252,
+    fig.height = 4,
+    comment = "#>",
+    fig.retina = 3 # Better figure resolution
+)
+# Enables the ability to show all slides in a tile overview by pressing "o"
+xaringanExtra::use_tile_view()
+xaringanExtra::use_panelset()
+xaringanExtra::use_clipboard()
+xaringanExtra::use_share_again()
+xaringanExtra::style_share_again(share_buttons = "all")
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,
+  mute_unhighlighted_code = FALSE
+)
+# xaringanExtra::use_webcam()
+
+
+knitr::opts_chunk$set(warning = F, message = F) # Whether to display errors
+```
+
+---
+class: banner
+
+
+---
+name: title-slide
+class: primary
+
+
+#.fancy[`r rmarkdown::metadata$title`] 
+
+###.fancy[`r rmarkdown::metadata$subtitle`]
+
+
+<br>
+
+
+Fabio Votta
+
+[`r fa(name = "twitter", fill = "black")` @favstats](http://twitter.com/favstats)<br>
+[`r fa(name = "github", fill = "black")` @favstats](http://github.com/favstats)<br>
+[`r fa(name = "link", fill = "black")` favstats.eu](https://www.favstats.eu)
+
+
+`r workshop_day`
+
+
+
+---
+
+### Your friendly neighborhood R Instructor
+
+.leftcol20[
+```{r, echo = F}
+knitr::include_graphics("images/me.jpg")
+```
+]
+
+.rightcol80[
++ Ph.D. Candidate in Political Communication at University of Amsterdam
+
++ Passionate about Data Science
+
++ Passonate about memes
+
++ Passionate about Data Science, R and memes together
+]
+
+---
+
+### It's normal to struggle at first but it gets better!
+
+```{r, echo = F, out.width="80%", fig.align = 'center'}
+knitr::include_graphics("images/r_first_then_new.png")
+```
+
+
+<!-- ![](images/r_first_then_new.png){width=50%} -->
+
+.fifty[Illustration adapted from [Allison Horst](https://twitter.com/allison_horst)]
+
+--
+
+  + My experience is that this stuff isn't super easy... but it gets better!
+  
+--
+  
++ Awesome inclusive community that is always ready to help
++ Active blogosphere with use cases and examples
+
+
+
+---
+ 
+
+
+## Overview
+
+
+
+<!-- 10 am to around 2.15-2.30 pm  -->
+
+```{r, echo=F}
+
+times <- c("10:05 - 10:30", "10:30 - 11:30", "11:30 - noon", "noon - 1 pm", "1 - 2:30 pm")
+sections <- c("R & RStudio", "R Basics", "Functions", "tidyverse", "dplyr verbs")
+
+timetable <- tibble(`Time Schedule      ` = times, `Activites & Topics      ` = sections)
+
+knitr::kable(timetable, format = "html")
+```
+
+<!-- #### What is <img src="images/rstudio.png" style="display: inline-block; margin: 0"; width="80px"/>? -->
+
+<!-- RStudio is an IDE (Integrated Development Environment). -->
+
+<!-- * Write, save and open R Code (.R/.Rmd files) -->
+
+
+<!-- Through features like .red[syntax highlighting] and .green[auto-completion] RStudio enables a more intuitive usage of R. -->
+
+<!-- Other IDEs are available of course but in this case we go with the "standard" model. -->
+
+
+---
+
+
+
+<!-- #### What is <img src="images/Rlogo.svg" width="30px" inline-block/> ? -->
+
+
+#### What is <img src="images/Rlogo.svg" style="display: inline-block; margin: 0"; width="30px"/>?
+
+R is a .fancy[statistical] programming language developed for data analysis and visualization.
+
+--
+
+## But why learn it?
+
+<!-- ![](http://www.favstats.eu/img/headers/season_views.png) -->
+
+
+
+
+
+
+
+
+---
+
+
+
+<!-- #### What is <img src="images/Rlogo.svg" width="30px" inline-block/> ? -->
+
+
+.leftcol[
+
+#### But why even learn it?
+
+<!-- ![](http://www.favstats.eu/img/headers/season_views.png) -->
+
+
+
++ Amazing Community .forty[(but I already said that)]
+
+<!-- + Outstanding repertoire of statistical & computational methods -->
+
+<!-- -- -->
+
+<!-- + Integrates well with other programming languages (like Python) -->
+
+<!-- -- -->
+
+<!-- + Beautiful Data Visualization with `ggplot2` and more -->
+
+]
+
+.rightcol[
+
+![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/welcome_to_rstats_twitter.png)
+
+]
+---
+
+
+
+## RStudio Cloud
+
+For the purposes of this workshop we are going to use **RStudio Cloud**.
+
+RStudio Cloud provides an online environment for teaching.
+
+.blue[Upsides] 
+
++ No need to set up R and RStudio on your own computer
+
+.red[Downsides]
+
++ You will have to set up R and RStudio on your own computer (when you want to use R on your own)
+
+Why are we using it? For me it's important that you will have a smooth and easy experience in this workshop. RStudio Cloud allows us to have that.
+
+---
+
+class: inverse, middle, center
+
+# R Basics
+
+--
+
+### Operators
+
+
+---
+
+## Operators
+
+At its core R is just a fancy *calculator*
+
+You can do:
+
+`+` addition
+
+`-` subtraction
+
+`*` multiplication
+
+`/` division
+
+`^` exponentiate
+
+---
+
+## Operators
+
+At its core R is just a fancy *calculator*
+
+###  `+` addition
+
+
+.details[
+```{r}
+15 + 5
+```
+]
+
+
+--
+
+### Mixing operators
+
+
+.details[
+```{r}
+(15 + 5) / (2 * 5)
+```
+]
+
+---
+
+## Operators
+
+Say I want to know how much time of my life I spent at university so far.
+
+--
+
+First I find the difference between 2021 and the year I started my Bachelor (`2013`)
+
+--
+
+.details[
+```{r}
+2021 - 2013
+```
+]
+
+--
+
+Then I divide that by the years since my birth: current year minus my birth year (`1991`). Finally multiply by 100 so I get percent.
+
+.details[
+```{r}
+8 / (2021-1991) * 100
+```
+]
+
+
+---
+
+## Operators
+
+So how much time of my life did I spent at universities so far?
+
+```{r}
+8 / (2021-1991) * 100
+```
+
+I spent more than a quarter of my life in higher education!
+
+
+But wait there are more! R knows a range of operators.
+
+For example:
+
+**Logical operators**
+
+---
+
+## Logical Operators
+
+
+`Logical` operators are used for logical tests and can be either `TRUE` or `FALSE`:
+
+`==` asks whether two values are the same or **equal**
+
+.details[
+```{r}
+20 == 20
+```
+]
+
+The code above tests the following statement: 20 equals 20. This is of course a `TRUE` statement.
+
+---
+
+## Logical Operators
+
+`!=`  asks whether two values are the *not* the same or **unequal**
+
+.details[
+```{r}
+20 != 20
+```
+]
+
+The code above tests the statement: 20 does not equal 20. This is of course a `FALSE` statement.
+
+
+---
+
+
+## Logical Operators
+
+We can also test whether certain values are greater or smaller than others:
+
+`>` greater than
+
+.details[
+```{r}
+20 > 10
+```
+]
+
+
+`<` smaller than
+
+.details[
+```{r}
+20 < 10
+```
+]
+
+--
+
+Also note the following options:
+
+`>=` greater or equals and `<=` smaller or equals
+
+---
+
+
+## Logical Operators
+
+Now it can be quite tedious to juggle all those numbers around. 
+
+Especially if we want to keep reusing numbers we calculated before.
+
+--
+
+Here to simplify that process are:
+
+**Objects**
+
+
+---
+
+class: inverse, middle, center
+
+# R Basics
+
+### R Objects
+
+---
+
+## R Objects
+
+
+You can think of R objects as *placeholders for information*, for example simple numbers or just plain text.
+
+We create R objects by using the assignment operator: 
+
+<center>
+.large[**`<-`**]
+</center>
+
+.right[
+.fifty[You can also assign with the **`=`** sign but we will not be using this here.]
+]
+
+--
+
+Here is an example:
+
+```{r}
+current_year <- 2021
+start_year <- 2013
+birth_year <- 1991
+```
+
+---
+
+## R Objects
+
+If we now run the respective objects we retrieve the saved numbers.
+
+.details[
+```{r}
+current_year
+```
+]
+
+.details[
+```{r}
+start_year
+```
+]
+
+.details[
+```{r}
+birth_year
+```
+]
+
+---
+
+
+## R Objects
+
+Now we can perform the same calculation as before but this time using objects!
+
+```{r}
+years_since_start <- current_year - start_year
+years_since_birth <- current_year - birth_year
+```
+
+
+.details[
+```{r}
+years_since_start / years_since_birth * 100
+```
+]
+
+--
+
+> Note that object names could be *anything* here! I chose to go with short but self-explanatory names but I could have chosen to just name them `x`, `y` and `z`.
+ 
+---
+
+## R Objects
+
+Now we can perform the same calculation as before but this time using objects!
+
+```{r}
+years_since_start <- current_year - start_year
+years_since_birth <- current_year - birth_year
+```
+
+
+.details[
+```{r}
+years_since_start / years_since_birth * 100
+```
+]
+
+---
+
+## R Objects
+
+Now we learned about objects. But so far they have only ever held a single numeric value. 
+
+R is of course much more powerful than that and objects can hold any number and types of data.
+
+In fact it is good to remember that:
+
+> Everything that exists in R is *.red[an object]*.
+
+--
+
+Now we will take a look at **vectors**, or objects that include more than one value.
+
+---
+
+class: inverse, middle, center
+
+# R Basics
+
+### Vectors
+
+---
+
+## Vectors
+
+You can simply imagine vectors as a list of values. They can consist of numbers but also *strings* (or: text).
+
+In order to create a vector in R we make use of `c()` (which stands for *concatenate*)
+
+
+.details[
+```{r}
+c(1, 100, 1000, 2000, 5000)
+```
+]
+
+We can also create a vector of strings by using quotes:
+
+
+.details[
+```{r}
+c("I", "am", "a", "vector", "of", "strings")
+```
+]
+
+---
+
+
+## Vectors
+
+Of course we can also assign these vectors to objects.
+
+Let's say we have a vector `times` with different time measures in *seconds*:
+
+```{r}
+times <- c(120, 60, 180, 360, 600)
+```
+
+If we wanted the times in minutes rather than seconds we would simply do the following:
+
+
+```{r}
+times / 60 
+```
+
+
+Notice how the operation is performed for each item separately and the result is yet another vector.
+
+---
+
+
+## Vectors
+
+We can also use *logical* operators with vectors:
+
+```{r}
+times == 600
+```
+
+Again, notice how the operation is performed for each item separately and the result is yet another vector, this time consisting of `TRUE`s and `FALSE`s.
+
+---
+
+
+## Vectors
+
+An incredibly useful operator for vectors is `%in%`. This checks whether a certain value occurs within your vector.
+
+```{r}
+fruits <- c("bananas", "apples", "oranges")
+```
+
+
+Does `apples` occur within our `fruits` vectors?
+
+```{r}
+"apples" %in% fruits
+```
+
+Does `pears` occur within our `fruits` vectors?
+
+```{r}
+"pears" %in% fruits
+```
+
+---
+
+
+## Functions
+
+The goal of a function is to process data. There is also an entrance and an exit.
+
+Let's define a function which squares numeric values. To do this, we use `function()` and encoded what is supposed to happen curly brackets `{}`
+
+```{r}
+square <- function(input) { 
+  output <- input^2        
+  output                  
+}
+```
+
+```{r}
+square(2)   
+```
+
+
+
+> Tip: In RStudio we can just type `fun` and enter after the popup and RStudio will just automatically generate a template for a function.
+
+---
+
+### Why Even Create an R Package
+
++ R packages are a wonderful way to make functions and datasets easily accessible for everyone
+
+--
+
++ R really comes alive because of the many awesome packages that hundreds and hundreds of volunteers help create and maintain
+
+--
+
++ It's a great way to become active in the R community & give back
+
+--
+
+.center[
+
+![](https://media1.giphy.com/media/5yWTr8kc2O7zaTDhW9/giphy.gif)
+
+]
+
+
+---
