@@ -85,7 +85,7 @@ pacman::p_load(tidyverse, fontawesome, tidyverse, knitr)
 options(
     htmltools.dir.version = FALSE,
     knitr.table.format = "html",
-    knitr.kable.NA = ''
+    knitr.kable.NA = ""
 )
 knitr::opts_chunk$set(
     warning = FALSE,
@@ -999,70 +999,121 @@ Now if we wanted to get the different year conversation ratios we can simply div
 
 .details[
 ```{r}
-122/animal_lifespans
+human_lifespan / animal_lifespans
 ```
 ]
+
+Notice how the operation is performed for each item separately and the result is yet another vector.
+
 
 ---
 
 ## Vectors
 
 We can also use *logical* operators with vectors:
----
 
-
-Notice how the operation is performed for each item separately and the result is yet another vector.
-
----
-
-
-
-
+.details[
 ```{r}
-times == 600
+animal_lifespans > human_lifespan
 ```
+]
 
 Again, notice how the operation is performed for each item separately and the result is yet another vector, this time consisting of `TRUE`s and `FALSE`s.
 
 ---
 
 
-## Vectors
+## A logical operator for vectors: `%in%`
 
-An incredibly useful operator for vectors is `%in%`. This checks whether a certain value occurs within your vector.
+An incredibly useful operator for vectors is **`%in%`**. 
 
-```{r}
-fruits <- c("bananas", "apples", "oranges")
-```
+The operator checks whether multiple elements occur somewhere in your vectors.
 
+This basic usage looks like this:
 
-Does `apples` occur within our `fruits` vectors?
-
-```{r}
-"apples" %in% fruits
-```
-
-Does `pears` occur within our `fruits` vectors?
-
-```{r}
-"pears" %in% fruits
-```
-
----
-
+$\color{red}{\text{vector1}}$ %in% $\color{orange}{\text{vector2}}$
 
 
 ---
 
-## Operators
 
-So how much time of my life did I spent at universities so far?
+## A logical operator for vectors: `%in%`
 
-```{r}
-8 / (2021-1991) * 100
+
+Let's say we want to check whether `giraffe`, `greenland_shark` or `lion` occur in `animals`. 
+
+If we use `|` we would have to write something like this:
+
+```{r, eval=F}
+animals == "giraffe" | animals == "greenland_shark"  | animals == "lion"
 ```
 
-I spent more than a quarter of my life in higher education!
+--
+
+With `%in%` we can simply pass a vector like this:
+
+```{r, eval=F}
+animals_to_check <-  c("giraffe", "greenland_shark", "lion")
+animals %in% animals_to_check
+```
+
+---
+
+## A logical operator for vectors: `%in%`
+
+Doesn't look that much shorter? Now imagine you have dozens or hundreds of animals to check!
+
+With **`|`** it's utter chaos.
+
+.fifty[
+```{r}
+animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "black_garden_ant" | animals == "pheidole_dentata" | animals == "squinting_bush_brown" | animals == "american_lobster" | animals == "firebelly_toad" | animals == "oriental_firebelly_toad" | animals == "yellow_bellied_toad" | animals == "american_toad" | animals == "western_toad" | animals == "yosemite_toad" | animals == "great_plains_toad" | animals == "green_toad" | animals == "canadian_toad" | animals == "red_spotted_toad" | animals == "sonoran_green_toad" | animals == "southern_toad" | animals == "veragoa_stubfoot_toad" | animals == "common_european_toad" | animals == "colorado_river_toad" | animals == "kihansi_spray_toad" | animals == "ridge_headed_toad" | animals == "cuban_toad" | animals == "european_green_toad" | animals == "colombian_giant_toad" | animals == "argentine_toad" | animals == "cane_toad" | animals == "eurura_toad" | animals == "common_horned_frog" | animals == "colombian_horned_frog" | animals == "amazonian_horned_frog" | animals == "ornate_horned_frog" | animals == "green_and_black_dart_poison_frog" | animals == "yellow_banded_poison_frog" | animals == "blue_poison_dart_frog" | animals == "kokoe_pa_poison_dart_frog" | animals == "strawberry_poison_frog" | animals == "golfo_dulce_poison_dart_frog" | animals == "african_tigrine_frog" | animals == "blanchard_s_cricket_frog" | animals == "northern_cricket_frog" | animals == "red_eyed_tree_frog" | animals == "maroon_eyed_tree_frog" | animals == "treefrog" | animals == "european_tree_frog" | animals == "cope_s_gray_treefrog" | animals == "green_treefrog" | animals == "barking_treefrog" | animals == "japanese_treefrog" | animals == "squirrel_treefrog" | animals == "gray_treefrog" | animals == "rosenberg_s_treefrog" | animals == "australian_green_treefrog"
+```
+]
+
+---
+
+## A logical operator for vectors: `%in%`
+
+
+With **`%in%`** it's much more sensible.
+
+.fifty[
+
+```{r}
+animals_to_check <-  c("Honey bee", "Cardiocondyla obscurior", "Black garden ant", "Pheidole dentata", "Squinting bush brown", "American lobster", "Firebelly toad", "Oriental firebelly toad", "Yellow-bellied toad", "American toad", "Western toad", "Yosemite toad", "Great plains toad", "Green toad", "Canadian toad", "Red-spotted toad", "Sonoran green toad", "Southern toad", "Veragoa stubfoot toad", "Common European toad", "Colorado river toad", "Kihansi spray toad", "Ridge-headed toad", "Cuban toad", "European green toad", "Colombian giant toad", "Argentine toad", "Cane toad", "Eurura toad", "Common horned frog", "Colombian horned frog", "Amazonian horned frog", "Ornate horned frog", "Green and black dart-poison frog", "Yellow-banded poison frog", "Blue poison-dart frog", "Kokoe-pa poison dart frog", "Strawberry poison frog", "Golfo dulce poison-dart frog", "African tigrine frog", "Blanchard's cricket frog", "Northern cricket frog", "Red-eyed tree frog", "Maroon-eyed tree frog", "Treefrog", "European tree frog", "Cope's gray treefrog", "Green treefrog", "Barking treefrog", "Japanese treefrog", "Squirrel treefrog", "Gray treefrog", "Rosenberg's treefrog", "Australian green treefrog") 
+
+```
+]
+
+
+```{r}
+animals %in% animals_to_check
+```
+
+---
+
+class: inverse, middle, center
+
+# R Basics
+
+### Indexing (with vectors)
+
+---
+
+
+# Indexing
+
+When you want to know a specific value within your object you can use indexing.
+
+Indexing is done via square brackets `[]`.
+
+The basic setup looks like this:
+
+
+$$\color{red}{\text{vector}}[\color{orange}{\text{elements}}]$$
+
+Exracting the first element of a vector:
 
 ---
 
@@ -1091,6 +1142,13 @@ square(2)
 
 
 ## RStudio Cloud
+
+.details[
+```{r}
+20==20
+```
+]
+
 
 For the purposes of this workshop we are going to use **RStudio Cloud**.
 
