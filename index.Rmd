@@ -814,9 +814,8 @@ We can also test whether certain values are greater or smaller than others:
 `>` greater than
 
 The code below tests the statement: 
+
 *The lifespan of a human is greater than the lifespan of a fly.*
-
-
 
 .details[
 ```{r}
@@ -824,19 +823,30 @@ human_lifespan > fly_lifespan
 ```
 ]
 
+--
+
 Since the maximum human lifespan is `122` and a fly does not live longer than `0.3` years this is of course a **`TRUE`** statement.
 
 ---
 
 ## Logical Operators
 
+
 `<` smaller than
+
+The code below tests the statement: 
+
+*The lifespan of an alligator is smaller than the lifespan of a mouse.*
 
 .details[
 ```{r}
-20 < 10
+alligator_lifespan < mouse_lifespan
 ```
 ]
+
+--
+
+Since the maximum alligator lifespan is `77` and a mouse lives for `4` years maximum, this is of course a **`FALSE`** statement.
 
 --
 
@@ -847,14 +857,52 @@ Also note the following options:
 ---
 
 
-## Logical Operators
+## Combine Logical Operators
+
+We can also combine logical tests by testing multiple statements at the same time:
+
+* `&` stands for "and" (unsurprisingly)
+* `|` stands for "or"
+
+For example both `alligator_lifespan` and `fly_lifespan` have to be greater than `mouse_lifespan` for the code below to evaluate as `TRUE`.
+
+.details[
+```{r}
+alligator_lifespan > mouse_lifespan & 
+fly_lifespan > mouse_lifespan
+```
+]
+
+
 
 ---
 
 
-## R Objects
 
-Now we learned about objects. But so far they have only ever held a single numeric value. 
+## Combine Logical Operators
+
+We can also combine logical tests by testing multiple statements at the same time:
+
+* `&` stands for "and" (unsurprisingly)
+* `|` stands for "or"
+
+If we say `|` (= or) instead, it means either statement evaluation to `TRUE` is enough!
+
+.details[
+```{r}
+alligator_lifespan > mouse_lifespan | 
+fly_lifespan > mouse_lifespan
+```
+]
+
+---
+
+
+## Even more objects..?
+
+Now we learned about operators and some basic objects. 
+
+But so far objects have only ever held a *single numeric value*. 
 
 R is of course much more powerful than that and objects can hold any number and types of data.
 
@@ -876,7 +924,7 @@ class: inverse, middle, center
 
 You can simply imagine vectors as a list of values. They can consist of numbers but also *strings* (or: text).
 
-In order to create a vector in R we make use of `c()` (which stands for *concatenate*)
+In order to create a vector in R we make use of `c()` (stands for *concatenate*)
 
 
 .details[
@@ -899,20 +947,49 @@ c("I", "am", "a", "vector", "of", "strings")
 
 ## Vectors
 
-Of course we can also assign these vectors to objects.
-
-Let's say we have a vector `times` with different time measures in *seconds*:
-
-```{r}
-times <- c(120, 60, 180, 360, 600)
-```
-
-If we wanted the times in minutes rather than seconds we would simply do the following:
+We can combine the lifespans we assigned into objects earlier:
 
 
 ```{r}
-times / 60 
+animal_lifespans <-  c(greenland_shark_lifespan, dog_lifespan, 
+  galapagos_tortoise_lifespan,
+  mouse_lifespan, fly_lifespan,
+  lion_lifespan, boar_lifespan,
+  alligator_lifespan, human_lifespan)
 ```
+
+.details[
+```{r}
+animal_lifespans
+```
+]
+
+
+---
+
+
+## Vectors
+
+We can also create a vector of strings by using quotes:
+
+.details[
+```{r}
+animals <- c("greenland_shark", "dog", 
+  "galapagos_tortoise", "mouse", 
+  "fly", "lion", "boar",
+  "alligator", "human")
+```
+]
+
+
+.details[
+```{r}
+animals
+```
+]
+
+
+---
 
 
 Notice how the operation is performed for each item separately and the result is yet another vector.
