@@ -1061,13 +1061,19 @@ animals %in% animals_to_check
 
 ## A logical operator for vectors: `%in%`
 
-Doesn't look that much shorter? Now imagine you have dozens or hundreds of animals to check!
+Doesn't look that much better? 
+
+Now imagine you have dozens or hundreds of animals to check!
+
+---
+
+## A logical operator for vectors: `%in%`
 
 With **`|`** it's utter chaos.
 
 .fifty[
 ```{r}
-animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "black_garden_ant" | animals == "pheidole_dentata" | animals == "squinting_bush_brown" | animals == "american_lobster" | animals == "firebelly_toad" | animals == "oriental_firebelly_toad" | animals == "yellow_bellied_toad" | animals == "american_toad" | animals == "western_toad" | animals == "yosemite_toad" | animals == "great_plains_toad" | animals == "green_toad" | animals == "canadian_toad" | animals == "red_spotted_toad" | animals == "sonoran_green_toad" | animals == "southern_toad" | animals == "veragoa_stubfoot_toad" | animals == "common_european_toad" | animals == "colorado_river_toad" | animals == "kihansi_spray_toad" | animals == "ridge_headed_toad" | animals == "cuban_toad" | animals == "european_green_toad" | animals == "colombian_giant_toad" | animals == "argentine_toad" | animals == "cane_toad" | animals == "eurura_toad" | animals == "common_horned_frog" | animals == "colombian_horned_frog" | animals == "amazonian_horned_frog" | animals == "ornate_horned_frog" | animals == "green_and_black_dart_poison_frog" | animals == "yellow_banded_poison_frog" | animals == "blue_poison_dart_frog" | animals == "kokoe_pa_poison_dart_frog" | animals == "strawberry_poison_frog" | animals == "golfo_dulce_poison_dart_frog" | animals == "african_tigrine_frog" | animals == "blanchard_s_cricket_frog" | animals == "northern_cricket_frog" | animals == "red_eyed_tree_frog" | animals == "maroon_eyed_tree_frog" | animals == "treefrog" | animals == "european_tree_frog" | animals == "cope_s_gray_treefrog" | animals == "green_treefrog" | animals == "barking_treefrog" | animals == "japanese_treefrog" | animals == "squirrel_treefrog" | animals == "gray_treefrog" | animals == "rosenberg_s_treefrog" | animals == "australian_green_treefrog"
+animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "black_garden_ant" | animals == "pheidole_dentata" | animals == "squinting_bush_brown" | animals == "american_lobster" | animals == "firebelly_toad" | animals == "oriental_firebelly_toad" | animals == "yellow_bellied_toad" | animals == "american_toad" | animals == "western_toad" | animals == "yosemite_toad" | animals == "great_plains_toad" | animals == "green_toad" | animals == "canadian_toad" | animals == "red_spotted_toad" | animals == "sonoran_green_toad" | animals == "southern_toad" | animals == "veragoa_stubfoot_toad" | animals == "common_european_toad" | animals == "colorado_river_toad" | animals == "kihansi_spray_toad" | animals == "ridge_headed_toad" | animals == "cuban_toad" | animals == "european_green_toad" | animals == "colombian_giant_toad" | animals == "argentine_toad" | animals == "cane_toad" | animals == "eurura_toad" | animals == "common_horned_frog" | animals == "colombian_horned_frog" | animals == "amazonian_horned_frog" | animals == "ornate_horned_frog" | animals == "green_and_black_dart_poison_frog" 
 ```
 ]
 
@@ -1078,10 +1084,10 @@ animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "blac
 
 With **`%in%`** it's much more sensible.
 
-.fifty[
 
+.fifty[
 ```{r}
-animals_to_check <-  c("Honey bee", "Cardiocondyla obscurior", "Black garden ant", "Pheidole dentata", "Squinting bush brown", "American lobster", "Firebelly toad", "Oriental firebelly toad", "Yellow-bellied toad", "American toad", "Western toad", "Yosemite toad", "Great plains toad", "Green toad", "Canadian toad", "Red-spotted toad", "Sonoran green toad", "Southern toad", "Veragoa stubfoot toad", "Common European toad", "Colorado river toad", "Kihansi spray toad", "Ridge-headed toad", "Cuban toad", "European green toad", "Colombian giant toad", "Argentine toad", "Cane toad", "Eurura toad", "Common horned frog", "Colombian horned frog", "Amazonian horned frog", "Ornate horned frog", "Green and black dart-poison frog", "Yellow-banded poison frog", "Blue poison-dart frog", "Kokoe-pa poison dart frog", "Strawberry poison frog", "Golfo dulce poison-dart frog", "African tigrine frog", "Blanchard's cricket frog", "Northern cricket frog", "Red-eyed tree frog", "Maroon-eyed tree frog", "Treefrog", "European tree frog", "Cope's gray treefrog", "Green treefrog", "Barking treefrog", "Japanese treefrog", "Squirrel treefrog", "Gray treefrog", "Rosenberg's treefrog", "Australian green treefrog") 
+animals_to_check <-  c("honey_bee", "cardiocondyla_obscurior", "black_garden_ant", "pheidole_dentata", "squinting_bush_brown", "american_lobster", "firebelly_toad", "oriental_firebelly_toad", "yellow_bellied_toad",  "american_toad", "western_toad", "yosemite_toad", "great_plains_toad", "green_toad", "canadian_toad", "red_spotted_toad", "sonoran_green_toad", "southern_toad", "veragoa_stubfoot_toad", "common_european_toad",  "colorado_river_toad", "kihansi_spray_toad", "ridge_headed_toad", "cuban_toad", "european_green_toad","colombian_giant_toad", "argentine_toad", "cane_toad", "eurura_toad", "common_horned_frog", "colombian_horned_frog", "amazonian_horned_frog", "ornate_horned_frog")
 
 ```
 ]
