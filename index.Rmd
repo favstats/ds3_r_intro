@@ -587,7 +587,7 @@ The observed maximum lifespan of a human is 122.5 years. For dogs it is 24.
 
 .details[
 ```{r}
-122/24
+122.5/24
 ```
 ]
 
@@ -825,7 +825,7 @@ human_lifespan > fly_lifespan
 
 --
 
-Since the maximum human lifespan is `122` and a fly does not live longer than `0.3` years this is of course a **`TRUE`** statement.
+Since the maximum human lifespan is `122.5` and a fly does not live longer than `0.3` years this is of course a **`TRUE`** statement.
 
 ---
 
@@ -982,6 +982,7 @@ animals <- c("greenland_shark", "dog",
 ]
 
 
+
 .details[
 ```{r}
 animals
@@ -992,14 +993,30 @@ animals
 ---
 
 
+## Vectors
+
+Now if we wanted to get the different year conversation ratios we can simply divide the maximum human age number by the vector.
+
+.details[
+```{r}
+122/animal_lifespans
+```
+]
+
+---
+
+## Vectors
+
+We can also use *logical* operators with vectors:
+---
+
+
 Notice how the operation is performed for each item separately and the result is yet another vector.
 
 ---
 
 
-## Vectors
 
-We can also use *logical* operators with vectors:
 
 ```{r}
 times == 600
