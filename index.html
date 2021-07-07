@@ -426,12 +426,12 @@ class: inverse, middle, center
 
 --
 
-### Operators
+### Math Operators
 
 
 ---
 
-## Operators
+### Math Operators
 
 At its core R is just a fancy *calculator*
 
@@ -449,7 +449,7 @@ You can do:
 
 ---
 
-## Operators
+### Math Operators
 
 At its core R is just a fancy *calculator*
 
@@ -486,7 +486,7 @@ At its core R is just a fancy *calculator*
 
 ---
 
-## A new data set appears..
+## Short excourse: a new data set appears..
 
 
 But adding up numbers for no reason is no fun.
@@ -537,21 +537,6 @@ We can use the following simple formula to determine that:
 
 .leftcol[
 
-Say we want to know how old an animal is in *human years*.
-
-We can use the following simple formula to determine that:
-
-`\(\frac{\text{Maximum lifespan human}}{\text{Maximum lifespan non-human animal}} =\)`
-
-`\(\text{animal to human years ratio}\)`
-
-.fifty[*Note: This is just a **very rough** way to determine the conversion ratio. It is **much more** complicated in [reality](https://www.akc.org/expert-advice/health/how-to-calculate-dog-years-to-human-years/).*]
-
-]
-
-
-.rightcol[
-
 | Animal | Maximum Lifespan |
 | --- | --- | 
 | Human | 122.5 | 
@@ -563,6 +548,21 @@ We can use the following simple formula to determine that:
 | Lion|	27.0 | 
 | Greenland shark	 | 392.0 | 
 | Galapagos tortoise | 177.0 | 
+]
+
+
+.rightcol[
+
+| Animal | Maximum Lifespan |
+| --- | --- | 
+| African bush elephant	 | 65.0 | 
+| California sea lion	| 35.7	 | 
+| Fruit fly		| 0.3	 | 
+| House mouse		| 4.0	 |
+| Giraffe		| 39.5	 |
+| Wild boar		| 27.0	|
+
+Source: [Animal Ageing and Longevity Database](https://www.johnsnowlabs.com/marketplace/the-animal-aging-and-longevity-database/)
 
 
 ]
@@ -572,13 +572,14 @@ We can use the following simple formula to determine that:
 
 ---
 
-## Operators
+### Math Operators
+
 
 Say we want to know how old a dog is in *human years*.
 
 --
 
-The maximum observed lifespan of a human is 122 years. For dogs it is 25.
+The observed maximum lifespan of a human is 122.5 years. For dogs it is 24.
 
 --
 
@@ -610,50 +611,198 @@ So for every year a human ages, a dog "ages" 5.08 human years. How old is a 15 y
 
 ---
 
-## Operators
+## So many numbers..
+
+
+Now it can be quite tedious to juggle all those numbers around. 
+
+Especially if we want to keep reusing numbers we calculated before.
+
+--
+
+Here to simplify that process are:
+
+**Objects**
+
+
+---
+
+class: inverse, middle, center
+
+# R Basics
+
+### R Objects
+
+---
+
+## R Objects
+
+You can think of R objects as *saving information*, for example simple numbers or just plain text. 
+
+Once saved we can recall it whenever we want by just running the name of the object.
+
+--
+
+&gt; Everything that exists in R is *.red[an object]*. .fifty[~John M. Chambers]
+
+--
+
+We create R objects by using the assignment operator: 
+
+&lt;center&gt;
+.large[**`&lt;-`**]
+&lt;/center&gt;
+
+.right[
+.fifty[You can also assign with the **`=`** sign but we will not be using this here.]
+]
+
+---
+
+## R Objects
+
+Here is an example:
+
+
+```r
+human_lifespan  &lt;- 122.5
+dog_lifespan &lt;- 24
+```
+
+If we now run the respective objects we retrieve the saved numbers.
+
+.details[
+
+```r
+human_lifespan
+```
+
+```
+#&gt; [1] 122.5
+```
+]
+
+.details[
+
+```r
+dog_lifespan
+```
+
+```
+#&gt; [1] 24
+```
+]
+
+
+---
+
+
+## R Objects
+
+
+Now we can perform the same calculation as before but this time using objects!
+
+
+```r
+dogs_to_human &lt;- human_lifespan / dog_lifespan
+```
+
+The object `dogs_to_human` now holds the dog to human years conversion ratio.
+
+--
+
+*Now* we ask again: how old is a 15 year old dog in human years?
+
+.details[
+
+```r
+dogs_to_human*15
+```
+
+```
+#&gt; [1] 76.5625
+```
+]
+
+---
+
+## A quick note on naming things
+
+.leftcol[
+&gt; Note that object names could be *anything* here!  I could have chosen to just name them `x`, `y` and `z`. 
 
 
 
+I typically use lower-case snake case in this style: `animal_rights`.
+ 
+Also recommended by the [tidyverse style guide](https://style.tidyverse.org/syntax.html). 
+]
+
+
+.rightcol[
+&lt;img src="https://pbs.twimg.com/media/DzH3mPlWwAAYE7q.jpg" style="width: 90%" /&gt;
+
+]
 
 
 
 ---
 
-## Operators
+## More operators..
 
-So how much time of my life did I spent at universities so far?
+But wait there are more operators: .fancy[logical operators]
+
+--
+
+Logical operators are used for logical tests which can result in either: 
+
+`\(\text{TRUE}\)` or `\(\text{FALSE}\)`
+
+*(sometimes this is also called a boolean variable)*
+
+
+
+---
+class: inverse, middle, center
+
+# R Basics
+
+### Logical Operators
+
+---
+
+## Logical Operators
+
+Let's first create some more objects to try some logical tests!
 
 
 ```r
-8 / (2021-1991) * 100
+lion_lifespan &lt;- 27
+mouse_lifespan &lt;- 4
+fly_lifespan &lt;- 0.3
+boar_lifespan &lt;- 27
+alligator_lifespan &lt;- 77
+greenland_shark_lifespan &lt;- 392
+galapagos_tortoise_lifespan &lt;- 177
 ```
 
-```
-#&gt; [1] 26.66667
-```
-
-I spent more than a quarter of my life in higher education!
-
-
-But wait there are more! R knows a range of operators.
-
-For example:
-
-**Logical operators**
 
 ---
 
 ## Logical Operators
 
 
-`Logical` operators are used for logical tests and can be either `TRUE` or `FALSE`:
 
 `==` asks whether two values are the same or **equal**
+
+The code below tests the following statement: 
+
+*The maximum lifespan of a lion equals that of a boar.*
 
 .details[
 
 ```r
-20 == 20
+lion_lifespan == boar_lifespan
 ```
 
 ```
@@ -661,7 +810,9 @@ For example:
 ```
 ]
 
-The code above tests the following statement: 20 equals 20. This is of course a `TRUE` statement.
+--
+
+Since both maximum lifespans are `27` this is of course a **`TRUE`** statement.
 
 ---
 
@@ -669,10 +820,14 @@ The code above tests the following statement: 20 equals 20. This is of course a 
 
 `!=`  asks whether two values are the *not* the same or **unequal**
 
+The code below tests the following statement: 
+
+*The maximum lifespan of a lion **does not equal** that of a boar.*
+
 .details[
 
 ```r
-20 != 20
+lion_lifespan != boar_lifespan
 ```
 
 ```
@@ -680,7 +835,9 @@ The code above tests the following statement: 20 equals 20. This is of course a 
 ```
 ]
 
-The code above tests the statement: 20 does not equal 20. This is of course a `FALSE` statement.
+--
+
+Since both maximum lifespans are `27` (as we saw before) this is of course a **`FALSE`** statement.
 
 
 ---
@@ -692,10 +849,15 @@ We can also test whether certain values are greater or smaller than others:
 
 `&gt;` greater than
 
+The code below tests the statement: 
+*The lifespan of a human is greater than the lifespan of a fly.*
+
+
+
 .details[
 
 ```r
-20 &gt; 10
+human_lifespan &gt; fly_lifespan
 ```
 
 ```
@@ -703,6 +865,11 @@ We can also test whether certain values are greater or smaller than others:
 ```
 ]
 
+Since the maximum human lifespan is `122` and a fly does not live longer than `0.3` years this is of course a **`TRUE`** statement.
+
+---
+
+## Logical Operators
 
 `&lt;` smaller than
 
@@ -728,156 +895,14 @@ Also note the following options:
 
 ## Logical Operators
 
-Now it can be quite tedious to juggle all those numbers around. 
-
-Especially if we want to keep reusing numbers we calculated before.
-
---
-
-Here to simplify that process are:
-
-**Objects**
-
-
 ---
 
-class: inverse, middle, center
-
-# R Basics
-
-### R Objects
-
----
-
-## R Objects
-
-
-You can think of R objects as *placeholders for information*, for example simple numbers or just plain text.
-
-We create R objects by using the assignment operator: 
-
-&lt;center&gt;
-.large[**`&lt;-`**]
-&lt;/center&gt;
-
-.right[
-.fifty[You can also assign with the **`=`** sign but we will not be using this here.]
-]
-
---
-
-Here is an example:
-
-
-```r
-current_year &lt;- 2021
-start_year &lt;- 2013
-birth_year &lt;- 1991
-```
-
----
-
-## R Objects
-
-If we now run the respective objects we retrieve the saved numbers.
-
-.details[
-
-```r
-current_year
-```
-
-```
-#&gt; [1] 2021
-```
-]
-
-.details[
-
-```r
-start_year
-```
-
-```
-#&gt; [1] 2013
-```
-]
-
-.details[
-
-```r
-birth_year
-```
-
-```
-#&gt; [1] 1991
-```
-]
-
----
-
-
-## R Objects
-
-Now we can perform the same calculation as before but this time using objects!
-
-
-```r
-years_since_start &lt;- current_year - start_year
-years_since_birth &lt;- current_year - birth_year
-```
-
-
-.details[
-
-```r
-years_since_start / years_since_birth * 100
-```
-
-```
-#&gt; [1] 26.66667
-```
-]
-
---
-
-&gt; Note that object names could be *anything* here! I chose to go with short but self-explanatory names but I could have chosen to just name them `x`, `y` and `z`.
- 
----
-
-## R Objects
-
-Now we can perform the same calculation as before but this time using objects!
-
-
-```r
-years_since_start &lt;- current_year - start_year
-years_since_birth &lt;- current_year - birth_year
-```
-
-
-.details[
-
-```r
-years_since_start / years_since_birth * 100
-```
-
-```
-#&gt; [1] 26.66667
-```
-]
-
----
 
 ## R Objects
 
 Now we learned about objects. But so far they have only ever held a single numeric value. 
 
 R is of course much more powerful than that and objects can hold any number and types of data.
-
-In fact it is good to remember that:
-
-&gt; Everything that exists in R is *.red[an object]*.
 
 --
 
@@ -1010,6 +1035,26 @@ Does `pears` occur within our `fruits` vectors?
 
 ---
 
+
+
+---
+
+## Operators
+
+So how much time of my life did I spent at universities so far?
+
+
+```r
+8 / (2021-1991) * 100
+```
+
+```
+#&gt; [1] 26.66667
+```
+
+I spent more than a quarter of my life in higher education!
+
+---
 
 ## Functions
 
