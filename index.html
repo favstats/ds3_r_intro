@@ -1537,22 +1537,104 @@ There are many more functions in R and we will get to learn some of them during 
 ---
 class: inverse, middle, center
 
-# R Advanced
+## R Basics
+
+### Creating our own Functions
 
 --
 
-### Creating our own Functions
+&lt;center&gt;
+&lt;img src="https://media.giphy.com/media/f74WDV59cP0NArh8gu/giphy.gif" style="width: 50%" /&gt;
+
+
+&lt;/center&gt;
+
+
+---
+
+## Creating our own functions
+
+We can create our own function using the call: `function()`.
+
+We encode what is supposed to happen within curly brackets `{}`.
+
+Here is the anatomy of a function:
+
+
+`\(\color{purple}{\text{my_function_name}}\)` &lt;- `\(\text{function}(\color{orange}{\text{argument}})\)`{
+
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; `\(\color{green}{\text{# function body}}\)`
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; `\(\color{lightblue}{\text{output}}\)` &lt;- `\(\color{orange}{\text{argument}}\)`
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; `\(\text{return(}\color{lightblue}{\text{output}}\text{)}\)`
+
+}
+
+---
+
+## Creating our own functions
+
+* `\(\color{purple}{\text{Function name}}\)`:
+  * An identifier by which the function is called 
+
+* `\(\color{orange}{\text{Argument(s)}}\)`:
+  * Contains a list of values passed to the function
+  * Can also contain a default value like this: `argument = 1`
+
+* `\(\color{green}{\text{Function body}}\)`:
+  * This is executed each time the function is called
+
+* `\(\color{lightblue}{\text{Return value}}\)`:
+  * Ends function call &amp; sends the value back to the global environment
+
+
+
+
 
 ---
 
 
-Let's define a function which squares numeric values. To do this, we use `function()` and encoded what is supposed to happen in curly brackets `{}`
+## Creating our own functions
+
+Let's try this basic example:
+
+
+```r
+my_function_name &lt;- function(argument){
+
+  # function body
+    
+  output &lt;- argument
+    
+  return(output)
+}
+```
+
+
+```r
+my_function_name("I am output!")
+```
+
+```
+#&gt; [1] "I am output!"
+```
+
+
+---
+
+
+## Creating our own functions
+
+Let's create a slightly more useful function: a function which squares numeric values.  `{}`
 
 
 ```r
 square &lt;- function(input) { 
   output &lt;- input^2        
-  output                  
+  
+  return(output)                  
 }
 ```
 
