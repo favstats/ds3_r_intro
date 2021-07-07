@@ -417,6 +417,26 @@ R is a .fancy[statistical] programming language developed for data analysis and 
 
 ]
 
+
+---
+
+
+## Google Colab
+
+
+For the purposes of this workshop we are going to use **Google Colab**.
+
+Google Colab provides an online environment for teaching.
+
+.blue[Upsides] 
+
++ No need to set up R and RStudio on your own computer
+
+.red[Downsides]
+
++ You will have to set up R and RStudio on your own computer (when you want to use R on your own)
+
+
 ---
 
 
@@ -967,7 +987,6 @@ R is of course much more powerful than that and objects can hold any number and 
 Now we will take a look at **vectors**, or objects that include more than one value.
 
 ---
-
 class: inverse, middle, center
 
 # R Basics
@@ -1004,8 +1023,7 @@ c("I", "am", "a", "vector", "of", "strings")
 ```
 
 ```
-#&gt; [1] "I"       "am"      "a"       "vector" 
-#&gt; [5] "of"      "strings"
+#&gt; [1] "I"       "am"      "a"       "vector"  "of"      "strings"
 ```
 ]
 
@@ -1033,8 +1051,7 @@ animal_lifespans
 ```
 
 ```
-#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0
-#&gt; [9] 122.5
+#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0 122.5
 ```
 ]
 
@@ -1065,11 +1082,9 @@ animals
 ```
 
 ```
-#&gt; [1] "greenland_shark"    "dog"               
-#&gt; [3] "galapagos_tortoise" "mouse"             
-#&gt; [5] "fly"                "lion"              
-#&gt; [7] "boar"               "alligator"         
-#&gt; [9] "human"
+#&gt; [1] "greenland_shark"    "dog"                "galapagos_tortoise"
+#&gt; [4] "mouse"              "fly"                "lion"              
+#&gt; [7] "boar"               "alligator"          "human"
 ```
 ]
 
@@ -1088,9 +1103,8 @@ human_lifespan / animal_lifespans
 ```
 
 ```
-#&gt; [1]   0.3125000   5.1041667   0.6920904  30.6250000
-#&gt; [5] 408.3333333   4.5370370   4.5370370   1.5909091
-#&gt; [9]   1.0000000
+#&gt; [1]   0.3125000   5.1041667   0.6920904  30.6250000 408.3333333   4.5370370
+#&gt; [7]   4.5370370   1.5909091   1.0000000
 ```
 ]
 
@@ -1110,8 +1124,7 @@ animal_lifespans &gt; human_lifespan
 ```
 
 ```
-#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-#&gt; [9] FALSE
+#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 ]
 
@@ -1177,8 +1190,7 @@ animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "blac
 ```
 
 ```
-#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-#&gt; [9] FALSE
+#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 ]
 
@@ -1204,8 +1216,7 @@ animals %in% animals_to_check
 ```
 
 ```
-#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-#&gt; [9] FALSE
+#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 ---
@@ -1219,7 +1230,7 @@ class: inverse, middle, center
 ---
 
 
-# Indexing
+## Indexing
 
 When you want to know a specific value within your object you can use indexing.
 
@@ -1227,18 +1238,315 @@ Indexing is done via square brackets `[]`.
 
 The basic setup looks like this:
 
-
 `$$\color{red}{\text{vector}}[\color{orange}{\text{elements}}]$$`
+---
+
+
+## Indexing
 
 Exracting the first element of a vector:
+
+
+```r
+animal_lifespans[1]
+```
+
+```
+#&gt; [1] 392
+```
+
+
+```r
+animals[1]
+```
+
+```
+#&gt; [1] "greenland_shark"
+```
+
+---
+
+## Indexing
+
+Exracting the fifth element of a vector:
+
+
+```r
+animal_lifespans[5]
+```
+
+```
+#&gt; [1] 0.3
+```
+
+
+```r
+animals[5]
+```
+
+```
+#&gt; [1] "fly"
+```
+
+
+---
+
+## Indexing with logical tests
+
+You can also index using logical tests. 
+
+So if an expression evaluates to `TRUE` it will **keep** that element and when it evaluates to `FALSE` it will remove the **element**.
+
+`$$\color{red}{\text{vector}}[\color{orange}{\text{vector of TRUE/FALSE of same length}}]$$`
+---
+
+
+## Indexing with logical tests
+
+Let's first take a look at a logical test that extracts all animals that have greater lifespans than humans:
+
+
+
+```r
+longer_living &lt;- animal_lifespans &gt; human_lifespan
+
+longer_living
+```
+
+```
+#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+```
+
+Now we can use square brackets to only keep those animals that have greater lifespans than humans.
+
+
+```r
+animals[longer_living]
+```
+
+```
+#&gt; [1] "greenland_shark"    "galapagos_tortoise"
+```
+
 
 ---
 
 ## Functions
 
-The goal of a function is to process data. There is also an entrance and an exit.
+&gt; Everything that happens in R is *.red[a function]*. .fifty[~John M. Chambers]
 
-Let's define a function which squares numeric values. To do this, we use `function()` and encoded what is supposed to happen curly brackets `{}`
+You can think of functions as little machines that (in most cases) process some kind of **input** and create an **output**. 
+
+Input is everything that goes *into* a function:
+
+*   **arguments** you can think of as (pre-determined) input types like a lever or numpad.
+
+*   **values** you can think of as the various settings that the levers or numpads can have.
+
+`$$\text{function_name}(\color{orange}{\text{argument}}=\color{lightblue}{\text{value}})$$`
+---
+class: inverse, middle, center
+
+# R Basics
+
+### Functions
+
+---
+
+## Functions
+
+&gt; Everything that happens in R is *.red[a function]*. .fifty[~John M. Chambers]
+
+
+You can think of functions as little machines that (in most cases) process some kind of **input** and create an **output**. 
+
+Input is everything that goes *into* a function:
+
+*   **arguments** you can think of as (pre-determined) input types like a lever or numpad.
+
+*   **values** you can think of as the various settings that the levers or numpads can have.
+
+*Let's take a look at an example:  the star producer!*
+
+---
+
+&lt;img src="https://raw.githubusercontent.com/favstats/hertieschool_datasciencesummerschool/master/img/starproducer2.png" width="90%" /&gt;
+
+
+---
+
+
+## The Star Producer
+
+Let's consider the following function (that does not exist unfortunately):
+A `star_producer`!
+
+This little machine creates tiny hand-drawn stars depending on some input. It takes two arguments:
+
+* `how_many` tells the machine how many stars to produce
+* `type` tells the machine how the stars should look like (in this case the machine only supports `"squiggly"` stars but it could be upgraded in the future when we learn how to create our own functions later on)
+
+---
+
+## Getting `?help`
+
+How do we know what function takes what kind of arguments?
+
+Within R you can always run the code:
+
+
+```r
+?function_name
+```
+
+And it will open up the *documentation* for the function that will tell you how to use it.
+
+---
+
+## An example function: `seq`
+
+From the help file we can learn that this function is used to 
+
+&gt; "[g]enerate regular sequences".
+
+Its first three arguments are this:
+
+* `from`, `to`: the starting and (maximal) end values of the sequence. 
+
+* `by`: number: increment of the sequence.
+
+
+
+Let's first take a look at this within our machine allegory.
+
+---
+
+&lt;img src="https://raw.githubusercontent.com/favstats/hertieschool_datasciencesummerschool/master/img/seq2.png" width="90%" /&gt;
+
+---
+
+## An example function: `seq`
+If we would want to create a vector from 1 to 10 that increments by 1 we can simple specify the following input values for the arguments:
+
+* `from`: 1
+* `to`: 10
+* `by`: 1
+
+
+This is how that looks like in code:
+
+
+```r
+seq(from = 1, to = 10, by = 1)
+```
+
+```
+#&gt;  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+
+---
+
+### Passing Values
+
+Now there are two ways to pass values to functions in R:
+
+1.   Pass by argument *names* (we already did this above!)
+2.   Pass by argument *position*
+
+In the former case, we specifically mention which arguments we want to pass our values to. 
+
+For that, it doesn't matter in which **order** we pass our arguments.
+
+
+```r
+seq(to = 10, by = 1, from = 1)
+```
+
+```
+#&gt;  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+
+
+---
+
+
+### Passing Values by position
+
+But: **coders are lazy**.
+
+There is no need to always specify which argument you mean exactly when you can just match *by position*.
+
+So our sequence example could just as well look like this:
+
+
+```r
+seq(1, 10, 1)
+```
+
+```
+#&gt;  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+And it works because the documentation tells us that the first three arguments are `from`, `to`, and `by`.
+
+In the future you will see it often that people just leave out the arguments completely so it's good to get used to it. 
+
+---
+
+## More examples: Mean and Median
+
+Many functions have so intuitive arguments that we often don't need to even look up the documentation.
+
+An easy function to use is `mean` which simply calculates the average of a numeric vectors. 
+
+Let's try this with the `animal_lifespans` we created earlier.
+
+
+```r
+mean(animal_lifespans)
+```
+
+```
+#&gt; [1] 94.53333
+```
+
+The mean value is quite high!
+
+---
+
+## More examples: Mean and Median
+
+We can also try and take the median value:
+
+
+```r
+median(animal_lifespans)
+```
+
+```
+#&gt; [1] 27
+```
+
+When we take the median instead of the mean we can see that this is due to high outliers (the median is of course more robust to extreme values).
+
+There are many more functions in R and we will get to learn some of them during this workshop.
+
+
+---
+class: inverse, middle, center
+
+# R Advanced
+
+--
+
+### Creating our own Functions
+
+---
+
+
+Let's define a function which squares numeric values. To do this, we use `function()` and encoded what is supposed to happen in curly brackets `{}`
 
 
 ```r
@@ -1260,37 +1568,6 @@ square(2)
 
 
 &gt; Tip: In RStudio we can just type `fun` and enter after the popup and RStudio will just automatically generate a template for a function.
-
----
-
-
-## RStudio Cloud
-
-.details[
-
-```r
-20==20
-```
-
-```
-#&gt; [1] TRUE
-```
-]
-
-
-For the purposes of this workshop we are going to use **RStudio Cloud**.
-
-RStudio Cloud provides an online environment for teaching.
-
-.blue[Upsides] 
-
-+ No need to set up R and RStudio on your own computer
-
-.red[Downsides]
-
-+ You will have to set up R and RStudio on your own computer (when you want to use R on your own)
-
-Why are we using it? For me it's important that you will have a smooth and easy experience in this workshop. RStudio Cloud allows us to have that.
 
 ---
     </textarea>
