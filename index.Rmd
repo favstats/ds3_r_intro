@@ -229,7 +229,19 @@ R is a .fancy[statistical] programming language developed for data analysis and 
 
 --
 
-## But why learn it?
+.
+
+--
+
+..
+
+--
+
+...
+
+--
+
+# But why learn <img src="images/Rlogo.svg" style="display: inline-block; margin: 0"; width="60px"/>?
 
 <!-- ![](http://www.favstats.eu/img/headers/season_views.png) -->
 
@@ -242,14 +254,12 @@ R is a .fancy[statistical] programming language developed for data analysis and 
 
 ---
 
-
-
 <!-- #### What is <img src="images/Rlogo.svg" width="30px" inline-block/> ? -->
 
 
 .leftcol[
 
-#### But why even learn it?
+#### Why learn <img src="images/Rlogo.svg" style="display: inline-block; margin: 0"; width="30px"/>?
 
 <!-- ![](http://www.favstats.eu/img/headers/season_views.png) -->
 
@@ -271,30 +281,156 @@ R is a .fancy[statistical] programming language developed for data analysis and 
 
 .rightcol[
 
+
 ![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/welcome_to_rstats_twitter.png)
 
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+
 ]
----
-
-
-
-## RStudio Cloud
-
-For the purposes of this workshop we are going to use **RStudio Cloud**.
-
-RStudio Cloud provides an online environment for teaching.
-
-.blue[Upsides] 
-
-+ No need to set up R and RStudio on your own computer
-
-.red[Downsides]
-
-+ You will have to set up R and RStudio on your own computer (when you want to use R on your own)
-
-Why are we using it? For me it's important that you will have a smooth and easy experience in this workshop. RStudio Cloud allows us to have that.
 
 ---
+
+<!-- #### What is <img src="images/Rlogo.svg" width="30px" inline-block/> ? -->
+
+
+.leftcol60[
+
+#### Why learn <img src="images/Rlogo.svg" style="display: inline-block; margin: 0"; width="30px"/>?
+
+<!-- ![](http://www.favstats.eu/img/headers/season_views.png) -->
+
+
+
++ Amazing Community .forty[(but I already said that)]
+
++ Data wrangling is accessible & fun
+
+<!-- + Outstanding repertoire of statistical & computational methods -->
+
+<!-- -- -->
+
+<!-- + Integrates well with other programming languages (like Python) -->
+
+<!-- -- -->
+
+<!-- + Beautiful Data Visualization with `ggplot2` and more -->
+
+]
+
+.rightcol40[
+
+<br>
+
+![](https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidyverse_celestial.png?raw=true)
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+
+]
+
+---
+
+.leftcol60[
+
+#### Why learn <img src="images/Rlogo.svg" style="display: inline-block; margin: 0"; width="30px"/>?
+
+<!-- ![](http://www.favstats.eu/img/headers/season_views.png) -->
+
+
+
++ Amazing Community .forty[(but I already said that)]
+
++ Data wrangling is accessible & fun
+
++ Outstanding repertoire of statistical & computational methods
+
+<!-- + Integrates well with other programming languages (like Python) -->
+
+<!-- + Beautiful Data Visualization with `ggplot2` and more -->
+
+]
+
+.rightcol40[
+
+<br>
+
+![](https://pbs.twimg.com/media/E4mDfxSXEAA_kvG.jpg)
+.fifty[ [easystats](https://github.com/easystats/easystats) packageverse for statistical analysis.]
+
+
+]
+
+---
+
+.leftcol60[
+
+#### Why learn <img src="images/Rlogo.svg" style="display: inline-block; margin: 0"; width="30px"/>?
+
+<!-- ![](http://www.favstats.eu/img/headers/season_views.png) -->
+
+
+
++ Amazing Community .forty[(but I already said that)]
+
++ Data wrangling is accessible & fun
+
++ Outstanding repertoire of statistical & computational methods
+
++ Integrates well with other programming languages
+
+<!-- + Beautiful Data Visualization with `ggplot2` and more -->
+
+]
+
+.rightcol40[
+
+<br>
+
+![](https://rstudio.github.io/reticulate/images/reticulated_python.png)
+.fifty[ [reticulate](https://github.com/easystats/easystats) R package integrates with Python.]
+
+
+]
+
+---
+
+.leftcol60[
+
+#### Why learn <img src="images/Rlogo.svg" style="display: inline-block; margin: 0"; width="30px"/>?
+
+<!-- ![](http://www.favstats.eu/img/headers/season_views.png) -->
+
+
+
++ Amazing Community .forty[(but I already said that)]
+
++ Data wrangling is accessible & fun
+
++ Outstanding repertoire of statistical & computational methods
+
++ Integrates well with other programming languages
+
++ Beautiful data visualization with `ggplot2` 
+
+<br>
+
+<br>
+
+
+.right[.fifty[Data visualization by [Cédric Scherer](https://www.cedricscherer.com/)]]
+
+
+]
+
+.rightcol40[
+
+
+![](https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_31/2020_31_PalmerPenguins.png?raw=true)
+
+
+]
+
+---
+
 
 class: inverse, middle, center
 
@@ -352,31 +488,125 @@ At its core R is just a fancy *calculator*
 
 ---
 
+## A new data set appears..
+
+
+But adding up numbers for no reason is no fun.
+
+--
+
+That's why we will use a data set about .fancy[animals] to learn some R Basics.
+
+
+.leftcol45[
+<img src="https://www.pngitem.com/pimgs/m/553-5539545_cartoon-animal-png-humans-and-animals-png-transparent.png" style="width: 100%" />
+]
+
+.rightcol55[
+
+[Animal Ageing and Longevity Database](https://www.johnsnowlabs.com/marketplace/the-animal-aging-and-longevity-database/)
+
+Data on over 4200 animals.
+
+Information on age of maturity, gestation or incubation periods but also **longevity (in years)**.
+
+]
+
+
+---
+
+## Animal Ageing and Longevity Database
+
+
+Say we want to know how old an animal is in *human years*.
+
+--
+
+We can use the following simple formula to determine that:
+
+<br>
+
+$$\frac{\text{Maximum lifespan human}}{\text{Maximum lifespan non-human animal}} = \text{animal to human years ratio}$$
+
+<br>
+
+*Note: This is just a **very rough** way to determine the conversion ratio. It is **much more** complicated in [reality](https://www.akc.org/expert-advice/health/how-to-calculate-dog-years-to-human-years/).*
+
+
+---
+
+## Animal Ageing and Longevity Database
+
+.leftcol[
+
+Say we want to know how old an animal is in *human years*.
+
+We can use the following simple formula to determine that:
+
+$\frac{\text{Maximum lifespan human}}{\text{Maximum lifespan non-human animal}} =$
+
+$\text{animal to human years ratio}$
+
+.fifty[*Note: This is just a **very rough** way to determine the conversion ratio. It is **much more** complicated in [reality](https://www.akc.org/expert-advice/health/how-to-calculate-dog-years-to-human-years/).*]
+
+]
+
+
+.rightcol[
+
+| Animal | Maximum Lifespan |
+| --- | --- | 
+| Human | 122.5 | 
+| Domestic dog | 24.0 | 
+| Domestic cat | 30.0 | 
+| American alligator | 77.0 | 
+| Golden hamster | 3.9 | 
+| King penguin | 26.0 | 
+| Lion|	27.0 | 
+| Greenland shark	 | 392.0 | 
+| Galapagos tortoise | 177.0 | 
+
+
+]
+
+
+
+
+---
+
 ## Operators
 
-Say I want to know how much time of my life I spent at university so far.
+Say we want to know how old a dog is in *human years*.
 
 --
 
-First I find the difference between 2021 and the year I started my Bachelor (`2013`)
+The maximum observed lifespan of a human is 122 years. For dogs it is 25.
 
 --
 
 .details[
 ```{r}
-2021 - 2013
+122/24
 ```
 ]
 
---
-
-Then I divide that by the years since my birth: current year minus my birth year (`1991`). Finally multiply by 100 so I get percent.
+So for every year a human ages, a dog "ages" 5.08 human years. How old is a 15 year old dog in human years?
 
 .details[
 ```{r}
-8 / (2021-1991) * 100
+5.08333333333333*15
 ```
 ]
+
+
+
+---
+
+## Operators
+
+
+
+
 
 
 ---
@@ -710,25 +940,21 @@ square(2)
 
 ---
 
-### Why Even Create an R Package
 
-+ R packages are a wonderful way to make functions and datasets easily accessible for everyone
+## RStudio Cloud
 
---
+For the purposes of this workshop we are going to use **RStudio Cloud**.
 
-+ R really comes alive because of the many awesome packages that hundreds and hundreds of volunteers help create and maintain
+RStudio Cloud provides an online environment for teaching.
 
---
+.blue[Upsides] 
 
-+ It's a great way to become active in the R community & give back
++ No need to set up R and RStudio on your own computer
 
---
+.red[Downsides]
 
-.center[
++ You will have to set up R and RStudio on your own computer (when you want to use R on your own)
 
-![](https://media1.giphy.com/media/5yWTr8kc2O7zaTDhW9/giphy.gif)
-
-]
-
+Why are we using it? For me it's important that you will have a smooth and easy experience in this workshop. RStudio Cloud allows us to have that.
 
 ---
