@@ -2,6 +2,7 @@
 
 ![](https://socialdatascience.network/courses/poster/r.png)
 
+
 Here you can find the materials for the R Workshop:
 
 Introduction to R Programming.
@@ -18,4 +19,6 @@ Introduction to R Programming.
 
 
 
+
+![](images/title.png)
 
