@@ -216,8 +216,7 @@ RStudio is an IDE (Integrated Development Environment).
 
 * Write, save and open R Code (.R/.Rmd files)
 
-
-Through features like .red[syntax highlighting] and .green[auto-completion] RStudio enables a more intuitive usage of R.
+* Provides syntax-highlighting and auto-completion & much more
 
 --
 
@@ -2497,7 +2496,15 @@ RStudio ships out with four panes:
 * Files pane
   * Gives access to files, but  also help, and plots
   
-  
+---
+
+## Using RStudio Projects
+
+
+[RStudio projects](https://r4ds.had.co.nz/workflow-projects.html) make it straightforward to divide your work into multiple contexts, each with their own working directory, workspace, history, and source documents.
+
+![](http://www.rstudio.com/images/docs/projects_new.png)
+
 ---
 
 
@@ -2557,14 +2564,7 @@ RStudio ships out with four panes:
 
 
 
----
 
-## Using RStudio Projects
-
-
-[RStudio projects](https://r4ds.had.co.nz/workflow-projects.html) make it straightforward to divide your work into multiple contexts, each with their own working directory, workspace, history, and source documents.
-
-![](http://www.rstudio.com/images/docs/projects_new.png)
 
 ---
 
