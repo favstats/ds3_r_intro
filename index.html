@@ -3110,6 +3110,169 @@ select(pg_new, bodymass_kg, body_mass_g)
 
 ---
 
+#### Recoding with `ifelse`
+
+`ifelse()` is a very useful function that allows to easily recode variables based on logical tests.
+
+It's basic functionality looks like this:
+
+`$$\color{red}{\text{ifelse}}(\color{orange}{\text{logical test}},\color{blue}{\text{value if TRUE}}, \color{green}{\text{value if FALSE}})$$`
+
+Here is a very basic example:
+
+
+```r
+ifelse(1 == 1, "Pick me if test is TRUE", "Pick me if test is FALSE")
+```
+
+```
+#&gt; [1] "Pick me if test is TRUE"
+```
+
+
+
+```r
+ifelse(1 != 1, "Pick me if test is TRUE", "Pick me if test is FALSE")
+```
+
+```
+#&gt; [1] "Pick me if test is FALSE"
+```
+
+---
+
+#### Recoding with `ifelse`
+
+Let's use `ifelse` in combination with `mutate`.
+
+Let's create the variable `sex_short` which has a shorter label for sex:
+
+
+```r
+pg_new &lt;- mutate(penguins_clean, sex_short = ifelse(sex == "MALE", "m", "f"))
+
+select(pg_new, sex, sex_short)
+```
+
+```
+#&gt; # A tibble: 344 x 2
+#&gt;    sex    sex_short
+#&gt;    &lt;chr&gt;  &lt;chr&gt;    
+#&gt;  1 MALE   m        
+#&gt;  2 FEMALE f        
+#&gt;  3 FEMALE f        
+#&gt;  4 &lt;NA&gt;   &lt;NA&gt;     
+#&gt;  5 FEMALE f        
+#&gt;  6 MALE   m        
+#&gt;  7 FEMALE f        
+#&gt;  8 MALE   m        
+#&gt;  9 &lt;NA&gt;   &lt;NA&gt;     
+#&gt; 10 &lt;NA&gt;   &lt;NA&gt;     
+#&gt; # … with 334 more rows
+```
+
+---
+
+#### Recoding with `case_when`
+
+`case_when` (from the `dplyr` package) is like `ifelse` but allows for much more complex combinations.
+
+The basic setup for a `case_when` call look like this:
+
+
+case_when(
+
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; `\(\color{orange}{\text{logical test}}\)` ~ `\(\color{blue}{\text{what should happen if TRUE}}\)`,
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; `\(\color{orange}{\text{logical test}}\)` ~ `\(\color{blue}{\text{what should happen if TRUE}}\)`,
+
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; `\(\color{orange}{\text{logical test}}\)` ~ `\(\color{blue}{\text{what should happen if TRUE}}\)`,
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; `\(TRUE\)` ~ `\(\color{green}{\text{what should happen with everything else}}\)`,
+
+)
+
+
+---
+
+#### Recoding with `case_when`
+
+The following code recodes a numeric vector (1 through 50) into three categorical ones:
+
+
+
+```r
+x &lt;- 1:50
+
+case_when(
+  x %in% 1:10 ~ "1 through 10",
+  x %in% 11:30 ~ "11 through 30",
+  TRUE ~ "above 30"
+)
+```
+
+```
+#&gt;  [1] "1 through 10"  "1 through 10"  "1 through 10"  "1 through 10" 
+#&gt;  [5] "1 through 10"  "1 through 10"  "1 through 10"  "1 through 10" 
+#&gt;  [9] "1 through 10"  "1 through 10"  "11 through 30" "11 through 30"
+#&gt; [13] "11 through 30" "11 through 30" "11 through 30" "11 through 30"
+#&gt; [17] "11 through 30" "11 through 30" "11 through 30" "11 through 30"
+#&gt; [21] "11 through 30" "11 through 30" "11 through 30" "11 through 30"
+#&gt; [25] "11 through 30" "11 through 30" "11 through 30" "11 through 30"
+#&gt; [29] "11 through 30" "11 through 30" "above 30"      "above 30"     
+#&gt; [33] "above 30"      "above 30"      "above 30"      "above 30"     
+#&gt; [37] "above 30"      "above 30"      "above 30"      "above 30"     
+#&gt; [41] "above 30"      "above 30"      "above 30"      "above 30"     
+#&gt; [45] "above 30"      "above 30"      "above 30"      "above 30"     
+#&gt; [49] "above 30"      "above 30"
+```
+
+
+---
+
+#### Recoding with `case_when`
+
+Let's use `case_when` in combination with `mutate`.
+
+Creating the variable `short_island` which has a shorter label for `island`:
+
+
+```r
+pg_new &lt;- mutate(penguins_clean, 
+        island_short = case_when(
+          island == "Torgersen" ~ "T",
+          island == "Biscoe" ~ "B",
+          island == "Dream" ~ "D"
+        ))
+```
+
+
+```r
+select(pg_new, island, island_short)
+```
+
+```
+#&gt; # A tibble: 344 x 2
+#&gt;    island    island_short
+#&gt;    &lt;chr&gt;     &lt;chr&gt;       
+#&gt;  1 Torgersen T           
+#&gt;  2 Torgersen T           
+#&gt;  3 Torgersen T           
+#&gt;  4 Torgersen T           
+#&gt;  5 Torgersen T           
+#&gt;  6 Torgersen T           
+#&gt;  7 Torgersen T           
+#&gt;  8 Torgersen T           
+#&gt;  9 Torgersen T           
+#&gt; 10 Torgersen T           
+#&gt; # … with 334 more rows
+```
+
+
+---
+
 class: center, middle, inverse
 
 ## `rename()`
@@ -3388,6 +3551,18 @@ penguins_clean %&gt;%
 #&gt; 10 N25A2 Dream         4650        4.65
 #&gt; # … with 114 more rows
 ```
+
+---
+
+## Small Note on the Pipe
+
+Since R Version 4.1.0 Base R also provides a pipe.
+
+It looks like this: `\(|&gt;\)`
+
+While it shares many similarities with the `%&gt;%` there are also some differences.
+
+It's beyond the scope of this workshop to go over it here but for the sake of simplicity we will stick with the `magrittr` pipe.
 
 ---
 

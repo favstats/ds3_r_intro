@@ -2535,6 +2535,106 @@ select(pg_new, bodymass_kg, body_mass_g)
 
 ---
 
+#### Recoding with `ifelse`
+
+`ifelse()` is a very useful function that allows to easily recode variables based on logical tests.
+
+It's basic functionality looks like this:
+
+$$\color{red}{\text{ifelse}}(\color{orange}{\text{logical test}},\color{blue}{\text{value if TRUE}}, \color{green}{\text{value if FALSE}})$$
+
+Here is a very basic example:
+
+```{r}
+ifelse(1 == 1, "Pick me if test is TRUE", "Pick me if test is FALSE")
+```
+
+
+```{r}
+ifelse(1 != 1, "Pick me if test is TRUE", "Pick me if test is FALSE")
+```
+
+---
+
+#### Recoding with `ifelse`
+
+Let's use `ifelse` in combination with `mutate`.
+
+Let's create the variable `sex_short` which has a shorter label for sex:
+
+```{r}
+pg_new <- mutate(penguins_clean, sex_short = ifelse(sex == "MALE", "m", "f"))
+
+select(pg_new, sex, sex_short)
+
+```
+
+---
+
+#### Recoding with `case_when`
+
+`case_when` (from the `dplyr` package) is like `ifelse` but allows for much more complex combinations.
+
+The basic setup for a `case_when` call look like this:
+
+
+case_when(
+
+
+&nbsp;&nbsp;&nbsp; $\color{orange}{\text{logical test}}$ ~ $\color{blue}{\text{what should happen if TRUE}}$,
+
+&nbsp;&nbsp;&nbsp; $\color{orange}{\text{logical test}}$ ~ $\color{blue}{\text{what should happen if TRUE}}$,
+
+
+&nbsp;&nbsp;&nbsp; $\color{orange}{\text{logical test}}$ ~ $\color{blue}{\text{what should happen if TRUE}}$,
+
+&nbsp;&nbsp;&nbsp; $TRUE$ ~ $\color{green}{\text{what should happen with everything else}}$,
+
+)
+
+
+---
+
+#### Recoding with `case_when`
+
+The following code recodes a numeric vector (1 through 50) into three categorical ones:
+
+
+```{r}
+x <- 1:50
+
+case_when(
+  x %in% 1:10 ~ "1 through 10",
+  x %in% 11:30 ~ "11 through 30",
+  TRUE ~ "above 30"
+)
+```
+
+
+---
+
+#### Recoding with `case_when`
+
+Let's use `case_when` in combination with `mutate`.
+
+Creating the variable `short_island` which has a shorter label for `island`:
+
+```{r}
+pg_new <- mutate(penguins_clean, 
+        island_short = case_when(
+          island == "Torgersen" ~ "T",
+          island == "Biscoe" ~ "B",
+          island == "Dream" ~ "D"
+        ))
+```
+
+```{r}
+select(pg_new, island, island_short)
+```
+
+
+---
+
 class: center, middle, inverse
 
 ## `rename()`
@@ -2718,6 +2818,18 @@ penguins_clean %>%
   rename(id = individual_id)
 
 ```
+
+---
+
+## Small Note on the Pipe
+
+Since R Version 4.1.0 Base R also provides a pipe.
+
+It looks like this: $|>$
+
+While it shares many similarities with the `%>%` there are also some differences.
+
+It's beyond the scope of this workshop to go over it here but for the sake of simplicity we will stick with the `magrittr` pipe.
 
 ---
 
