@@ -124,11 +124,12 @@ July 09 2021
 .rightcol60[
 + Ph.D. Candidate in Political Communication at University of Amsterdam
 
-+ Passionate about Data Science
++ Passionate about R and Data Science
 
-+ Passonate about memes
++ I love to travel (when there is no pandemic)
 
-+ Passionate about Data Science, R and memes together
++ I enjoy and (occasionally) create R memes
+
 ]
 
 ---
@@ -1063,8 +1064,8 @@ human_lifespan / animal_lifespans
 ```
 
 ```
-#&gt; [1]   0.3125000   5.1041667   0.6920904  30.6250000 408.3333333   4.5370370
-#&gt; [7]   4.5370370   1.5909091   1.0000000
+#&gt; [1]   0.3125000   5.1041667   0.6920904  30.6250000 408.3333333
+#&gt; [6]   4.5370370   4.5370370   1.5909091   1.0000000
 ```
 ]
 
@@ -1286,6 +1287,49 @@ animals[longer_living]
 
 ```
 #&gt; [1] "greenland_shark"    "galapagos_tortoise"
+```
+
+
+---
+
+## Small excourse: variable types
+
+There are three-ish main types of variables:
+
+--
+
+* **logical**: Boolean/binary, is either `TRUE` or `FALSE`
+
+
+```r
+class(TRUE)
+```
+
+```
+#&gt; [1] "logical"
+```
+
+* **character (or string)**: simple text, including symbols and numbers `"text"`
+
+
+
+```r
+class("I am a character")
+```
+
+```
+#&gt; [1] "character"
+```
+
+* **numeric**: Numbers. Mathmatical operators can be used here.
+
+
+```r
+class(2020)
+```
+
+```
+#&gt; [1] "numeric"
 ```
 
 
@@ -1690,7 +1734,102 @@ dog_to_human_years(15)
 #&gt; [1] 76.5625
 ```
 
+---
 
+## A quick note on errors and debugging
+
+Soon we will go into exercise mode!
+
+Before that, however, it's important to understand:
+
+&gt; Seasoned R user or complete beginners, **everyone makes mistakes.**
+&gt; Encountering errors sometimes is normal.
+
+No R programmer ever just fell from the sky. 
+
+*Debugging* is the process of finding and resolving bugs/problems in code and it **happens all the time**.
+
+---
+
+## A quick note on errors and debugging
+
+So you encountered an error:
+
+
+```
+#&gt; Error: subset of type closure is not subsettable
+```
+
+Steps to take:
+
+* Try to understand what it says.
+
+  * Easier said than done, because many R errors are actually quite cryptic unfortunately.
+
+
+
+---
+
+## A quick note on errors and debugging
+
+So you encountered an error:
+
+
+```
+#&gt; Error: subset of type closure is not subsettable
+```
+
+Steps to take:
+
+* Try to understand what it says.
+
+* Google (or other search engines)
+
+  * Search for the error
+  * Search for what you were trying to do (add R or rstats)
+
+
+---
+
+## A quick note on errors and debugging
+
+So you encountered an error:
+
+
+```
+#&gt; Error: subset of type closure is not subsettable
+```
+
+Steps to take:
+
+* Try to understand what it says.
+
+* Google (or other search engines)
+
+* If the error occurs in a function check whether you passed an object type that isn't expected by it.
+
+  * Checking the documentation can help here! Type: `?function`
+
+---
+
+## A quick note on errors and debugging
+
+So you encountered an error:
+
+
+```
+#&gt; Error: subset of type closure is not subsettable
+```
+
+Steps to take:
+
+* Try to understand what it says.
+
+* Google (or other search engines)
+
+* If the error occurs in a function check whether you passed an object type that isn't expected by it.
+
+* Ask for help! Create a *reproducible example* (reprex) and post to online communities
 
 ---
 class: center, middle, inverse
@@ -2212,10 +2351,11 @@ penguins_raw
 #&gt;  8 PAL0708                 8 Adelie… Anvers Torge… Adul… N4A2           
 #&gt;  9 PAL0708                 9 Adelie… Anvers Torge… Adul… N5A1           
 #&gt; 10 PAL0708                10 Adelie… Anvers Torge… Adul… N5A2           
-#&gt; # … with 334 more rows, and 10 more variables: `Clutch Completion` &lt;chr&gt;, `Date
-#&gt; #   Egg` &lt;date&gt;, `Culmen Length (mm)` &lt;dbl&gt;, `Culmen Depth (mm)` &lt;dbl&gt;,
-#&gt; #   `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass (g)` &lt;dbl&gt;, Sex &lt;chr&gt;, `Delta 15 N
-#&gt; #   (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;, Comments &lt;chr&gt;
+#&gt; # … with 334 more rows, and 10 more variables: `Clutch Completion` &lt;chr&gt;,
+#&gt; #   `Date Egg` &lt;date&gt;, `Culmen Length (mm)` &lt;dbl&gt;, `Culmen Depth
+#&gt; #   (mm)` &lt;dbl&gt;, `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass (g)` &lt;dbl&gt;,
+#&gt; #   Sex &lt;chr&gt;, `Delta 15 N (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;,
+#&gt; #   Comments &lt;chr&gt;
 ```
 
 ---
@@ -2233,23 +2373,23 @@ glimpse(penguins_raw)
 ```
 #&gt; Rows: 344
 #&gt; Columns: 17
-#&gt; $ studyName             &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PA…
-#&gt; $ `Sample Number`       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, …
-#&gt; $ Species               &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie …
-#&gt; $ Region                &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers…
-#&gt; $ Island                &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgers…
-#&gt; $ Stage                 &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Ad…
-#&gt; $ `Individual ID`       &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2",…
-#&gt; $ `Clutch Completion`   &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No",…
-#&gt; $ `Date Egg`            &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16…
-#&gt; $ `Culmen Length (mm)`  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 3…
-#&gt; $ `Culmen Depth (mm)`   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 1…
-#&gt; $ `Flipper Length (mm)` &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190…
-#&gt; $ `Body Mass (g)`       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3…
-#&gt; $ Sex                   &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE…
-#&gt; $ `Delta 15 N (o/oo)`   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.1…
-#&gt; $ `Delta 13 C (o/oo)`   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.29…
-#&gt; $ Comments              &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adul…
+#&gt; $ studyName             &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708…
+#&gt; $ `Sample Number`       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13…
+#&gt; $ Species               &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "A…
+#&gt; $ Region                &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "…
+#&gt; $ Island                &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "T…
+#&gt; $ Stage                 &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage…
+#&gt; $ `Individual ID`       &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "…
+#&gt; $ `Clutch Completion`   &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",…
+#&gt; $ `Date Egg`            &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007…
+#&gt; $ `Culmen Length (mm)`  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 3…
+#&gt; $ `Culmen Depth (mm)`   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 1…
+#&gt; $ `Flipper Length (mm)` &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 19…
+#&gt; $ `Body Mass (g)`       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4…
+#&gt; $ Sex                   &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE",…
+#&gt; $ `Delta 15 N (o/oo)`   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.6649…
+#&gt; $ `Delta 13 C (o/oo)`   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, …
+#&gt; $ Comments              &lt;chr&gt; "Not enough blood for isotopes.", NA, NA,…
 ```
 
 ---
@@ -2334,23 +2474,23 @@ glimpse(penguins_clean)
 ```
 #&gt; Rows: 344
 #&gt; Columns: 17
-#&gt; $ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL070…
-#&gt; $ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
-#&gt; $ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie Peng…
-#&gt; $ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", "…
-#&gt; $ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen",…
-#&gt; $ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult,…
-#&gt; $ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4…
-#&gt; $ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No…
-#&gt; $ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, 20…
-#&gt; $ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1,…
-#&gt; $ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1,…
-#&gt; $ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 18…
-#&gt; $ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475,…
-#&gt; $ sex               &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE", "…
-#&gt; $ delta_15_n_o_oo   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18718…
-#&gt; $ delta_13_c_o_oo   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.29805,…
-#&gt; $ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adult no…
+#&gt; $ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "…
+#&gt; $ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
+#&gt; $ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adeli…
+#&gt; $ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anve…
+#&gt; $ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torge…
+#&gt; $ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "…
+#&gt; $ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2…
+#&gt; $ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No…
+#&gt; $ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-…
+#&gt; $ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2,…
+#&gt; $ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6,…
+#&gt; $ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 1…
+#&gt; $ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675,…
+#&gt; $ sex               &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MA…
+#&gt; $ delta_15_n_o_oo   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9…
+#&gt; $ delta_13_c_o_oo   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.…
+#&gt; $ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Ad…
 ```
 
 
@@ -2505,9 +2645,9 @@ filter(penguins_clean, island == "Dream")
 #&gt;  9 PAL0708               39 Adelie… Dream  N25A1         No              
 #&gt; 10 PAL0708               40 Adelie… Dream  N25A2         No              
 #&gt; # … with 114 more rows, and 9 more variables: date_egg &lt;date&gt;,
-#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
-#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
-#&gt; #   comments &lt;chr&gt;
+#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
+#&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
+#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
 ```
 
 ---
@@ -2538,9 +2678,9 @@ filter(penguins_clean, island %in% islands_to_keep)
 #&gt;  9 PAL0708               29 Adelie… Biscoe N18A1         No              
 #&gt; 10 PAL0708               30 Adelie… Biscoe N18A2         No              
 #&gt; # … with 282 more rows, and 9 more variables: date_egg &lt;date&gt;,
-#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
-#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
-#&gt; #   comments &lt;chr&gt;
+#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
+#&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
+#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
 ```
 
 
@@ -2622,21 +2762,22 @@ rename(penguins_clean, sample = sample_number)
 
 ```
 #&gt; # A tibble: 344 x 15
-#&gt;    study_name sample species island individual_id clutch_completi… date_egg  
-#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;            &lt;date&gt;    
-#&gt;  1 PAL0708         1 Adelie… Torge… N1A1          Yes              2007-11-11
-#&gt;  2 PAL0708         2 Adelie… Torge… N1A2          Yes              2007-11-11
-#&gt;  3 PAL0708         3 Adelie… Torge… N2A1          Yes              2007-11-16
-#&gt;  4 PAL0708         4 Adelie… Torge… N2A2          Yes              2007-11-16
-#&gt;  5 PAL0708         5 Adelie… Torge… N3A1          Yes              2007-11-16
-#&gt;  6 PAL0708         6 Adelie… Torge… N3A2          Yes              2007-11-16
-#&gt;  7 PAL0708         7 Adelie… Torge… N4A1          No               2007-11-15
-#&gt;  8 PAL0708         8 Adelie… Torge… N4A2          No               2007-11-15
-#&gt;  9 PAL0708         9 Adelie… Torge… N5A1          Yes              2007-11-09
-#&gt; 10 PAL0708        10 Adelie… Torge… N5A2          Yes              2007-11-09
-#&gt; # … with 334 more rows, and 8 more variables: culmen_length_mm &lt;dbl&gt;,
-#&gt; #   culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;,
-#&gt; #   sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
+#&gt;    study_name sample species island individual_id clutch_completi…
+#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;           
+#&gt;  1 PAL0708         1 Adelie… Torge… N1A1          Yes             
+#&gt;  2 PAL0708         2 Adelie… Torge… N1A2          Yes             
+#&gt;  3 PAL0708         3 Adelie… Torge… N2A1          Yes             
+#&gt;  4 PAL0708         4 Adelie… Torge… N2A2          Yes             
+#&gt;  5 PAL0708         5 Adelie… Torge… N3A1          Yes             
+#&gt;  6 PAL0708         6 Adelie… Torge… N3A2          Yes             
+#&gt;  7 PAL0708         7 Adelie… Torge… N4A1          No              
+#&gt;  8 PAL0708         8 Adelie… Torge… N4A2          No              
+#&gt;  9 PAL0708         9 Adelie… Torge… N5A1          Yes             
+#&gt; 10 PAL0708        10 Adelie… Torge… N5A2          Yes             
+#&gt; # … with 334 more rows, and 9 more variables: date_egg &lt;date&gt;,
+#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
+#&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
+#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
 ```
 
 
@@ -2845,18 +2986,147 @@ class: center, middle, inverse
 
 # Some Final Things
 
----
-
-## RStudio Panes
-
-![](https://bookdown.org/ageraci/STAT160Companion/images/rstudiopanes.png)
-
+## If we had more time..
 
 ---
 
+## RStudio Tour
+
+&lt;center&gt;
+&lt;img src="https://bookdown.org/ageraci/STAT160Companion/images/rstudiopanes.png" style="width: 82%" /&gt;
+&lt;/center&gt;
+
+---
+
+## RStudio Tour
+
+RStudio ships out with four panes:
+
+* Program pane
+  * Shows R Files, typically .R or .Rmd
+  
+* Environment pane
+  * All the objects that you created during your session
+  
+* Console pane
+  * For executing short snippets of R code
+  
+* Files pane
+  * Gives access to files, but  also help, and plots
+  
+  
+---
+
+
+## Rmarkdown
+
+&lt;center&gt;
+&lt;img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 72%" /&gt;
+&lt;/center&gt;
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+
+---
+
+
+## Rmarkdown
+
+.leftcol[
+&lt;center&gt;
+&lt;img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 100%" /&gt;
+&lt;/center&gt;
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+]
+
+.rightcol[
+* create *documents* with R
+  
+* mix code, text and graphs as you like
+
+* write your thesis, create slides, automated reports, dashboards and interactive web apps all from within [Rmarkdown](https://rmarkdown.rstudio.com/docs/articles/rmarkdown.html)
+  
+]
+
 
 
 ---
+
+
+## Rmarkdown
+
+.leftcol[
+&lt;center&gt;
+&lt;img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 100%" /&gt;
+&lt;/center&gt;
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+]
+
+.rightcol[
+* create *documents* with R
+  
+* mix code, text and graphs as you like
+
+* write your thesis, create slides, automated reports, dashboards and interactive web apps all from within Rmarkdown
+  
+]
+
+
+
+---
+
+## Using RStudio Projects
+
+
+[RStudio projects](https://r4ds.had.co.nz/workflow-projects.html) make it straightforward to divide your work into multiple contexts, each with their own working directory, workspace, history, and source documents.
+
+![](http://www.rstudio.com/images/docs/projects_new.png)
+
+---
+
+## Further Resources to learn R
+
+
+* [Book: R for Data Science](https://r4ds.had.co.nz/)
+
+* [Danielle Navarro's YouTube channel](https://www.youtube.com/channel/UCfNGzUFfsy_3udMY8UyaqBA)
+
+* [Start coding using RStudio.cloud Primers](https://rstudio.cloud/learn/primers)
+
+* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
+
+* [Book: A ModernDive into R and the Tidyverse](https://moderndive.com/)
+
+* [TidyTuesday - Community](https://www.tidytuesday.com/)
+
+
+
+---
+class: center, middle, inverse
+
+## Q&amp;A
+
+--
+
+&lt;center&gt;
+&lt;img src="https://i.gifer.com/24OD.gif" style="width: 22%" /&gt;
+&lt;/center&gt;
+
+
+
+---
+
+
+class: center, middle, inverse
+
+### Thank you for participating!
+
+I hope you had fun!
+
+&lt;center&gt;
+&lt;img src="https://media1.tenor.com/images/da0f7d5d93faa11dfc36db1e6c6fdf2a/tenor.gif?itemid=6159389" style="width: 42%" /&gt;
+&lt;/center&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
