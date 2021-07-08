@@ -187,6 +187,19 @@ knitr::include_graphics("images/r_first_then_new.png")
 
 ---
 
+## Overview
+
++ R Basics
+  + Operators
+  + Objects (inc. vectors)
+  + Functions
+  + Data frames
+  
++ Data Manipulation
+  + the tidyverse and friends
+
+---
+
 
 
 <!-- #### What is <img src="images/Rlogo.svg" width="30px" inline-block/> ? -->
@@ -1489,7 +1502,7 @@ class: center, middle, inverse
 <img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%" />
 </center>
 
-Google Colab: [https://tinyurl.com/hackr1234](https://tinyurl.com/hackr1234)
+Google Colab: [tinyurl.com/hackr1234](https://tinyurl.com/hackr1234)
 
 ---
 class: center, middle, inverse
@@ -2154,7 +2167,6 @@ rename(penguins_clean, sample = sample_number)
 ```
 
 
-
 ---
 
 class: center, middle, inverse
@@ -2167,11 +2179,129 @@ when you want to aggregate your data (by groups)
 ---
 
 
+## `group_by()` and `summarize()`
+
+Sometimes we want to calculate group statistics.
+
+In other languages this is often a pain. With `dplyr` this is fairly easy **and** readable.
+
+<img src="https://learn.r-journalism.com/wrangling/dplyr/images/groupby.png" style="width: 80%" />
+
+
+
+---
+
+## `group_by()` and `summarize()`
+
+
+First we group `penguins_clean` by `sex`.
+
+```{r}
+grouped_by_sex <- group_by(penguins_clean, sex)
+```
+
+`summarize` works in a similar way to `mutate`:
+
+`variable_name = some_calculation`
+
+```{r}
+summarise(grouped_by_sex, avg_culmen_length_mm = mean(culmen_length_mm, na.rm = T))
+```
+
+
+
+---
+
+
 class: center, middle, inverse
 
 # **`%>%`**
 
 ## The pipe operator
 
+<center>
+<img src="https://rpodcast.github.io/officer-advrmarkdown/img/magrittr.png" style="width: 62%" />
+</center>
+
 
 ---
+
+## The `%>%` operator
+
+The point of the pipe is to help you write code in a way that is easier to read and understand. 
+
+Let's consider an example with the data manipulation we have done so far:
+
+```{r}
+## first I select variables
+pg <- select(penguins_clean, individual_id, island, body_mass_g)
+
+## then I filter to only Dream island
+pg <- filter(pg, island == "Dream")
+
+## then I convert body_mass_g to kg
+pg <- mutate(pg, bodymass_kg = body_mass_g/1000)
+
+## rename individual id to simply id
+pg <- rename(pg, id = individual_id)
+
+```
+
+---
+
+
+## The `%>%` operator
+
+Now this works but the problem is: we have to write a lot of code that repeats itself!
+
+```{r}
+pg
+```
+
+---
+
+## The `%>%` operator
+
+Another alternative is to *nest all the functions*:
+
+```{r}
+rename(mutate(filter(select(penguins_clean, individual_id, island, body_mass_g), island == "Dream"), bodymass_kg = body_mass_g/1000), id = individual_id)
+
+```
+
+
+---
+
+## The `%>%` operator
+
+*The piping style*: 
+
+Read from top to bottom and from left to right and the `%>%` as "and then".
+
+```{r}
+penguins_clean %>% 
+  select(individual_id, island, body_mass_g) %>% 
+  filter(island == "Dream") %>% 
+  mutate(bodymass_kg = body_mass_g/1000) %>% 
+  rename(id = individual_id)
+
+```
+
+---
+
+class: center, middle, inverse
+
+# Exercises
+
+### It's time to type some R code
+
+
+
+
+<center>
+<img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%" />
+</center>
+
+Google Colab: [tinyurl.com/hackr4321](https://tinyurl.com/hackr4321)
+
+

@@ -157,6 +157,19 @@ July 09 2021
 
 ---
 
+## Overview
+
++ R Basics
+  + Operators
+  + Objects (inc. vectors)
+  + Functions
+  + Data frames
+  
++ Data Manipulation
+  + the tidyverse and friends
+
+---
+
 
 
 &lt;!-- #### What is &lt;img src="images/Rlogo.svg" width="30px" inline-block/&gt; ? --&gt;
@@ -971,8 +984,7 @@ c("I", "am", "a", "vector", "of", "strings")
 ```
 
 ```
-#&gt; [1] "I"       "am"      "a"       "vector"  "of"     
-#&gt; [6] "strings"
+#&gt; [1] "I"       "am"      "a"       "vector"  "of"      "strings"
 ```
 ]
 
@@ -1000,8 +1012,7 @@ animal_lifespans
 ```
 
 ```
-#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0
-#&gt; [9] 122.5
+#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0 122.5
 ```
 ]
 
@@ -1032,11 +1043,9 @@ animals
 ```
 
 ```
-#&gt; [1] "greenland_shark"    "dog"               
-#&gt; [3] "galapagos_tortoise" "mouse"             
-#&gt; [5] "fly"                "lion"              
-#&gt; [7] "boar"               "alligator"         
-#&gt; [9] "human"
+#&gt; [1] "greenland_shark"    "dog"                "galapagos_tortoise"
+#&gt; [4] "mouse"              "fly"                "lion"              
+#&gt; [7] "boar"               "alligator"          "human"
 ```
 ]
 
@@ -1055,9 +1064,8 @@ human_lifespan / animal_lifespans
 ```
 
 ```
-#&gt; [1]   0.3125000   5.1041667   0.6920904  30.6250000
-#&gt; [5] 408.3333333   4.5370370   4.5370370   1.5909091
-#&gt; [9]   1.0000000
+#&gt; [1]   0.3125000   5.1041667   0.6920904  30.6250000 408.3333333   4.5370370
+#&gt; [7]   4.5370370   1.5909091   1.0000000
 ```
 ]
 
@@ -1077,8 +1085,7 @@ animal_lifespans &gt; human_lifespan
 ```
 
 ```
-#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-#&gt; [9] FALSE
+#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 ]
 
@@ -1144,8 +1151,7 @@ animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "blac
 ```
 
 ```
-#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-#&gt; [9] FALSE
+#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 ]
 
@@ -1171,8 +1177,7 @@ animals %in% animals_to_check
 ```
 
 ```
-#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-#&gt; [9] FALSE
+#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 ---
@@ -1270,8 +1275,7 @@ longer_living
 ```
 
 ```
-#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-#&gt; [9] FALSE
+#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 Now we can use square brackets to only keep those animals that have greater lifespans than humans.
@@ -1653,7 +1657,7 @@ class: center, middle, inverse
 &lt;img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%" /&gt;
 &lt;/center&gt;
 
-Google Colab: [https://tinyurl.com/hackr1234](https://tinyurl.com/hackr1234)
+Google Colab: [tinyurl.com/hackr1234](https://tinyurl.com/hackr1234)
 
 ---
 class: center, middle, inverse
@@ -1769,8 +1773,7 @@ animals_data$animal_lifespans
 ```
 
 ```
-#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0
-#&gt; [9] 122.5
+#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0 122.5
 ```
 
 
@@ -1780,12 +1783,10 @@ animals_data$animals
 ```
 
 ```
-#&gt; [1] greenland_shark    dog               
-#&gt; [3] galapagos_tortoise mouse             
-#&gt; [5] fly                lion              
-#&gt; [7] boar               alligator         
+#&gt; [1] greenland_shark    dog                galapagos_tortoise mouse             
+#&gt; [5] fly                lion               boar               alligator         
 #&gt; [9] human             
-#&gt; 9 Levels: alligator boar dog ... mouse
+#&gt; 9 Levels: alligator boar dog fly galapagos_tortoise greenland_shark ... mouse
 ```
 
 ---
@@ -1809,26 +1810,16 @@ animals_data
 ```
 
 ```
-#&gt;              animals animal_lifespans
-#&gt; 1    greenland_shark            392.0
-#&gt; 2                dog             24.0
-#&gt; 3 galapagos_tortoise            177.0
-#&gt; 4              mouse              4.0
-#&gt; 5                fly              0.3
-#&gt; 6               lion             27.0
-#&gt; 7               boar             27.0
-#&gt; 8          alligator             77.0
-#&gt; 9              human            122.5
-#&gt;   animal_to_human
-#&gt; 1      3.20000000
-#&gt; 2      0.19591837
-#&gt; 3      1.44489796
-#&gt; 4      0.03265306
-#&gt; 5      0.00244898
-#&gt; 6      0.22040816
-#&gt; 7      0.22040816
-#&gt; 8      0.62857143
-#&gt; 9      1.00000000
+#&gt;              animals animal_lifespans animal_to_human
+#&gt; 1    greenland_shark            392.0      3.20000000
+#&gt; 2                dog             24.0      0.19591837
+#&gt; 3 galapagos_tortoise            177.0      1.44489796
+#&gt; 4              mouse              4.0      0.03265306
+#&gt; 5                fly              0.3      0.00244898
+#&gt; 6               lion             27.0      0.22040816
+#&gt; 7               boar             27.0      0.22040816
+#&gt; 8          alligator             77.0      0.62857143
+#&gt; 9              human            122.5      1.00000000
 ```
 
 
@@ -1864,7 +1855,7 @@ animals_data[1, 1]
 
 ```
 #&gt; [1] greenland_shark
-#&gt; 9 Levels: alligator boar dog ... mouse
+#&gt; 9 Levels: alligator boar dog fly galapagos_tortoise greenland_shark ... mouse
 ```
 
 *If* we want to keep a certain row but all columns we can do this by leaving the *second* value within the square brackets empty.
@@ -1891,12 +1882,10 @@ animals_data[, 1]
 ```
 
 ```
-#&gt; [1] greenland_shark    dog               
-#&gt; [3] galapagos_tortoise mouse             
-#&gt; [5] fly                lion              
-#&gt; [7] boar               alligator         
+#&gt; [1] greenland_shark    dog                galapagos_tortoise mouse             
+#&gt; [5] fly                lion               boar               alligator         
 #&gt; [9] human             
-#&gt; 9 Levels: alligator boar dog ... mouse
+#&gt; 9 Levels: alligator boar dog fly galapagos_tortoise greenland_shark ... mouse
 ```
 
 ---
@@ -1917,12 +1906,9 @@ animals_data[animals_to_check, ]
 ```
 
 ```
-#&gt;              animals animal_lifespans
-#&gt; 1    greenland_shark              392
-#&gt; 3 galapagos_tortoise              177
-#&gt;   animal_to_human
-#&gt; 1        3.200000
-#&gt; 3        1.444898
+#&gt;              animals animal_lifespans animal_to_human
+#&gt; 1    greenland_shark              392        3.200000
+#&gt; 3 galapagos_tortoise              177        1.444898
 ```
 
 ---
@@ -2162,26 +2148,22 @@ penguins_raw
 
 ```
 #&gt; # A tibble: 344 x 17
-#&gt;    studyName `Sample Number` Species Region Island
-#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; 
-#&gt;  1 PAL0708                 1 Adelie~ Anvers Torge~
-#&gt;  2 PAL0708                 2 Adelie~ Anvers Torge~
-#&gt;  3 PAL0708                 3 Adelie~ Anvers Torge~
-#&gt;  4 PAL0708                 4 Adelie~ Anvers Torge~
-#&gt;  5 PAL0708                 5 Adelie~ Anvers Torge~
-#&gt;  6 PAL0708                 6 Adelie~ Anvers Torge~
-#&gt;  7 PAL0708                 7 Adelie~ Anvers Torge~
-#&gt;  8 PAL0708                 8 Adelie~ Anvers Torge~
-#&gt;  9 PAL0708                 9 Adelie~ Anvers Torge~
-#&gt; 10 PAL0708                10 Adelie~ Anvers Torge~
-#&gt; # ... with 334 more rows, and 12 more variables:
-#&gt; #   Stage &lt;chr&gt;, `Individual ID` &lt;chr&gt;, `Clutch
-#&gt; #   Completion` &lt;chr&gt;, `Date Egg` &lt;date&gt;, `Culmen
-#&gt; #   Length (mm)` &lt;dbl&gt;, `Culmen Depth (mm)` &lt;dbl&gt;,
-#&gt; #   `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass
-#&gt; #   (g)` &lt;dbl&gt;, Sex &lt;chr&gt;, `Delta 15 N
-#&gt; #   (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;,
-#&gt; #   Comments &lt;chr&gt;
+#&gt;    studyName `Sample Number` Species Region Island Stage `Individual ID`
+#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          
+#&gt;  1 PAL0708                 1 Adelie~ Anvers Torge~ Adul~ N1A1           
+#&gt;  2 PAL0708                 2 Adelie~ Anvers Torge~ Adul~ N1A2           
+#&gt;  3 PAL0708                 3 Adelie~ Anvers Torge~ Adul~ N2A1           
+#&gt;  4 PAL0708                 4 Adelie~ Anvers Torge~ Adul~ N2A2           
+#&gt;  5 PAL0708                 5 Adelie~ Anvers Torge~ Adul~ N3A1           
+#&gt;  6 PAL0708                 6 Adelie~ Anvers Torge~ Adul~ N3A2           
+#&gt;  7 PAL0708                 7 Adelie~ Anvers Torge~ Adul~ N4A1           
+#&gt;  8 PAL0708                 8 Adelie~ Anvers Torge~ Adul~ N4A2           
+#&gt;  9 PAL0708                 9 Adelie~ Anvers Torge~ Adul~ N5A1           
+#&gt; 10 PAL0708                10 Adelie~ Anvers Torge~ Adul~ N5A2           
+#&gt; # ... with 334 more rows, and 10 more variables: `Clutch Completion` &lt;chr&gt;,
+#&gt; #   `Date Egg` &lt;date&gt;, `Culmen Length (mm)` &lt;dbl&gt;, `Culmen Depth (mm)` &lt;dbl&gt;,
+#&gt; #   `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass (g)` &lt;dbl&gt;, Sex &lt;chr&gt;, `Delta 15 N
+#&gt; #   (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;, Comments &lt;chr&gt;
 ```
 
 ---
@@ -2199,23 +2181,23 @@ glimpse(penguins_raw)
 ```
 #&gt; Rows: 344
 #&gt; Columns: 17
-#&gt; $ studyName             &lt;chr&gt; "PAL0708", "PAL070...
-#&gt; $ `Sample Number`       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, ...
-#&gt; $ Species               &lt;chr&gt; "Adelie Penguin (P...
-#&gt; $ Region                &lt;chr&gt; "Anvers", "Anvers"...
-#&gt; $ Island                &lt;chr&gt; "Torgersen", "Torg...
-#&gt; $ Stage                 &lt;chr&gt; "Adult, 1 Egg Stag...
-#&gt; $ `Individual ID`       &lt;chr&gt; "N1A1", "N1A2", "N...
-#&gt; $ `Clutch Completion`   &lt;chr&gt; "Yes", "Yes", "Yes...
-#&gt; $ `Date Egg`            &lt;date&gt; 2007-11-11, 2007-...
-#&gt; $ `Culmen Length (mm)`  &lt;dbl&gt; 39.1, 39.5, 40.3, ...
-#&gt; $ `Culmen Depth (mm)`   &lt;dbl&gt; 18.7, 17.4, 18.0, ...
-#&gt; $ `Flipper Length (mm)` &lt;dbl&gt; 181, 186, 195, NA,...
-#&gt; $ `Body Mass (g)`       &lt;dbl&gt; 3750, 3800, 3250, ...
-#&gt; $ Sex                   &lt;chr&gt; "MALE", "FEMALE", ...
-#&gt; $ `Delta 15 N (o/oo)`   &lt;dbl&gt; NA, 8.94956, 8.368...
-#&gt; $ `Delta 13 C (o/oo)`   &lt;dbl&gt; NA, -24.69454, -25...
-#&gt; $ Comments              &lt;chr&gt; "Not enough blood ...
+#&gt; $ studyName             &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "...
+#&gt; $ `Sample Number`       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14...
+#&gt; $ Species               &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adeli...
+#&gt; $ Region                &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anve...
+#&gt; $ Island                &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torge...
+#&gt; $ Stage                 &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "...
+#&gt; $ `Individual ID`       &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2...
+#&gt; $ `Clutch Completion`   &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No...
+#&gt; $ `Date Egg`            &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-...
+#&gt; $ `Culmen Length (mm)`  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2,...
+#&gt; $ `Culmen Depth (mm)`   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6,...
+#&gt; $ `Flipper Length (mm)` &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 1...
+#&gt; $ `Body Mass (g)`       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675,...
+#&gt; $ Sex                   &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MA...
+#&gt; $ `Delta 15 N (o/oo)`   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9...
+#&gt; $ `Delta 13 C (o/oo)`   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25....
+#&gt; $ Comments              &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Ad...
 ```
 
 ---
@@ -2300,23 +2282,23 @@ glimpse(penguins_clean)
 ```
 #&gt; Rows: 344
 #&gt; Columns: 17
-#&gt; $ study_name        &lt;chr&gt; "PAL0708", "PAL0708", ...
-#&gt; $ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8...
-#&gt; $ species           &lt;chr&gt; "Adelie Penguin (Pygos...
-#&gt; $ region            &lt;chr&gt; "Anvers", "Anvers", "A...
-#&gt; $ island            &lt;chr&gt; "Torgersen", "Torgerse...
-#&gt; $ stage             &lt;chr&gt; "Adult, 1 Egg Stage", ...
-#&gt; $ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1"...
-#&gt; $ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "...
-#&gt; $ date_egg          &lt;date&gt; 2007-11-11, 2007-11-1...
-#&gt; $ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, ...
-#&gt; $ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, ...
-#&gt; $ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193...
-#&gt; $ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, ...
-#&gt; $ sex               &lt;chr&gt; "MALE", "FEMALE", "FEM...
-#&gt; $ delta_15_n_o_oo   &lt;dbl&gt; NA, 8.94956, 8.36821, ...
-#&gt; $ delta_13_c_o_oo   &lt;dbl&gt; NA, -24.69454, -25.333...
-#&gt; $ comments          &lt;chr&gt; "Not enough blood for ...
+#&gt; $ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL0...
+#&gt; $ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15...
+#&gt; $ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie Pe...
+#&gt; $ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers",...
+#&gt; $ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen...
+#&gt; $ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adul...
+#&gt; $ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "...
+#&gt; $ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "...
+#&gt; $ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, ...
+#&gt; $ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34....
+#&gt; $ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18....
+#&gt; $ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, ...
+#&gt; $ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 347...
+#&gt; $ sex               &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE",...
+#&gt; $ delta_15_n_o_oo   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.187...
+#&gt; $ delta_13_c_o_oo   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.2980...
+#&gt; $ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adult ...
 ```
 
 
@@ -2415,18 +2397,18 @@ select(penguins_clean, individual_id, sex, species)
 
 ```
 #&gt; # A tibble: 344 x 3
-#&gt;    individual_id sex    species                      
-#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                        
-#&gt;  1 N1A1          MALE   Adelie Penguin (Pygoscelis a~
-#&gt;  2 N1A2          FEMALE Adelie Penguin (Pygoscelis a~
-#&gt;  3 N2A1          FEMALE Adelie Penguin (Pygoscelis a~
-#&gt;  4 N2A2          &lt;NA&gt;   Adelie Penguin (Pygoscelis a~
-#&gt;  5 N3A1          FEMALE Adelie Penguin (Pygoscelis a~
-#&gt;  6 N3A2          MALE   Adelie Penguin (Pygoscelis a~
-#&gt;  7 N4A1          FEMALE Adelie Penguin (Pygoscelis a~
-#&gt;  8 N4A2          MALE   Adelie Penguin (Pygoscelis a~
-#&gt;  9 N5A1          &lt;NA&gt;   Adelie Penguin (Pygoscelis a~
-#&gt; 10 N5A2          &lt;NA&gt;   Adelie Penguin (Pygoscelis a~
+#&gt;    individual_id sex    species                            
+#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                              
+#&gt;  1 N1A1          MALE   Adelie Penguin (Pygoscelis adeliae)
+#&gt;  2 N1A2          FEMALE Adelie Penguin (Pygoscelis adeliae)
+#&gt;  3 N2A1          FEMALE Adelie Penguin (Pygoscelis adeliae)
+#&gt;  4 N2A2          &lt;NA&gt;   Adelie Penguin (Pygoscelis adeliae)
+#&gt;  5 N3A1          FEMALE Adelie Penguin (Pygoscelis adeliae)
+#&gt;  6 N3A2          MALE   Adelie Penguin (Pygoscelis adeliae)
+#&gt;  7 N4A1          FEMALE Adelie Penguin (Pygoscelis adeliae)
+#&gt;  8 N4A2          MALE   Adelie Penguin (Pygoscelis adeliae)
+#&gt;  9 N5A1          &lt;NA&gt;   Adelie Penguin (Pygoscelis adeliae)
+#&gt; 10 N5A2          &lt;NA&gt;   Adelie Penguin (Pygoscelis adeliae)
 #&gt; # ... with 334 more rows
 ```
 
@@ -2458,24 +2440,21 @@ filter(penguins_clean, island == "Dream")
 
 ```
 #&gt; # A tibble: 124 x 15
-#&gt;    study_name sample_number species island
-#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; 
-#&gt;  1 PAL0708               31 Adelie~ Dream 
-#&gt;  2 PAL0708               32 Adelie~ Dream 
-#&gt;  3 PAL0708               33 Adelie~ Dream 
-#&gt;  4 PAL0708               34 Adelie~ Dream 
-#&gt;  5 PAL0708               35 Adelie~ Dream 
-#&gt;  6 PAL0708               36 Adelie~ Dream 
-#&gt;  7 PAL0708               37 Adelie~ Dream 
-#&gt;  8 PAL0708               38 Adelie~ Dream 
-#&gt;  9 PAL0708               39 Adelie~ Dream 
-#&gt; 10 PAL0708               40 Adelie~ Dream 
-#&gt; # ... with 114 more rows, and 11 more variables:
-#&gt; #   individual_id &lt;chr&gt;, clutch_completion &lt;chr&gt;,
-#&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;,
-#&gt; #   culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
-#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
-#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
+#&gt;    study_name sample_number species island individual_id clutch_completi~
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;           
+#&gt;  1 PAL0708               31 Adelie~ Dream  N21A1         Yes             
+#&gt;  2 PAL0708               32 Adelie~ Dream  N21A2         Yes             
+#&gt;  3 PAL0708               33 Adelie~ Dream  N22A1         Yes             
+#&gt;  4 PAL0708               34 Adelie~ Dream  N22A2         Yes             
+#&gt;  5 PAL0708               35 Adelie~ Dream  N23A1         Yes             
+#&gt;  6 PAL0708               36 Adelie~ Dream  N23A2         Yes             
+#&gt;  7 PAL0708               37 Adelie~ Dream  N24A1         Yes             
+#&gt;  8 PAL0708               38 Adelie~ Dream  N24A2         Yes             
+#&gt;  9 PAL0708               39 Adelie~ Dream  N25A1         No              
+#&gt; 10 PAL0708               40 Adelie~ Dream  N25A2         No              
+#&gt; # ... with 114 more rows, and 9 more variables: date_egg &lt;date&gt;,
+#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
+#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
 #&gt; #   comments &lt;chr&gt;
 ```
 
@@ -2494,24 +2473,21 @@ filter(penguins_clean, island %in% islands_to_keep)
 
 ```
 #&gt; # A tibble: 292 x 15
-#&gt;    study_name sample_number species island
-#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; 
-#&gt;  1 PAL0708               21 Adelie~ Biscoe
-#&gt;  2 PAL0708               22 Adelie~ Biscoe
-#&gt;  3 PAL0708               23 Adelie~ Biscoe
-#&gt;  4 PAL0708               24 Adelie~ Biscoe
-#&gt;  5 PAL0708               25 Adelie~ Biscoe
-#&gt;  6 PAL0708               26 Adelie~ Biscoe
-#&gt;  7 PAL0708               27 Adelie~ Biscoe
-#&gt;  8 PAL0708               28 Adelie~ Biscoe
-#&gt;  9 PAL0708               29 Adelie~ Biscoe
-#&gt; 10 PAL0708               30 Adelie~ Biscoe
-#&gt; # ... with 282 more rows, and 11 more variables:
-#&gt; #   individual_id &lt;chr&gt;, clutch_completion &lt;chr&gt;,
-#&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;,
-#&gt; #   culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
-#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
-#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
+#&gt;    study_name sample_number species island individual_id clutch_completi~
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;           
+#&gt;  1 PAL0708               21 Adelie~ Biscoe N11A1         Yes             
+#&gt;  2 PAL0708               22 Adelie~ Biscoe N11A2         Yes             
+#&gt;  3 PAL0708               23 Adelie~ Biscoe N12A1         Yes             
+#&gt;  4 PAL0708               24 Adelie~ Biscoe N12A2         Yes             
+#&gt;  5 PAL0708               25 Adelie~ Biscoe N13A1         Yes             
+#&gt;  6 PAL0708               26 Adelie~ Biscoe N13A2         Yes             
+#&gt;  7 PAL0708               27 Adelie~ Biscoe N17A1         Yes             
+#&gt;  8 PAL0708               28 Adelie~ Biscoe N17A2         Yes             
+#&gt;  9 PAL0708               29 Adelie~ Biscoe N18A1         No              
+#&gt; 10 PAL0708               30 Adelie~ Biscoe N18A2         No              
+#&gt; # ... with 282 more rows, and 9 more variables: date_egg &lt;date&gt;,
+#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
+#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
 #&gt; #   comments &lt;chr&gt;
 ```
 
@@ -2594,26 +2570,22 @@ rename(penguins_clean, sample = sample_number)
 
 ```
 #&gt; # A tibble: 344 x 15
-#&gt;    study_name sample species island individual_id
-#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;        
-#&gt;  1 PAL0708         1 Adelie~ Torge~ N1A1         
-#&gt;  2 PAL0708         2 Adelie~ Torge~ N1A2         
-#&gt;  3 PAL0708         3 Adelie~ Torge~ N2A1         
-#&gt;  4 PAL0708         4 Adelie~ Torge~ N2A2         
-#&gt;  5 PAL0708         5 Adelie~ Torge~ N3A1         
-#&gt;  6 PAL0708         6 Adelie~ Torge~ N3A2         
-#&gt;  7 PAL0708         7 Adelie~ Torge~ N4A1         
-#&gt;  8 PAL0708         8 Adelie~ Torge~ N4A2         
-#&gt;  9 PAL0708         9 Adelie~ Torge~ N5A1         
-#&gt; 10 PAL0708        10 Adelie~ Torge~ N5A2         
-#&gt; # ... with 334 more rows, and 10 more variables:
-#&gt; #   clutch_completion &lt;chr&gt;, date_egg &lt;date&gt;,
-#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
-#&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;,
-#&gt; #   sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;,
-#&gt; #   delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
+#&gt;    study_name sample species island individual_id clutch_completi~ date_egg  
+#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;            &lt;date&gt;    
+#&gt;  1 PAL0708         1 Adelie~ Torge~ N1A1          Yes              2007-11-11
+#&gt;  2 PAL0708         2 Adelie~ Torge~ N1A2          Yes              2007-11-11
+#&gt;  3 PAL0708         3 Adelie~ Torge~ N2A1          Yes              2007-11-16
+#&gt;  4 PAL0708         4 Adelie~ Torge~ N2A2          Yes              2007-11-16
+#&gt;  5 PAL0708         5 Adelie~ Torge~ N3A1          Yes              2007-11-16
+#&gt;  6 PAL0708         6 Adelie~ Torge~ N3A2          Yes              2007-11-16
+#&gt;  7 PAL0708         7 Adelie~ Torge~ N4A1          No               2007-11-15
+#&gt;  8 PAL0708         8 Adelie~ Torge~ N4A2          No               2007-11-15
+#&gt;  9 PAL0708         9 Adelie~ Torge~ N5A1          Yes              2007-11-09
+#&gt; 10 PAL0708        10 Adelie~ Torge~ N5A2          Yes              2007-11-09
+#&gt; # ... with 334 more rows, and 8 more variables: culmen_length_mm &lt;dbl&gt;,
+#&gt; #   culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;,
+#&gt; #   sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
 ```
-
 
 
 ---
@@ -2628,14 +2600,195 @@ when you want to aggregate your data (by groups)
 ---
 
 
+## `group_by()` and `summarize()`
+
+Sometimes we want to calculate group statistics.
+
+In other languages this is often a pain. With `dplyr` this is fairly easy **and** readable.
+
+&lt;img src="https://learn.r-journalism.com/wrangling/dplyr/images/groupby.png" style="width: 80%" /&gt;
+
+
+
+---
+
+## `group_by()` and `summarize()`
+
+
+First we group `penguins_clean` by `sex`.
+
+
+```r
+grouped_by_sex &lt;- group_by(penguins_clean, sex)
+```
+
+`summarize` works in a similar way to `mutate`:
+
+`variable_name = some_calculation`
+
+
+```r
+summarise(grouped_by_sex, avg_culmen_length_mm = mean(culmen_length_mm, na.rm = T))
+```
+
+```
+#&gt; # A tibble: 3 x 2
+#&gt;   sex    avg_culmen_length_mm
+#&gt;   &lt;chr&gt;                 &lt;dbl&gt;
+#&gt; 1 FEMALE                 42.1
+#&gt; 2 MALE                   45.9
+#&gt; 3 &lt;NA&gt;                   41.3
+```
+
+
+
+---
+
+
 class: center, middle, inverse
 
 # **`%&gt;%`**
 
 ## The pipe operator
 
+&lt;center&gt;
+&lt;img src="https://rpodcast.github.io/officer-advrmarkdown/img/magrittr.png" style="width: 62%" /&gt;
+&lt;/center&gt;
+
 
 ---
+
+## The `%&gt;%` operator
+
+The point of the pipe is to help you write code in a way that is easier to read and understand. 
+
+Let's consider an example with the data manipulation we have done so far:
+
+
+```r
+## first I select variables
+pg &lt;- select(penguins_clean, individual_id, island, body_mass_g)
+
+## then I filter to only Dream island
+pg &lt;- filter(pg, island == "Dream")
+
+## then I convert body_mass_g to kg
+pg &lt;- mutate(pg, bodymass_kg = body_mass_g/1000)
+
+## rename individual id to simply id
+pg &lt;- rename(pg, id = individual_id)
+```
+
+---
+
+
+## The `%&gt;%` operator
+
+Now this works but the problem is: we have to write a lot of code that repeats itself!
+
+
+```r
+pg
+```
+
+```
+#&gt; # A tibble: 124 x 4
+#&gt;    id    island body_mass_g bodymass_kg
+#&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+#&gt;  1 N21A1 Dream         3250        3.25
+#&gt;  2 N21A2 Dream         3900        3.9 
+#&gt;  3 N22A1 Dream         3300        3.3 
+#&gt;  4 N22A2 Dream         3900        3.9 
+#&gt;  5 N23A1 Dream         3325        3.32
+#&gt;  6 N23A2 Dream         4150        4.15
+#&gt;  7 N24A1 Dream         3950        3.95
+#&gt;  8 N24A2 Dream         3550        3.55
+#&gt;  9 N25A1 Dream         3300        3.3 
+#&gt; 10 N25A2 Dream         4650        4.65
+#&gt; # ... with 114 more rows
+```
+
+---
+
+## The `%&gt;%` operator
+
+Another alternative is to *nest all the functions*:
+
+
+```r
+rename(mutate(filter(select(penguins_clean, individual_id, island, body_mass_g), island == "Dream"), bodymass_kg = body_mass_g/1000), id = individual_id)
+```
+
+```
+#&gt; # A tibble: 124 x 4
+#&gt;    id    island body_mass_g bodymass_kg
+#&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+#&gt;  1 N21A1 Dream         3250        3.25
+#&gt;  2 N21A2 Dream         3900        3.9 
+#&gt;  3 N22A1 Dream         3300        3.3 
+#&gt;  4 N22A2 Dream         3900        3.9 
+#&gt;  5 N23A1 Dream         3325        3.32
+#&gt;  6 N23A2 Dream         4150        4.15
+#&gt;  7 N24A1 Dream         3950        3.95
+#&gt;  8 N24A2 Dream         3550        3.55
+#&gt;  9 N25A1 Dream         3300        3.3 
+#&gt; 10 N25A2 Dream         4650        4.65
+#&gt; # ... with 114 more rows
+```
+
+
+---
+
+## The `%&gt;%` operator
+
+*The piping style*: 
+
+Read from top to bottom and from left to right and the `%&gt;%` as "and then".
+
+
+```r
+penguins_clean %&gt;% 
+  select(individual_id, island, body_mass_g) %&gt;% 
+  filter(island == "Dream") %&gt;% 
+  mutate(bodymass_kg = body_mass_g/1000) %&gt;% 
+  rename(id = individual_id)
+```
+
+```
+#&gt; # A tibble: 124 x 4
+#&gt;    id    island body_mass_g bodymass_kg
+#&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+#&gt;  1 N21A1 Dream         3250        3.25
+#&gt;  2 N21A2 Dream         3900        3.9 
+#&gt;  3 N22A1 Dream         3300        3.3 
+#&gt;  4 N22A2 Dream         3900        3.9 
+#&gt;  5 N23A1 Dream         3325        3.32
+#&gt;  6 N23A2 Dream         4150        4.15
+#&gt;  7 N24A1 Dream         3950        3.95
+#&gt;  8 N24A2 Dream         3550        3.55
+#&gt;  9 N25A1 Dream         3300        3.3 
+#&gt; 10 N25A2 Dream         4650        4.65
+#&gt; # ... with 114 more rows
+```
+
+---
+
+class: center, middle, inverse
+
+# Exercises
+
+### It's time to type some R code
+
+
+
+
+&lt;center&gt;
+&lt;img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%" /&gt;
+&lt;/center&gt;
+
+Google Colab: [tinyurl.com/hackr4321](https://tinyurl.com/hackr4321)
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
