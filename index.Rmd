@@ -2375,8 +2375,8 @@ penguins_clean %>%
 # Golden hamster,ratio,31.41
 # King penguin,lifespan,26.0
 # King penguin,ratio,4.71")
-# 
-# saveRDS(untidy_animals, file = "data/untidy_animals.rds")
+  
+write_csv(untidy_animals, path = "data/untidy_animals.csv")
 ```
 
 ---
