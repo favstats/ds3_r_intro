@@ -1828,7 +1828,7 @@ Tidy data has two decisive advantages:
 * Many procedures (or the associated functions) in R require this type of data.
 
 <center>
-<img src="https://www.openscapes.org/img/blog/tidydata/tidydata_4.jpg" style="width: 50%" />
+<img src="https://www.openscapes.org/img/blog/tidydata/tidydata_4.jpg" style="width: 40%" />
 </center>
 
 .fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
@@ -1850,13 +1850,99 @@ library(tidyverse)
 ```
 
 ---
+
+
+
+## A new dataset appears..
+
+Before we dive into some functions of the tidyverse, we are going to work with a new data set.
+
+No worries, we will stay within the animal kingdom but we need a dataset that is a little more complex than what we have seen already.
+
+
+---
+
+## A new dataset appears..
+
+Before we dive into some functions of the tidyverse, we are going to introduce a new data set.
+
+Meet the Palmer penguins! Data were collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/).
+
+
+
+.leftcol[
+<center>
+<img src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png" style="width: 80%" />
+</center>
+]
+
+.rightcol[
+<center>
+<img src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/culmen_depth.png" style="width: 80%" />
+</center>
+.right[
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]]
+]
+
+
+
+---
+
+## Palmer Penguins
+
+We could install the R package `palmerpenguins` and then access the data. 
+
+However, we are going to use a different method: directly load a .csv file (comma-separated values) into R from the internet.
+
+We can use the `readr` package which provides many convenient functions to load data into R. Here we need `read_csv`:
+
+```{r}
+penguins_raw <- read_csv("https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins_raw.csv")
+
+```
+
+---
+
+
+## Palmer Penguins
+
+```{r}
+penguins_raw
+```
+
+---
+
+
+## Palmer Penguins
+
+We can also take a look at data set using the `glimpse` function from `dplyr`.
+
+```{r}
+glimpse(penguins_raw)
+```
+
+```{r}
+library(janitor)
+
+
+penguins_raw %>% 
+  janitor::clean_names() %>% 
+remove_constant(quiet = F)
+```
+
+
+---
 class: center, middle, inverse
 
-## Data manipulation using dplyr
+## Data manipulation using `dplyr`
 
 
-![](https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/dplyr_wrangling.png?raw=true)
+<center>
+<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/dplyr_wrangling.png?raw=true" style="width: 62%" />
+</center>
 
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
 ---
 
 
