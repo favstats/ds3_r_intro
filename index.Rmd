@@ -1186,6 +1186,13 @@ animals[longer_living]
 
 
 ---
+class: inverse, middle, center
+
+# R Basics
+
+### Functions
+
+---
 
 ## Functions
 
@@ -1200,13 +1207,6 @@ Input is everything that goes *into* a function:
 *   **values** you can think of as the various settings that the levers or numpads can have.
 
 $$\text{function_name}(\color{orange}{\text{argument}}=\color{lightblue}{\text{value}})$$
----
-class: inverse, middle, center
-
-# R Basics
-
-### Functions
-
 ---
 
 ## Functions
@@ -1521,7 +1521,7 @@ class: center, middle, inverse
 
 ---
 
-# Data frames
+## Data frames
 
 Data frames are the main R object that we will be interacting with. In many ways you already know about them too. 
 
@@ -1655,12 +1655,15 @@ animals_data[1, 1]
 animals_data[1, ]
 ```
 
+---
+
+## Indexing
+
 The same works for columns but all rows:
 
 ```{r}
 animals_data[, 1]
 ```
-
 
 ---
 
@@ -1677,4 +1680,15 @@ animals_to_check <- animals_data$animal_lifespans > human_lifespan
 animals_data[animals_to_check, ]
 ```
 
+---
+class: center, middle, inverse
 
+![](https://predictivehacks.com/wp-content/uploads/2020/11/tidyverse-default.png)
+
+---
+
+## What is the `tidyverse`?
+
+The tidyverse describes itself:
+
+> The tidyverse is an opinionated **collection of R packages** designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
