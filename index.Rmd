@@ -137,7 +137,7 @@ Fabio Votta
 
 `r workshop_day`
 
-
+.fifty[Link to slides: [favstats.github.io/ds3_r_intro](https://favstats.github.io/ds3_r_intro)]
 
 ---
 
@@ -366,7 +366,7 @@ RStudio is an IDE (Integrated Development Environment).
 <br>
 
 ![](https://rstudio.github.io/reticulate/images/reticulated_python.png)
-.fifty[ [reticulate](https://github.com/easystats/easystats) R package integrates with Python.]
+.fifty[ [reticulate](https://github.com/easystats/easystats) integrates Python into R]
 
 
 ]
@@ -427,6 +427,9 @@ Google Colab provides an online environment for teaching.
 .red[Downsides]
 
 + You will have to set up R and RStudio on your own computer (when you want to use R on your own)
+
+
+Link to the first Google Colab  (out of two): [tinyurl.com/ds3rintro1](https://tinyurl.com/ds3rintro1)
 
 
 ---
@@ -1178,31 +1181,47 @@ animals[longer_living]
 
 ---
 
-## Small excourse: variable types
+## Short excourse: variable types
 
 There are three-ish main types of variables:
 
 --
 
+.seventy[
 * **logical**: Boolean/binary, is either `TRUE` or `FALSE`
+]
 
 ```{r}
 class(TRUE)
 ```
 
+.seventy[
 * **character (or string)**: simple text, including symbols and numbers `"text"`
-
+]
 
 ```{r}
 class("I am a character")
 ```
 
+.seventy[
 * **numeric**: Numbers. Mathmatical operators can be used here.
+]
 
 ```{r}
 class(2020)
 ```
 
+---
+
+## Short excourse: variable types
+
+Another important value to consider is `NA` (*Not Available*).
+
+`NA` is a special value that simply means *missing value*.
+
+```{r}
+c(12, NA, 23, 22, NA)
+```
 
 ---
 class: inverse, middle, center
@@ -1277,9 +1296,13 @@ Within R you can always run the code:
 
 And it will open up the *documentation* for the function that will tell you how to use it.
 
+Googling the function (adding R or rstats) will also often bring you to some documentation in most cases!
+
 ---
 
 ## An example function: `seq`
+
+--
 
 From the help file we can learn that this function is used to 
 
@@ -1656,7 +1679,7 @@ class: center, middle, inverse
 <img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%" />
 </center>
 
-Google Colab: [tinyurl.com/hackr1234](https://tinyurl.com/hackr1234)
+Google Colab: [tinyurl.com/ds3rintro1](https://tinyurl.com/ds3rintro1)
 
 ---
 class: center, middle, inverse
@@ -1681,19 +1704,6 @@ An example for a dataframe would be the table from the [Animal Ageing and Longev
 
 
 
-
----
-
-## Data frames
-
-To create a data frame from scratch we can simply pass two (same-sized) vectors to the function `data.frame`. 
-
-```{r}
-animals_data <- data.frame(animals, animal_lifespans)
-
-animals_data
-
-```
 
 
 
@@ -1898,9 +1908,9 @@ The tidyverse describes itself:
 
 ## Core principle: tidy data
 
-* Each variable is in its own column
-* Each observation / case is on its own row
-* Each value is in a cell
+* Every column is a variable.
+* Every row is an observation.
+* Every cell is a single value.
 
 We have already seen tidy data:
 
@@ -2006,7 +2016,7 @@ library(tidyverse)
 
 ## A new dataset appears..
 
-Before we dive into some functions of the tidyverse, we are going to work with a new data set and clean it a bit.
+We are going to work with a new data from here on out.
 
 No worries, we will stay within the animal kingdom but we need a dataset that is a little more complex than what we have seen already.
 
@@ -2015,7 +2025,7 @@ No worries, we will stay within the animal kingdom but we need a dataset that is
 
 ## A new dataset appears..
 
-Before we dive into some functions of the tidyverse, we are going to work with a new data set and clean it a bit.
+We are going to work with a new data from here on out.
 
 Meet the Palmer penguins! Data were collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/).
 
@@ -2218,6 +2228,10 @@ table(penguins_clean$species)
 
 ## `tidyr`
 
+```{r}
+table(penguins_clean$species)
+```
+
 This variable violates the tidy rule that each cell should include a single value. 
 
 Species hold both the *common name* and the *latin name* of the penguin.
@@ -2241,7 +2255,7 @@ Two arguments are important for that:
 In our case we want to split by opening bracket `\\(` and will name our variables `species` and `latin_name`:
 
 ```{r}
-penguins_clean <- separate(penguins_clean, species, sep = "\\(", into = c("species", "latin_name"))
+penguins_clean <- separate(penguins_clean, species, sep = " \\(", into = c("species", "latin_name"))
 ```
 
 ```{r}
@@ -2254,10 +2268,10 @@ penguins_clean
 
 ## `tidyr`
 
-In our case we want to split by opening bracket `\\(` and will name our variables `species` and `latin_name`:
+In our case we want to split by an empty space and an opening bracket ` \\(` and we will name our variables `species` and `latin_name`:
 
-```{r}
-penguins_clean <- separate(penguins_clean, species, sep = "\\(", into = c("species", "latin_name"))
+```{r, eval = F}
+penguins_clean <- separate(penguins_clean, species, sep = " \\(", into = c("species", "latin_name"))
 ```
 
 There is a also a function called `unite()` which works in the opposite direction.
@@ -2282,7 +2296,7 @@ The function to use here is called `pivot_wider`.
 
 Now our `penguin_clean` data is already tidy.
 
-But we can just read in a dataset that is:
+But we can just read in a dataset that isn't:
 
 ```{r}
 untidy_animals <- read_csv("https://github.com/favstats/ds3_r_intro/blob/main/data/untidy_animals.csv?raw=true")
@@ -2308,7 +2322,7 @@ You may recognize this data from the subsection *Untidy data I*
 
 Now let's use `pivot_wider` to make every row an observation.
 
-We need to main arguments for that:
+We need two main arguments for that:
 
 1. `names_from`: tells the function where the new column names come from
 2. `values_from`: tells the function where the values should come from
@@ -2320,7 +2334,9 @@ We need to main arguments for that:
 ### `pivot_wider()` and `pivot_longer()`
 
 ```{r}
-tidy_animals <- pivot_wider(untidy_animals,  names_from = Type, values_from = Value)
+tidy_animals <- pivot_wider(untidy_animals, 
+                            names_from = Type, 
+                            values_from = Value)
 
 tidy_animals
 ```
@@ -2335,7 +2351,7 @@ tidy_animals
 The argument `cols = ` tells the function which variables to turn into long format:
 
 ```{r}
-pivot_longer(tidy_animals,  cols = c(lifespan, ratio))
+pivot_longer(tidy_animals, cols = c(lifespan, ratio))
 ```
 
 
@@ -2718,7 +2734,7 @@ class: center, middle, inverse
 <img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%" />
 </center>
 
-Google Colab: [tinyurl.com/hackr4321](https://tinyurl.com/hackr4321)
+Google Colab: [tinyurl.com/ds3rintro2](https://tinyurl.com/ds3rintro2)
 
 ---
 class: center, middle, inverse
@@ -2863,10 +2879,12 @@ class: center, middle, inverse
 I hope you had fun!
 
 <center>
-<img src="https://media1.tenor.com/images/da0f7d5d93faa11dfc36db1e6c6fdf2a/tenor.gif?itemid=6159389" style="width: 42%" />
+<img src="https://media1.tenor.com/images/da0f7d5d93faa11dfc36db1e6c6fdf2a/tenor.gif?itemid=6159389" style="width: 32%" />
 </center>
 
 Link to Slides: [tinyurl.com/ds3rintro](https://favstats.github.io/ds3_r_intro)
 
+Google Colab Part I: [tinyurl.com/ds3rintro1](https://tinyurl.com/ds3rintro1)
 
+Google Colab Part II: [tinyurl.com/ds3rintro2](https://tinyurl.com/ds3rintro2) 
 

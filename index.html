@@ -108,7 +108,7 @@ Fabio Votta
 
 July 09 2021
 
-
+.fifty[Link to slides: [favstats.github.io/ds3_r_intro](https://favstats.github.io/ds3_r_intro)]
 
 ---
 
@@ -335,7 +335,7 @@ RStudio is an IDE (Integrated Development Environment).
 &lt;br&gt;
 
 ![](https://rstudio.github.io/reticulate/images/reticulated_python.png)
-.fifty[ [reticulate](https://github.com/easystats/easystats) R package integrates with Python.]
+.fifty[ [reticulate](https://github.com/easystats/easystats) integrates Python into R]
 
 
 ]
@@ -396,6 +396,9 @@ Google Colab provides an online environment for teaching.
 .red[Downsides]
 
 + You will have to set up R and RStudio on your own computer (when you want to use R on your own)
+
+
+Link to the first Google Colab  (out of two): [tinyurl.com/ds3rintro1](https://tinyurl.com/ds3rintro1)
 
 
 ---
@@ -1292,13 +1295,15 @@ animals[longer_living]
 
 ---
 
-## Small excourse: variable types
+## Short excourse: variable types
 
 There are three-ish main types of variables:
 
 --
 
+.seventy[
 * **logical**: Boolean/binary, is either `TRUE` or `FALSE`
+]
 
 
 ```r
@@ -1309,8 +1314,9 @@ class(TRUE)
 #&gt; [1] "logical"
 ```
 
+.seventy[
 * **character (or string)**: simple text, including symbols and numbers `"text"`
-
+]
 
 
 ```r
@@ -1321,7 +1327,9 @@ class("I am a character")
 #&gt; [1] "character"
 ```
 
+.seventy[
 * **numeric**: Numbers. Mathmatical operators can be used here.
+]
 
 
 ```r
@@ -1332,6 +1340,22 @@ class(2020)
 #&gt; [1] "numeric"
 ```
 
+---
+
+## Short excourse: variable types
+
+Another important value to consider is `NA` (*Not Available*).
+
+`NA` is a special value that simply means *missing value*.
+
+
+```r
+c(12, NA, 23, 22, NA)
+```
+
+```
+#&gt; [1] 12 NA 23 22 NA
+```
 
 ---
 class: inverse, middle, center
@@ -1405,9 +1429,13 @@ Within R you can always run the code:
 
 And it will open up the *documentation* for the function that will tell you how to use it.
 
+Googling the function (adding R or rstats) will also often bring you to some documentation in most cases!
+
 ---
 
 ## An example function: `seq`
+
+--
 
 From the help file we can learn that this function is used to 
 
@@ -1845,7 +1873,7 @@ class: center, middle, inverse
 &lt;img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%" /&gt;
 &lt;/center&gt;
 
-Google Colab: [tinyurl.com/hackr1234](https://tinyurl.com/hackr1234)
+Google Colab: [tinyurl.com/ds3rintro1](https://tinyurl.com/ds3rintro1)
 
 ---
 class: center, middle, inverse
@@ -1870,32 +1898,6 @@ An example for a dataframe would be the table from the [Animal Ageing and Longev
 
 
 
-
----
-
-## Data frames
-
-To create a data frame from scratch we can simply pass two (same-sized) vectors to the function `data.frame`. 
-
-
-```r
-animals_data &lt;- data.frame(animals, animal_lifespans)
-
-animals_data
-```
-
-```
-#&gt;              animals animal_lifespans
-#&gt; 1    greenland_shark            392.0
-#&gt; 2                dog             24.0
-#&gt; 3 galapagos_tortoise            177.0
-#&gt; 4              mouse              4.0
-#&gt; 5                fly              0.3
-#&gt; 6               lion             27.0
-#&gt; 7               boar             27.0
-#&gt; 8          alligator             77.0
-#&gt; 9              human            122.5
-```
 
 
 
@@ -2172,9 +2174,9 @@ The tidyverse describes itself:
 
 ## Core principle: tidy data
 
-* Each variable is in its own column
-* Each observation / case is on its own row
-* Each value is in a cell
+* Every column is a variable.
+* Every row is an observation.
+* Every cell is a single value.
 
 We have already seen tidy data:
 
@@ -2282,7 +2284,7 @@ library(tidyverse)
 
 ## A new dataset appears..
 
-Before we dive into some functions of the tidyverse, we are going to work with a new data set and clean it a bit.
+We are going to work with a new data from here on out.
 
 No worries, we will stay within the animal kingdom but we need a dataset that is a little more complex than what we have seen already.
 
@@ -2291,7 +2293,7 @@ No worries, we will stay within the animal kingdom but we need a dataset that is
 
 ## A new dataset appears..
 
-Before we dive into some functions of the tidyverse, we are going to work with a new data set and clean it a bit.
+We are going to work with a new data from here on out.
 
 Meet the Palmer penguins! Data were collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/).
 
@@ -2580,6 +2582,21 @@ table(penguins_clean$species)
 
 ## `tidyr`
 
+
+```r
+table(penguins_clean$species)
+```
+
+```
+#&gt; 
+#&gt;       Adelie Penguin (Pygoscelis adeliae) 
+#&gt;                                       152 
+#&gt; Chinstrap penguin (Pygoscelis antarctica) 
+#&gt;                                        68 
+#&gt;         Gentoo penguin (Pygoscelis papua) 
+#&gt;                                       124
+```
+
 This variable violates the tidy rule that each cell should include a single value. 
 
 Species hold both the *common name* and the *latin name* of the penguin.
@@ -2604,7 +2621,7 @@ In our case we want to split by opening bracket `\\(` and will name our variable
 
 
 ```r
-penguins_clean &lt;- separate(penguins_clean, species, sep = "\\(", into = c("species", "latin_name"))
+penguins_clean &lt;- separate(penguins_clean, species, sep = " \\(", into = c("species", "latin_name"))
 ```
 
 
@@ -2616,16 +2633,16 @@ penguins_clean
 #&gt; # A tibble: 344 x 16
 #&gt;    study_name sample_number species latin_name island individual_id
 #&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;        
-#&gt;  1 PAL0708                1 "Adeli… Pygosceli… Torge… N1A1         
-#&gt;  2 PAL0708                2 "Adeli… Pygosceli… Torge… N1A2         
-#&gt;  3 PAL0708                3 "Adeli… Pygosceli… Torge… N2A1         
-#&gt;  4 PAL0708                4 "Adeli… Pygosceli… Torge… N2A2         
-#&gt;  5 PAL0708                5 "Adeli… Pygosceli… Torge… N3A1         
-#&gt;  6 PAL0708                6 "Adeli… Pygosceli… Torge… N3A2         
-#&gt;  7 PAL0708                7 "Adeli… Pygosceli… Torge… N4A1         
-#&gt;  8 PAL0708                8 "Adeli… Pygosceli… Torge… N4A2         
-#&gt;  9 PAL0708                9 "Adeli… Pygosceli… Torge… N5A1         
-#&gt; 10 PAL0708               10 "Adeli… Pygosceli… Torge… N5A2         
+#&gt;  1 PAL0708                1 Adelie… Pygosceli… Torge… N1A1         
+#&gt;  2 PAL0708                2 Adelie… Pygosceli… Torge… N1A2         
+#&gt;  3 PAL0708                3 Adelie… Pygosceli… Torge… N2A1         
+#&gt;  4 PAL0708                4 Adelie… Pygosceli… Torge… N2A2         
+#&gt;  5 PAL0708                5 Adelie… Pygosceli… Torge… N3A1         
+#&gt;  6 PAL0708                6 Adelie… Pygosceli… Torge… N3A2         
+#&gt;  7 PAL0708                7 Adelie… Pygosceli… Torge… N4A1         
+#&gt;  8 PAL0708                8 Adelie… Pygosceli… Torge… N4A2         
+#&gt;  9 PAL0708                9 Adelie… Pygosceli… Torge… N5A1         
+#&gt; 10 PAL0708               10 Adelie… Pygosceli… Torge… N5A2         
 #&gt; # … with 334 more rows, and 10 more variables: clutch_completion &lt;chr&gt;,
 #&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
 #&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
@@ -2638,11 +2655,11 @@ penguins_clean
 
 ## `tidyr`
 
-In our case we want to split by opening bracket `\\(` and will name our variables `species` and `latin_name`:
+In our case we want to split by an empty space and an opening bracket ` \\(` and we will name our variables `species` and `latin_name`:
 
 
 ```r
-penguins_clean &lt;- separate(penguins_clean, species, sep = "\\(", into = c("species", "latin_name"))
+penguins_clean &lt;- separate(penguins_clean, species, sep = " \\(", into = c("species", "latin_name"))
 ```
 
 There is a also a function called `unite()` which works in the opposite direction.
@@ -2667,7 +2684,7 @@ The function to use here is called `pivot_wider`.
 
 Now our `penguin_clean` data is already tidy.
 
-But we can just read in a dataset that is:
+But we can just read in a dataset that isn't:
 
 
 ```r
@@ -2709,7 +2726,7 @@ You may recognize this data from the subsection *Untidy data I*
 
 Now let's use `pivot_wider` to make every row an observation.
 
-We need to main arguments for that:
+We need two main arguments for that:
 
 1. `names_from`: tells the function where the new column names come from
 2. `values_from`: tells the function where the values should come from
@@ -2722,7 +2739,9 @@ We need to main arguments for that:
 
 
 ```r
-tidy_animals &lt;- pivot_wider(untidy_animals,  names_from = Type, values_from = Value)
+tidy_animals &lt;- pivot_wider(untidy_animals, 
+                            names_from = Type, 
+                            values_from = Value)
 
 tidy_animals
 ```
@@ -2749,7 +2768,7 @@ The argument `cols = ` tells the function which variables to turn into long form
 
 
 ```r
-pivot_longer(tidy_animals,  cols = c(lifespan, ratio))
+pivot_longer(tidy_animals, cols = c(lifespan, ratio))
 ```
 
 ```
@@ -2817,18 +2836,18 @@ select(penguins_clean, individual_id, sex, species)
 
 ```
 #&gt; # A tibble: 344 x 3
-#&gt;    individual_id sex    species          
-#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;            
-#&gt;  1 N1A1          MALE   "Adelie Penguin "
-#&gt;  2 N1A2          FEMALE "Adelie Penguin "
-#&gt;  3 N2A1          FEMALE "Adelie Penguin "
-#&gt;  4 N2A2          &lt;NA&gt;   "Adelie Penguin "
-#&gt;  5 N3A1          FEMALE "Adelie Penguin "
-#&gt;  6 N3A2          MALE   "Adelie Penguin "
-#&gt;  7 N4A1          FEMALE "Adelie Penguin "
-#&gt;  8 N4A2          MALE   "Adelie Penguin "
-#&gt;  9 N5A1          &lt;NA&gt;   "Adelie Penguin "
-#&gt; 10 N5A2          &lt;NA&gt;   "Adelie Penguin "
+#&gt;    individual_id sex    species       
+#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;         
+#&gt;  1 N1A1          MALE   Adelie Penguin
+#&gt;  2 N1A2          FEMALE Adelie Penguin
+#&gt;  3 N2A1          FEMALE Adelie Penguin
+#&gt;  4 N2A2          &lt;NA&gt;   Adelie Penguin
+#&gt;  5 N3A1          FEMALE Adelie Penguin
+#&gt;  6 N3A2          MALE   Adelie Penguin
+#&gt;  7 N4A1          FEMALE Adelie Penguin
+#&gt;  8 N4A2          MALE   Adelie Penguin
+#&gt;  9 N5A1          &lt;NA&gt;   Adelie Penguin
+#&gt; 10 N5A2          &lt;NA&gt;   Adelie Penguin
 #&gt; # … with 334 more rows
 ```
 
@@ -2882,18 +2901,18 @@ select(penguins_clean, starts_with("s"))
 
 ```
 #&gt; # A tibble: 344 x 4
-#&gt;    study_name sample_number species           sex   
-#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt; 
-#&gt;  1 PAL0708                1 "Adelie Penguin " MALE  
-#&gt;  2 PAL0708                2 "Adelie Penguin " FEMALE
-#&gt;  3 PAL0708                3 "Adelie Penguin " FEMALE
-#&gt;  4 PAL0708                4 "Adelie Penguin " &lt;NA&gt;  
-#&gt;  5 PAL0708                5 "Adelie Penguin " FEMALE
-#&gt;  6 PAL0708                6 "Adelie Penguin " MALE  
-#&gt;  7 PAL0708                7 "Adelie Penguin " FEMALE
-#&gt;  8 PAL0708                8 "Adelie Penguin " MALE  
-#&gt;  9 PAL0708                9 "Adelie Penguin " &lt;NA&gt;  
-#&gt; 10 PAL0708               10 "Adelie Penguin " &lt;NA&gt;  
+#&gt;    study_name sample_number species        sex   
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; 
+#&gt;  1 PAL0708                1 Adelie Penguin MALE  
+#&gt;  2 PAL0708                2 Adelie Penguin FEMALE
+#&gt;  3 PAL0708                3 Adelie Penguin FEMALE
+#&gt;  4 PAL0708                4 Adelie Penguin &lt;NA&gt;  
+#&gt;  5 PAL0708                5 Adelie Penguin FEMALE
+#&gt;  6 PAL0708                6 Adelie Penguin MALE  
+#&gt;  7 PAL0708                7 Adelie Penguin FEMALE
+#&gt;  8 PAL0708                8 Adelie Penguin MALE  
+#&gt;  9 PAL0708                9 Adelie Penguin &lt;NA&gt;  
+#&gt; 10 PAL0708               10 Adelie Penguin &lt;NA&gt;  
 #&gt; # … with 334 more rows
 ```
 
@@ -2910,18 +2929,18 @@ select(penguins_clean, 1:5)
 
 ```
 #&gt; # A tibble: 344 x 5
-#&gt;    study_name sample_number species           latin_name island   
-#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;    
-#&gt;  1 PAL0708                1 "Adelie Penguin " &lt;NA&gt;       Torgersen
-#&gt;  2 PAL0708                2 "Adelie Penguin " &lt;NA&gt;       Torgersen
-#&gt;  3 PAL0708                3 "Adelie Penguin " &lt;NA&gt;       Torgersen
-#&gt;  4 PAL0708                4 "Adelie Penguin " &lt;NA&gt;       Torgersen
-#&gt;  5 PAL0708                5 "Adelie Penguin " &lt;NA&gt;       Torgersen
-#&gt;  6 PAL0708                6 "Adelie Penguin " &lt;NA&gt;       Torgersen
-#&gt;  7 PAL0708                7 "Adelie Penguin " &lt;NA&gt;       Torgersen
-#&gt;  8 PAL0708                8 "Adelie Penguin " &lt;NA&gt;       Torgersen
-#&gt;  9 PAL0708                9 "Adelie Penguin " &lt;NA&gt;       Torgersen
-#&gt; 10 PAL0708               10 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt;    study_name sample_number species        latin_name          island   
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;               &lt;chr&gt;    
+#&gt;  1 PAL0708                1 Adelie Penguin Pygoscelis adeliae) Torgersen
+#&gt;  2 PAL0708                2 Adelie Penguin Pygoscelis adeliae) Torgersen
+#&gt;  3 PAL0708                3 Adelie Penguin Pygoscelis adeliae) Torgersen
+#&gt;  4 PAL0708                4 Adelie Penguin Pygoscelis adeliae) Torgersen
+#&gt;  5 PAL0708                5 Adelie Penguin Pygoscelis adeliae) Torgersen
+#&gt;  6 PAL0708                6 Adelie Penguin Pygoscelis adeliae) Torgersen
+#&gt;  7 PAL0708                7 Adelie Penguin Pygoscelis adeliae) Torgersen
+#&gt;  8 PAL0708                8 Adelie Penguin Pygoscelis adeliae) Torgersen
+#&gt;  9 PAL0708                9 Adelie Penguin Pygoscelis adeliae) Torgersen
+#&gt; 10 PAL0708               10 Adelie Penguin Pygoscelis adeliae) Torgersen
 #&gt; # … with 334 more rows
 ```
 
@@ -2983,16 +3002,16 @@ filter(penguins_clean, island == "Dream")
 #&gt; # A tibble: 124 x 16
 #&gt;    study_name sample_number species latin_name island individual_id
 #&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;        
-#&gt;  1 PAL0708               31 "Adeli… &lt;NA&gt;       Dream  N21A1        
-#&gt;  2 PAL0708               32 "Adeli… &lt;NA&gt;       Dream  N21A2        
-#&gt;  3 PAL0708               33 "Adeli… &lt;NA&gt;       Dream  N22A1        
-#&gt;  4 PAL0708               34 "Adeli… &lt;NA&gt;       Dream  N22A2        
-#&gt;  5 PAL0708               35 "Adeli… &lt;NA&gt;       Dream  N23A1        
-#&gt;  6 PAL0708               36 "Adeli… &lt;NA&gt;       Dream  N23A2        
-#&gt;  7 PAL0708               37 "Adeli… &lt;NA&gt;       Dream  N24A1        
-#&gt;  8 PAL0708               38 "Adeli… &lt;NA&gt;       Dream  N24A2        
-#&gt;  9 PAL0708               39 "Adeli… &lt;NA&gt;       Dream  N25A1        
-#&gt; 10 PAL0708               40 "Adeli… &lt;NA&gt;       Dream  N25A2        
+#&gt;  1 PAL0708               31 Adelie… Pygosceli… Dream  N21A1        
+#&gt;  2 PAL0708               32 Adelie… Pygosceli… Dream  N21A2        
+#&gt;  3 PAL0708               33 Adelie… Pygosceli… Dream  N22A1        
+#&gt;  4 PAL0708               34 Adelie… Pygosceli… Dream  N22A2        
+#&gt;  5 PAL0708               35 Adelie… Pygosceli… Dream  N23A1        
+#&gt;  6 PAL0708               36 Adelie… Pygosceli… Dream  N23A2        
+#&gt;  7 PAL0708               37 Adelie… Pygosceli… Dream  N24A1        
+#&gt;  8 PAL0708               38 Adelie… Pygosceli… Dream  N24A2        
+#&gt;  9 PAL0708               39 Adelie… Pygosceli… Dream  N25A1        
+#&gt; 10 PAL0708               40 Adelie… Pygosceli… Dream  N25A2        
 #&gt; # … with 114 more rows, and 10 more variables: clutch_completion &lt;chr&gt;,
 #&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
 #&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
@@ -3016,16 +3035,16 @@ filter(penguins_clean, island %in% islands_to_keep)
 #&gt; # A tibble: 292 x 16
 #&gt;    study_name sample_number species latin_name island individual_id
 #&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;        
-#&gt;  1 PAL0708               21 "Adeli… &lt;NA&gt;       Biscoe N11A1        
-#&gt;  2 PAL0708               22 "Adeli… &lt;NA&gt;       Biscoe N11A2        
-#&gt;  3 PAL0708               23 "Adeli… &lt;NA&gt;       Biscoe N12A1        
-#&gt;  4 PAL0708               24 "Adeli… &lt;NA&gt;       Biscoe N12A2        
-#&gt;  5 PAL0708               25 "Adeli… &lt;NA&gt;       Biscoe N13A1        
-#&gt;  6 PAL0708               26 "Adeli… &lt;NA&gt;       Biscoe N13A2        
-#&gt;  7 PAL0708               27 "Adeli… &lt;NA&gt;       Biscoe N17A1        
-#&gt;  8 PAL0708               28 "Adeli… &lt;NA&gt;       Biscoe N17A2        
-#&gt;  9 PAL0708               29 "Adeli… &lt;NA&gt;       Biscoe N18A1        
-#&gt; 10 PAL0708               30 "Adeli… &lt;NA&gt;       Biscoe N18A2        
+#&gt;  1 PAL0708               21 Adelie… Pygosceli… Biscoe N11A1        
+#&gt;  2 PAL0708               22 Adelie… Pygosceli… Biscoe N11A2        
+#&gt;  3 PAL0708               23 Adelie… Pygosceli… Biscoe N12A1        
+#&gt;  4 PAL0708               24 Adelie… Pygosceli… Biscoe N12A2        
+#&gt;  5 PAL0708               25 Adelie… Pygosceli… Biscoe N13A1        
+#&gt;  6 PAL0708               26 Adelie… Pygosceli… Biscoe N13A2        
+#&gt;  7 PAL0708               27 Adelie… Pygosceli… Biscoe N17A1        
+#&gt;  8 PAL0708               28 Adelie… Pygosceli… Biscoe N17A2        
+#&gt;  9 PAL0708               29 Adelie… Pygosceli… Biscoe N18A1        
+#&gt; 10 PAL0708               30 Adelie… Pygosceli… Biscoe N18A2        
 #&gt; # … with 282 more rows, and 10 more variables: clutch_completion &lt;chr&gt;,
 #&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
 #&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
@@ -3113,16 +3132,16 @@ rename(penguins_clean, sample = sample_number)
 #&gt; # A tibble: 344 x 16
 #&gt;    study_name sample species latin_name island individual_id clutch_completi…
 #&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;           
-#&gt;  1 PAL0708         1 "Adeli… &lt;NA&gt;       Torge… N1A1          Yes             
-#&gt;  2 PAL0708         2 "Adeli… &lt;NA&gt;       Torge… N1A2          Yes             
-#&gt;  3 PAL0708         3 "Adeli… &lt;NA&gt;       Torge… N2A1          Yes             
-#&gt;  4 PAL0708         4 "Adeli… &lt;NA&gt;       Torge… N2A2          Yes             
-#&gt;  5 PAL0708         5 "Adeli… &lt;NA&gt;       Torge… N3A1          Yes             
-#&gt;  6 PAL0708         6 "Adeli… &lt;NA&gt;       Torge… N3A2          Yes             
-#&gt;  7 PAL0708         7 "Adeli… &lt;NA&gt;       Torge… N4A1          No              
-#&gt;  8 PAL0708         8 "Adeli… &lt;NA&gt;       Torge… N4A2          No              
-#&gt;  9 PAL0708         9 "Adeli… &lt;NA&gt;       Torge… N5A1          Yes             
-#&gt; 10 PAL0708        10 "Adeli… &lt;NA&gt;       Torge… N5A2          Yes             
+#&gt;  1 PAL0708         1 Adelie… Pygosceli… Torge… N1A1          Yes             
+#&gt;  2 PAL0708         2 Adelie… Pygosceli… Torge… N1A2          Yes             
+#&gt;  3 PAL0708         3 Adelie… Pygosceli… Torge… N2A1          Yes             
+#&gt;  4 PAL0708         4 Adelie… Pygosceli… Torge… N2A2          Yes             
+#&gt;  5 PAL0708         5 Adelie… Pygosceli… Torge… N3A1          Yes             
+#&gt;  6 PAL0708         6 Adelie… Pygosceli… Torge… N3A2          Yes             
+#&gt;  7 PAL0708         7 Adelie… Pygosceli… Torge… N4A1          No              
+#&gt;  8 PAL0708         8 Adelie… Pygosceli… Torge… N4A2          No              
+#&gt;  9 PAL0708         9 Adelie… Pygosceli… Torge… N5A1          Yes             
+#&gt; 10 PAL0708        10 Adelie… Pygosceli… Torge… N5A2          Yes             
 #&gt; # … with 334 more rows, and 9 more variables: date_egg &lt;date&gt;,
 #&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
 #&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
@@ -3233,11 +3252,11 @@ count(penguins_clean, species, sort = T)
 
 ```
 #&gt; # A tibble: 3 x 2
-#&gt;   species                  n
-#&gt;   &lt;chr&gt;                &lt;int&gt;
-#&gt; 1 "Adelie Penguin "      152
-#&gt; 2 "Gentoo penguin "      124
-#&gt; 3 "Chinstrap penguin "    68
+#&gt;   species               n
+#&gt;   &lt;chr&gt;             &lt;int&gt;
+#&gt; 1 Adelie Penguin      152
+#&gt; 2 Gentoo penguin      124
+#&gt; 3 Chinstrap penguin    68
 ```
 
 
@@ -3385,7 +3404,7 @@ class: center, middle, inverse
 &lt;img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%" /&gt;
 &lt;/center&gt;
 
-Google Colab: [tinyurl.com/hackr4321](https://tinyurl.com/hackr4321)
+Google Colab: [tinyurl.com/ds3rintro2](https://tinyurl.com/ds3rintro2)
 
 ---
 class: center, middle, inverse
@@ -3530,10 +3549,14 @@ class: center, middle, inverse
 I hope you had fun!
 
 &lt;center&gt;
-&lt;img src="https://media1.tenor.com/images/da0f7d5d93faa11dfc36db1e6c6fdf2a/tenor.gif?itemid=6159389" style="width: 42%" /&gt;
+&lt;img src="https://media1.tenor.com/images/da0f7d5d93faa11dfc36db1e6c6fdf2a/tenor.gif?itemid=6159389" style="width: 32%" /&gt;
 &lt;/center&gt;
 
 Link to Slides: [tinyurl.com/ds3rintro](https://favstats.github.io/ds3_r_intro)
+
+Google Colab Part I: [tinyurl.com/ds3rintro1](https://tinyurl.com/ds3rintro1)
+
+Google Colab Part II: [tinyurl.com/ds3rintro2](https://tinyurl.com/ds3rintro2)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
