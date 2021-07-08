@@ -2193,6 +2193,155 @@ Another useful function in `janitor` is `remove_empty()` which removes all rows 
 ---
 class: center, middle, inverse
 
+## Data cleaning using `tidyr`
+
+<center>
+<img src="https://tidyr.tidyverse.org/logo.png" style="width: 32%" />
+</center>
+
+
+---
+
+## Data cleaning using `tidyr`
+
+Now we are already fairly advanced in our tidying.
+
+But our dataset is still not entirely tidy yet.
+
+Consider the `species` variable:
+
+```{r}
+table(penguins_clean$species)
+```
+
+---
+
+## `tidyr`
+
+This variable violates the tidy rule that each cell should include a single value. 
+
+Species hold both the *common name* and the *latin name* of the penguin.
+
+---
+
+## `tidyr`
+
+We can use a `tidyr` function called `separate()` to turn this into two variables.
+
+Two arguments are important for that:
+
++ `sep`: specifies by which character the value should be split
++ `into`: a vector which specifies the resulting new variable names
+
+---
+
+
+## `tidyr`
+
+In our case we want to split by opening bracket `\\(` and will name our variables `species` and `latin_name`:
+
+```{r}
+penguins_clean <- separate(penguins_clean, species, sep = "\\(", into = c("species", "latin_name"))
+```
+
+```{r}
+penguins_clean
+```
+
+
+---
+
+
+## `tidyr`
+
+In our case we want to split by opening bracket `\\(` and will name our variables `species` and `latin_name`:
+
+```{r}
+penguins_clean <- separate(penguins_clean, species, sep = "\\(", into = c("species", "latin_name"))
+```
+
+There is a also a function called `unite()` which works in the opposite direction.
+
+---
+
+## `tidyr`
+
+Now our data is in tidy format!
+
+We were in luck because the data pretty much already came in a format that was: one observation per row.
+
+But what if that is not the case?
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+`tidyr` also comes equipped to deal with data that has more that one observation per row. 
+
+The function to use here is called `pivot_wider`.
+
+Now our `penguin_clean` data is already tidy.
+
+But we can just read in a dataset that is:
+
+```{r}
+untidy_animals <- read_csv("https://github.com/favstats/ds3_r_intro/blob/main/data/untidy_animals.csv?raw=true")
+
+```
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+
+
+```{r}
+untidy_animals
+
+```
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+You may recognize this data from the subsection *Untidy data I*
+
+Now let's use `pivot_wider` to make every row an observation.
+
+We need to main arguments for that:
+
+1. `names_from`: tells the function where the new column names come from
+2. `values_from`: tells the function where the values should come from
+
+
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+```{r}
+tidy_animals <- pivot_wider(untidy_animals,  names_from = Type, values_from = Value)
+
+tidy_animals
+```
+
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+`pivot_longer` can untidy our data again
+
+The argument `cols = ` tells the function which variables to turn into long format:
+
+```{r}
+pivot_longer(tidy_animals,  cols = c(lifespan, ratio))
+```
+
+
+---
+class: center, middle, inverse
+
 ## Data manipulation using `dplyr`
 
 <center>
@@ -2235,9 +2384,67 @@ Here we only keep `individual_id`, `sex` and `species`.
 select(penguins_clean, individual_id, sex, species)
 ```
 
+---
+
+## `select()`
+
+We can also **remove** variables with a **`-`** (minus).
+
+Here we remove `individual_id`, `sex` and `species`.
+
+```{r}
+names(select(penguins_clean, -individual_id, -sex, -species))
+```
+
+`individual_id`, `sex` and `species` are missing!
 
 ---
 
+#### Selection helpers
+
+These *selection helpers* match variables according to a given pattern.
+
+`starts_with()`: Starts with a prefix.
+
+`ends_with()`: Ends with a suffix.
+
+`contains()`: Contains a literal string.
+
+`matches()`: Matches a regular expression.
+
+---
+
+#### Selection helpers
+
+For example: let's keep all variables that start with `s`:
+
+```{r}
+select(penguins_clean, starts_with("s"))
+```
+
+---
+
+#### Even more ways to select
+
+Select the first 5 variables:
+
+```{r}
+select(penguins_clean, 1:5)
+```
+
+
+---
+
+#### Even more ways to select
+
+Select everything from `individual_id` to `flipper_length_mm`.
+
+```{r}
+select(penguins_clean, individual_id:flipper_length_mm)
+```
+
+
+---
 
 class: center, middle, inverse
 
@@ -2357,26 +2564,6 @@ Highest first:
 ```{r, eval = F}
 arrange(penguins_clean, desc(sample_number))
 
-penguins_clean %>% 
-  separate(species, sep = "\\(", into = c("species", "latin_name")) %>% 
-  distinct(individual_id, .keep_all = T)
-  arrange(desc(individual_id))
-  select(species, )
-  gather()
-  
-# untidy_animals <- read_csv("Animal,Type,Value
-# Domestic dog,lifespan,24.0
-# Domestic dog,ratio,5.10
-# Domestic cat,lifespan,30.0
-# Domestic cat,ratio,4.08
-# American alligator,lifespan,77.0
-# American alligator,ratio,1.59
-# Golden hamster,lifespan,3.9
-# Golden hamster,ratio,31.41
-# King penguin,lifespan,26.0
-# King penguin,ratio,4.71")
-  
-write_csv(untidy_animals, path = "data/untidy_animals.csv")
 ```
 
 ---
@@ -2538,7 +2725,7 @@ class: center, middle, inverse
 
 # Some Final Things
 
-## If we had more time..
+## If only we had more time..
 
 ---
 
@@ -2679,6 +2866,7 @@ I hope you had fun!
 <img src="https://media1.tenor.com/images/da0f7d5d93faa11dfc36db1e6c6fdf2a/tenor.gif?itemid=6159389" style="width: 42%" />
 </center>
 
+Link to Slides: [tinyurl.com/ds3rintro](https://favstats.github.io/ds3_r_intro)
 
 
 

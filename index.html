@@ -154,8 +154,6 @@ July 09 2021
 + Active blogosphere with use cases and examples
 
 
-
-
 ---
 
 ## Overview
@@ -168,6 +166,9 @@ July 09 2021
   
 + Data Manipulation
   + the tidyverse and friends
+  + `janitor`
+  + `tidyr`
+  + `dplyr`
 
 ---
 
@@ -2547,6 +2548,234 @@ Another useful function in `janitor` is `remove_empty()` which removes all rows 
 ---
 class: center, middle, inverse
 
+## Data cleaning using `tidyr`
+
+&lt;center&gt;
+&lt;img src="https://tidyr.tidyverse.org/logo.png" style="width: 32%" /&gt;
+&lt;/center&gt;
+
+
+---
+
+## Data cleaning using `tidyr`
+
+Now we are already fairly advanced in our tidying.
+
+But our dataset is still not entirely tidy yet.
+
+Consider the `species` variable:
+
+
+```r
+table(penguins_clean$species)
+```
+
+```
+#&gt; 
+#&gt;       Adelie Penguin (Pygoscelis adeliae) 
+#&gt;                                       152 
+#&gt; Chinstrap penguin (Pygoscelis antarctica) 
+#&gt;                                        68 
+#&gt;         Gentoo penguin (Pygoscelis papua) 
+#&gt;                                       124
+```
+
+---
+
+## `tidyr`
+
+This variable violates the tidy rule that each cell should include a single value. 
+
+Species hold both the *common name* and the *latin name* of the penguin.
+
+---
+
+## `tidyr`
+
+We can use a `tidyr` function called `separate()` to turn this into two variables.
+
+Two arguments are important for that:
+
++ `sep`: specifies by which character the value should be split
++ `into`: a vector which specifies the resulting new variable names
+
+---
+
+
+## `tidyr`
+
+In our case we want to split by opening bracket `\\(` and will name our variables `species` and `latin_name`:
+
+
+```r
+penguins_clean &lt;- separate(penguins_clean, species, sep = "\\(", into = c("species", "latin_name"))
+```
+
+
+```r
+penguins_clean
+```
+
+```
+#&gt; # A tibble: 344 x 16
+#&gt;    study_name sample_number species latin_name island individual_id
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;        
+#&gt;  1 PAL0708                1 "Adeli~ Pygosceli~ Torge~ N1A1         
+#&gt;  2 PAL0708                2 "Adeli~ Pygosceli~ Torge~ N1A2         
+#&gt;  3 PAL0708                3 "Adeli~ Pygosceli~ Torge~ N2A1         
+#&gt;  4 PAL0708                4 "Adeli~ Pygosceli~ Torge~ N2A2         
+#&gt;  5 PAL0708                5 "Adeli~ Pygosceli~ Torge~ N3A1         
+#&gt;  6 PAL0708                6 "Adeli~ Pygosceli~ Torge~ N3A2         
+#&gt;  7 PAL0708                7 "Adeli~ Pygosceli~ Torge~ N4A1         
+#&gt;  8 PAL0708                8 "Adeli~ Pygosceli~ Torge~ N4A2         
+#&gt;  9 PAL0708                9 "Adeli~ Pygosceli~ Torge~ N5A1         
+#&gt; 10 PAL0708               10 "Adeli~ Pygosceli~ Torge~ N5A2         
+#&gt; # ... with 334 more rows, and 10 more variables: clutch_completion &lt;chr&gt;,
+#&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
+#&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
+#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
+```
+
+
+---
+
+
+## `tidyr`
+
+In our case we want to split by opening bracket `\\(` and will name our variables `species` and `latin_name`:
+
+
+```r
+penguins_clean &lt;- separate(penguins_clean, species, sep = "\\(", into = c("species", "latin_name"))
+```
+
+There is a also a function called `unite()` which works in the opposite direction.
+
+---
+
+## `tidyr`
+
+Now our data is in tidy format!
+
+We were in luck because the data pretty much already came in a format that was: 1 observation per row.
+
+But what if that is not the case?
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+`tidyr` also comes equipped to deal with data that has more that one observation per row. 
+
+The function to use here is called `pivot_wider`.
+
+Now our `penguin_clean` data is already tidy.
+
+But we can just read in a dataset that is:
+
+
+```r
+untidy_animals &lt;- read_csv("https://github.com/favstats/ds3_r_intro/blob/main/data/untidy_animals.csv?raw=true")
+```
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+
+
+
+```r
+untidy_animals
+```
+
+```
+#&gt; # A tibble: 10 x 3
+#&gt;    Animal             Type     Value
+#&gt;    &lt;chr&gt;              &lt;chr&gt;    &lt;dbl&gt;
+#&gt;  1 Domestic dog       lifespan 24   
+#&gt;  2 Domestic dog       ratio     5.1 
+#&gt;  3 Domestic cat       lifespan 30   
+#&gt;  4 Domestic cat       ratio     4.08
+#&gt;  5 American alligator lifespan 77   
+#&gt;  6 American alligator ratio     1.59
+#&gt;  7 Golden hamster     lifespan  3.9 
+#&gt;  8 Golden hamster     ratio    31.4 
+#&gt;  9 King penguin       lifespan 26   
+#&gt; 10 King penguin       ratio     4.71
+```
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+You may recognize this data from the subsection *Untidy data I*
+
+Now let's use `pivot_wider` to make every row an observation.
+
+We need to main arguments for that:
+
+1. `names_from`: tells the function where the new column names come from
+2. `values_from`: tells the function where the values should come from
+
+
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+
+```r
+tidy_animals &lt;- pivot_wider(untidy_animals,  names_from = Type, values_from = Value)
+
+tidy_animals
+```
+
+```
+#&gt; # A tibble: 5 x 3
+#&gt;   Animal             lifespan ratio
+#&gt;   &lt;chr&gt;                 &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 Domestic dog           24    5.1 
+#&gt; 2 Domestic cat           30    4.08
+#&gt; 3 American alligator     77    1.59
+#&gt; 4 Golden hamster          3.9 31.4 
+#&gt; 5 King penguin           26    4.71
+```
+
+
+---
+
+### `pivot_wider()` and `pivot_longer()`
+
+`pivot_longer` can untidy our data again
+
+The argument `cols = ` tells the function which variables to turn into long format:
+
+
+```r
+pivot_longer(tidy_animals,  cols = c(lifespan, ratio))
+```
+
+```
+#&gt; # A tibble: 10 x 3
+#&gt;    Animal             name     value
+#&gt;    &lt;chr&gt;              &lt;chr&gt;    &lt;dbl&gt;
+#&gt;  1 Domestic dog       lifespan 24   
+#&gt;  2 Domestic dog       ratio     5.1 
+#&gt;  3 Domestic cat       lifespan 30   
+#&gt;  4 Domestic cat       ratio     4.08
+#&gt;  5 American alligator lifespan 77   
+#&gt;  6 American alligator ratio     1.59
+#&gt;  7 Golden hamster     lifespan  3.9 
+#&gt;  8 Golden hamster     ratio    31.4 
+#&gt;  9 King penguin       lifespan 26   
+#&gt; 10 King penguin       ratio     4.71
+```
+
+
+---
+class: center, middle, inverse
+
 ## Data manipulation using `dplyr`
 
 &lt;center&gt;
@@ -2592,24 +2821,145 @@ select(penguins_clean, individual_id, sex, species)
 
 ```
 #&gt; # A tibble: 344 x 3
-#&gt;    individual_id sex    species                            
-#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                              
-#&gt;  1 N1A1          MALE   Adelie Penguin (Pygoscelis adeliae)
-#&gt;  2 N1A2          FEMALE Adelie Penguin (Pygoscelis adeliae)
-#&gt;  3 N2A1          FEMALE Adelie Penguin (Pygoscelis adeliae)
-#&gt;  4 N2A2          &lt;NA&gt;   Adelie Penguin (Pygoscelis adeliae)
-#&gt;  5 N3A1          FEMALE Adelie Penguin (Pygoscelis adeliae)
-#&gt;  6 N3A2          MALE   Adelie Penguin (Pygoscelis adeliae)
-#&gt;  7 N4A1          FEMALE Adelie Penguin (Pygoscelis adeliae)
-#&gt;  8 N4A2          MALE   Adelie Penguin (Pygoscelis adeliae)
-#&gt;  9 N5A1          &lt;NA&gt;   Adelie Penguin (Pygoscelis adeliae)
-#&gt; 10 N5A2          &lt;NA&gt;   Adelie Penguin (Pygoscelis adeliae)
+#&gt;    individual_id sex    species          
+#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;            
+#&gt;  1 N1A1          MALE   "Adelie Penguin "
+#&gt;  2 N1A2          FEMALE "Adelie Penguin "
+#&gt;  3 N2A1          FEMALE "Adelie Penguin "
+#&gt;  4 N2A2          &lt;NA&gt;   "Adelie Penguin "
+#&gt;  5 N3A1          FEMALE "Adelie Penguin "
+#&gt;  6 N3A2          MALE   "Adelie Penguin "
+#&gt;  7 N4A1          FEMALE "Adelie Penguin "
+#&gt;  8 N4A2          MALE   "Adelie Penguin "
+#&gt;  9 N5A1          &lt;NA&gt;   "Adelie Penguin "
+#&gt; 10 N5A2          &lt;NA&gt;   "Adelie Penguin "
+#&gt; # ... with 334 more rows
+```
+
+---
+
+## `select()`
+
+We can also **remove** variables with a **`-`** (minus).
+
+Here we remove `individual_id`, `sex` and `species`.
+
+
+```r
+names(select(penguins_clean, -individual_id, -sex, -species))
+```
+
+```
+#&gt;  [1] "study_name"        "sample_number"     "latin_name"       
+#&gt;  [4] "island"            "clutch_completion" "date_egg"         
+#&gt;  [7] "culmen_length_mm"  "culmen_depth_mm"   "flipper_length_mm"
+#&gt; [10] "body_mass_g"       "delta_15_n_o_oo"   "delta_13_c_o_oo"  
+#&gt; [13] "comments"
+```
+
+`individual_id`, `sex` and `species` are missing!
+
+---
+
+#### Selection helpers
+
+These *selection helpers* match variables according to a given pattern.
+
+`starts_with()`: Starts with a prefix.
+
+`ends_with()`: Ends with a suffix.
+
+`contains()`: Contains a literal string.
+
+`matches()`: Matches a regular expression.
+
+---
+
+#### Selection helpers
+
+For example: let's keep all variables that start with `s`:
+
+
+```r
+select(penguins_clean, starts_with("s"))
+```
+
+```
+#&gt; # A tibble: 344 x 4
+#&gt;    study_name sample_number species           sex   
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt; 
+#&gt;  1 PAL0708                1 "Adelie Penguin " MALE  
+#&gt;  2 PAL0708                2 "Adelie Penguin " FEMALE
+#&gt;  3 PAL0708                3 "Adelie Penguin " FEMALE
+#&gt;  4 PAL0708                4 "Adelie Penguin " &lt;NA&gt;  
+#&gt;  5 PAL0708                5 "Adelie Penguin " FEMALE
+#&gt;  6 PAL0708                6 "Adelie Penguin " MALE  
+#&gt;  7 PAL0708                7 "Adelie Penguin " FEMALE
+#&gt;  8 PAL0708                8 "Adelie Penguin " MALE  
+#&gt;  9 PAL0708                9 "Adelie Penguin " &lt;NA&gt;  
+#&gt; 10 PAL0708               10 "Adelie Penguin " &lt;NA&gt;  
+#&gt; # ... with 334 more rows
+```
+
+---
+
+#### Even more ways to select
+
+Select the first 5 variables:
+
+
+```r
+select(penguins_clean, 1:5)
+```
+
+```
+#&gt; # A tibble: 344 x 5
+#&gt;    study_name sample_number species           latin_name island   
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;    
+#&gt;  1 PAL0708                1 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt;  2 PAL0708                2 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt;  3 PAL0708                3 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt;  4 PAL0708                4 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt;  5 PAL0708                5 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt;  6 PAL0708                6 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt;  7 PAL0708                7 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt;  8 PAL0708                8 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt;  9 PAL0708                9 "Adelie Penguin " &lt;NA&gt;       Torgersen
+#&gt; 10 PAL0708               10 "Adelie Penguin " &lt;NA&gt;       Torgersen
 #&gt; # ... with 334 more rows
 ```
 
 
 ---
 
+#### Even more ways to select
+
+Select everything from `individual_id` to `flipper_length_mm`.
+
+
+```r
+select(penguins_clean, individual_id:flipper_length_mm)
+```
+
+```
+#&gt; # A tibble: 344 x 6
+#&gt;    individual_id clutch_completi~ date_egg   culmen_length_mm culmen_depth_mm
+#&gt;    &lt;chr&gt;         &lt;chr&gt;            &lt;date&gt;                &lt;dbl&gt;           &lt;dbl&gt;
+#&gt;  1 N1A1          Yes              2007-11-11             39.1            18.7
+#&gt;  2 N1A2          Yes              2007-11-11             39.5            17.4
+#&gt;  3 N2A1          Yes              2007-11-16             40.3            18  
+#&gt;  4 N2A2          Yes              2007-11-16             NA              NA  
+#&gt;  5 N3A1          Yes              2007-11-16             36.7            19.3
+#&gt;  6 N3A2          Yes              2007-11-16             39.3            20.6
+#&gt;  7 N4A1          No               2007-11-15             38.9            17.8
+#&gt;  8 N4A2          No               2007-11-15             39.2            19.6
+#&gt;  9 N5A1          Yes              2007-11-09             34.1            18.1
+#&gt; 10 N5A2          Yes              2007-11-09             42              20.2
+#&gt; # ... with 334 more rows, and 1 more variable: flipper_length_mm &lt;dbl&gt;
+```
+
+
+---
 
 class: center, middle, inverse
 
@@ -2634,23 +2984,23 @@ filter(penguins_clean, island == "Dream")
 ```
 
 ```
-#&gt; # A tibble: 124 x 15
-#&gt;    study_name sample_number species island individual_id clutch_completi~
-#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;           
-#&gt;  1 PAL0708               31 Adelie~ Dream  N21A1         Yes             
-#&gt;  2 PAL0708               32 Adelie~ Dream  N21A2         Yes             
-#&gt;  3 PAL0708               33 Adelie~ Dream  N22A1         Yes             
-#&gt;  4 PAL0708               34 Adelie~ Dream  N22A2         Yes             
-#&gt;  5 PAL0708               35 Adelie~ Dream  N23A1         Yes             
-#&gt;  6 PAL0708               36 Adelie~ Dream  N23A2         Yes             
-#&gt;  7 PAL0708               37 Adelie~ Dream  N24A1         Yes             
-#&gt;  8 PAL0708               38 Adelie~ Dream  N24A2         Yes             
-#&gt;  9 PAL0708               39 Adelie~ Dream  N25A1         No              
-#&gt; 10 PAL0708               40 Adelie~ Dream  N25A2         No              
-#&gt; # ... with 114 more rows, and 9 more variables: date_egg &lt;date&gt;,
-#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
-#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
-#&gt; #   comments &lt;chr&gt;
+#&gt; # A tibble: 124 x 16
+#&gt;    study_name sample_number species latin_name island individual_id
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;        
+#&gt;  1 PAL0708               31 "Adeli~ &lt;NA&gt;       Dream  N21A1        
+#&gt;  2 PAL0708               32 "Adeli~ &lt;NA&gt;       Dream  N21A2        
+#&gt;  3 PAL0708               33 "Adeli~ &lt;NA&gt;       Dream  N22A1        
+#&gt;  4 PAL0708               34 "Adeli~ &lt;NA&gt;       Dream  N22A2        
+#&gt;  5 PAL0708               35 "Adeli~ &lt;NA&gt;       Dream  N23A1        
+#&gt;  6 PAL0708               36 "Adeli~ &lt;NA&gt;       Dream  N23A2        
+#&gt;  7 PAL0708               37 "Adeli~ &lt;NA&gt;       Dream  N24A1        
+#&gt;  8 PAL0708               38 "Adeli~ &lt;NA&gt;       Dream  N24A2        
+#&gt;  9 PAL0708               39 "Adeli~ &lt;NA&gt;       Dream  N25A1        
+#&gt; 10 PAL0708               40 "Adeli~ &lt;NA&gt;       Dream  N25A2        
+#&gt; # ... with 114 more rows, and 10 more variables: clutch_completion &lt;chr&gt;,
+#&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
+#&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
+#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
 ```
 
 ---
@@ -2667,23 +3017,23 @@ filter(penguins_clean, island %in% islands_to_keep)
 ```
 
 ```
-#&gt; # A tibble: 292 x 15
-#&gt;    study_name sample_number species island individual_id clutch_completi~
-#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;           
-#&gt;  1 PAL0708               21 Adelie~ Biscoe N11A1         Yes             
-#&gt;  2 PAL0708               22 Adelie~ Biscoe N11A2         Yes             
-#&gt;  3 PAL0708               23 Adelie~ Biscoe N12A1         Yes             
-#&gt;  4 PAL0708               24 Adelie~ Biscoe N12A2         Yes             
-#&gt;  5 PAL0708               25 Adelie~ Biscoe N13A1         Yes             
-#&gt;  6 PAL0708               26 Adelie~ Biscoe N13A2         Yes             
-#&gt;  7 PAL0708               27 Adelie~ Biscoe N17A1         Yes             
-#&gt;  8 PAL0708               28 Adelie~ Biscoe N17A2         Yes             
-#&gt;  9 PAL0708               29 Adelie~ Biscoe N18A1         No              
-#&gt; 10 PAL0708               30 Adelie~ Biscoe N18A2         No              
-#&gt; # ... with 282 more rows, and 9 more variables: date_egg &lt;date&gt;,
-#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
-#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
-#&gt; #   comments &lt;chr&gt;
+#&gt; # A tibble: 292 x 16
+#&gt;    study_name sample_number species latin_name island individual_id
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;        
+#&gt;  1 PAL0708               21 "Adeli~ &lt;NA&gt;       Biscoe N11A1        
+#&gt;  2 PAL0708               22 "Adeli~ &lt;NA&gt;       Biscoe N11A2        
+#&gt;  3 PAL0708               23 "Adeli~ &lt;NA&gt;       Biscoe N12A1        
+#&gt;  4 PAL0708               24 "Adeli~ &lt;NA&gt;       Biscoe N12A2        
+#&gt;  5 PAL0708               25 "Adeli~ &lt;NA&gt;       Biscoe N13A1        
+#&gt;  6 PAL0708               26 "Adeli~ &lt;NA&gt;       Biscoe N13A2        
+#&gt;  7 PAL0708               27 "Adeli~ &lt;NA&gt;       Biscoe N17A1        
+#&gt;  8 PAL0708               28 "Adeli~ &lt;NA&gt;       Biscoe N17A2        
+#&gt;  9 PAL0708               29 "Adeli~ &lt;NA&gt;       Biscoe N18A1        
+#&gt; 10 PAL0708               30 "Adeli~ &lt;NA&gt;       Biscoe N18A2        
+#&gt; # ... with 282 more rows, and 10 more variables: clutch_completion &lt;chr&gt;,
+#&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
+#&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
+#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
 ```
 
 
@@ -2764,22 +3114,23 @@ rename(penguins_clean, sample = sample_number)
 ```
 
 ```
-#&gt; # A tibble: 344 x 15
-#&gt;    study_name sample species island individual_id clutch_completi~ date_egg  
-#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;            &lt;date&gt;    
-#&gt;  1 PAL0708         1 Adelie~ Torge~ N1A1          Yes              2007-11-11
-#&gt;  2 PAL0708         2 Adelie~ Torge~ N1A2          Yes              2007-11-11
-#&gt;  3 PAL0708         3 Adelie~ Torge~ N2A1          Yes              2007-11-16
-#&gt;  4 PAL0708         4 Adelie~ Torge~ N2A2          Yes              2007-11-16
-#&gt;  5 PAL0708         5 Adelie~ Torge~ N3A1          Yes              2007-11-16
-#&gt;  6 PAL0708         6 Adelie~ Torge~ N3A2          Yes              2007-11-16
-#&gt;  7 PAL0708         7 Adelie~ Torge~ N4A1          No               2007-11-15
-#&gt;  8 PAL0708         8 Adelie~ Torge~ N4A2          No               2007-11-15
-#&gt;  9 PAL0708         9 Adelie~ Torge~ N5A1          Yes              2007-11-09
-#&gt; 10 PAL0708        10 Adelie~ Torge~ N5A2          Yes              2007-11-09
-#&gt; # ... with 334 more rows, and 8 more variables: culmen_length_mm &lt;dbl&gt;,
-#&gt; #   culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;,
-#&gt; #   sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
+#&gt; # A tibble: 344 x 16
+#&gt;    study_name sample species latin_name island individual_id clutch_completi~
+#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;           
+#&gt;  1 PAL0708         1 "Adeli~ &lt;NA&gt;       Torge~ N1A1          Yes             
+#&gt;  2 PAL0708         2 "Adeli~ &lt;NA&gt;       Torge~ N1A2          Yes             
+#&gt;  3 PAL0708         3 "Adeli~ &lt;NA&gt;       Torge~ N2A1          Yes             
+#&gt;  4 PAL0708         4 "Adeli~ &lt;NA&gt;       Torge~ N2A2          Yes             
+#&gt;  5 PAL0708         5 "Adeli~ &lt;NA&gt;       Torge~ N3A1          Yes             
+#&gt;  6 PAL0708         6 "Adeli~ &lt;NA&gt;       Torge~ N3A2          Yes             
+#&gt;  7 PAL0708         7 "Adeli~ &lt;NA&gt;       Torge~ N4A1          No              
+#&gt;  8 PAL0708         8 "Adeli~ &lt;NA&gt;       Torge~ N4A2          No              
+#&gt;  9 PAL0708         9 "Adeli~ &lt;NA&gt;       Torge~ N5A1          Yes             
+#&gt; 10 PAL0708        10 "Adeli~ &lt;NA&gt;       Torge~ N5A2          Yes             
+#&gt; # ... with 334 more rows, and 9 more variables: date_egg &lt;date&gt;,
+#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
+#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
+#&gt; #   comments &lt;chr&gt;
 ```
 
 
@@ -2811,33 +3162,6 @@ Highest first:
 
 ```r
 arrange(penguins_clean, desc(sample_number))
-```
-
----
-class: center, middle, inverse
-
-## `distinct()`
-
-orders your dataset
-
-
----
-
-## `distinct()`
-
-If you suspect you have duplicate in your data you can simply run `distinct()`
-
-
-
-```r
-distinct(penguins_clean, individual_id)
-```
-
-If you also want to keep all other variables:
-
-
-```r
-distinct(penguins_clean, individual_id, .keep_all = T)
 ```
 
 ---
@@ -2897,7 +3221,7 @@ class: center, middle, inverse
 
 ## `count()`
 
-When you want to count how often a certain value within variables(s) occurs:
+When you want to count how often a certain value within variables(s) occurs
 
 ---
 
@@ -2913,11 +3237,11 @@ count(penguins_clean, species, sort = T)
 
 ```
 #&gt; # A tibble: 3 x 2
-#&gt;   species                                       n
-#&gt;   &lt;chr&gt;                                     &lt;int&gt;
-#&gt; 1 Adelie Penguin (Pygoscelis adeliae)         152
-#&gt; 2 Gentoo penguin (Pygoscelis papua)           124
-#&gt; 3 Chinstrap penguin (Pygoscelis antarctica)    68
+#&gt;   species                  n
+#&gt;   &lt;chr&gt;                &lt;int&gt;
+#&gt; 1 "Adelie Penguin "      152
+#&gt; 2 "Gentoo penguin "      124
+#&gt; 3 "Chinstrap penguin "    68
 ```
 
 
@@ -3213,6 +3537,7 @@ I hope you had fun!
 &lt;img src="https://media1.tenor.com/images/da0f7d5d93faa11dfc36db1e6c6fdf2a/tenor.gif?itemid=6159389" style="width: 42%" /&gt;
 &lt;/center&gt;
 
+Link to Slides: [tinyurl.com/ds3rintro](https://favstats.github.io/ds3_r_intro)
 
 
 
