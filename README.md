@@ -7,7 +7,7 @@ Here you can find the materials for the R Workshop:
 
 Introduction to R Programming.
 
-+ [Link to Slides](favstats.github.io/ds3_r_intro)
++ [Link to Slides](https://favstats.github.io/ds3_r_intro)
 
 + Part I (R Basics)
 

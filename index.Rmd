@@ -184,8 +184,6 @@ knitr::include_graphics("images/r_first_then_new.png")
 + Active blogosphere with use cases and examples
 
 
-
-
 ---
 
 ## Overview
@@ -198,6 +196,9 @@ knitr::include_graphics("images/r_first_then_new.png")
   
 + Data Manipulation
   + the tidyverse and friends
+  + `janitor`
+  + `tidyr`
+  + `dplyr`
 
 ---
 
@@ -1556,7 +1557,7 @@ Soon we will go into exercise mode!
 
 Before that, however, it's important to understand:
 
-> Seasoned R user or complete beginners, **everyone makes mistakes.**
+> Seasoned R user or complete beginner, **everyone makes mistakes.**
 > Encountering errors sometimes is normal.
 
 No R programmer ever just fell from the sky. 
@@ -1826,6 +1827,11 @@ animals_data[animals_to_check, ]
 ---
 class: center, middle, inverse
 
+## Break?
+
+---
+class: center, middle, inverse
+
 # R Packages
 
 <center>
@@ -1868,10 +1874,6 @@ library(janitor)
 
 Think of `install.packages` as buying a set of tools (for free!) and `library` as pulling out the tools each time you want to work with them.
 
----
-class: center, middle, inverse
-
-## Break?
 
 
 ---
@@ -2171,6 +2173,8 @@ Here to help get rid of these *constant* columns is the function `remove_constan
 
 ```{r, message=T}
 penguins_clean <- remove_constant(penguins_clean, quiet = F)
+
+
 ```
 
 ```{r, echo = F}
@@ -2328,6 +2332,55 @@ rename(penguins_clean, sample = sample_number)
 
 ---
 
+
+class: center, middle, inverse
+
+## `arrange()`
+
+orders your dataset
+
+
+---
+
+## `arrange()`
+
+You can order your data to show the highest or lowest value first.
+
+Lowest first:
+
+```{r, eval = F}
+arrange(penguins_clean, sample_number)
+```
+
+Highest first:
+
+```{r, eval = F}
+arrange(penguins_clean, desc(sample_number))
+
+penguins_clean %>% 
+  separate(species, sep = "\\(", into = c("species", "latin_name")) %>% 
+  distinct(individual_id, .keep_all = T)
+  arrange(desc(individual_id))
+  select(species, )
+  gather()
+  
+# untidy_animals <- read_csv("Animal,Type,Value
+# Domestic dog,lifespan,24.0
+# Domestic dog,ratio,5.10
+# Domestic cat,lifespan,30.0
+# Domestic cat,ratio,4.08
+# American alligator,lifespan,77.0
+# American alligator,ratio,1.59
+# Golden hamster,lifespan,3.9
+# Golden hamster,ratio,31.41
+# King penguin,lifespan,26.0
+# King penguin,ratio,4.71")
+# 
+# saveRDS(untidy_animals, file = "data/untidy_animals.rds")
+```
+
+---
+
 class: center, middle, inverse
 
 ## `group_by()` and `summarize()`
@@ -2367,6 +2420,23 @@ grouped_by_sex <- group_by(penguins_clean, sex)
 summarise(grouped_by_sex, avg_culmen_length_mm = mean(culmen_length_mm, na.rm = T))
 ```
 
+--- 
+class: center, middle, inverse
+
+## `count()`
+
+When you want to count how often a certain value within variables(s) occurs
+
+---
+
+## `count()`
+
+Now this is a function that I use all the time. Simply specify which variable you want to count:
+
+
+```{r, eval = T}
+count(penguins_clean, species, sort = T)
+```
 
 
 ---
@@ -2481,8 +2551,6 @@ class: center, middle, inverse
 ---
 
 ## RStudio Tour
-
-RStudio ships out with four panes:
 
 * Program pane
   * Shows R Files, typically .R or .Rmd

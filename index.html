@@ -1742,7 +1742,7 @@ Soon we will go into exercise mode!
 
 Before that, however, it's important to understand:
 
-&gt; Seasoned R user or complete beginners, **everyone makes mistakes.**
+&gt; Seasoned R user or complete beginner, **everyone makes mistakes.**
 &gt; Encountering errors sometimes is normal.
 
 No R programmer ever just fell from the sky. 
@@ -2102,6 +2102,11 @@ animals_data[animals_to_check, ]
 ---
 class: center, middle, inverse
 
+## Break?
+
+---
+class: center, middle, inverse
+
 # R Packages
 
 &lt;center&gt;
@@ -2146,10 +2151,6 @@ library(janitor)
 
 Think of `install.packages` as buying a set of tools (for free!) and `library` as pulling out the tools each time you want to work with them.
 
----
-class: center, middle, inverse
-
-## Break?
 
 
 ---
@@ -2784,6 +2785,63 @@ rename(penguins_clean, sample = sample_number)
 
 ---
 
+
+class: center, middle, inverse
+
+## `arrange()`
+
+orders your dataset
+
+
+---
+
+## `arrange()`
+
+You can order your data to show the highest or lowest value first.
+
+Lowest first:
+
+
+```r
+arrange(penguins_clean, sample_number)
+```
+
+Highest first:
+
+
+```r
+arrange(penguins_clean, desc(sample_number))
+```
+
+---
+class: center, middle, inverse
+
+## `distinct()`
+
+orders your dataset
+
+
+---
+
+## `distinct()`
+
+If you suspect you have duplicate in your data you can simply run `distinct()`
+
+
+
+```r
+distinct(penguins_clean, individual_id)
+```
+
+If you also want to keep all other variables:
+
+
+```r
+distinct(penguins_clean, individual_id, .keep_all = T)
+```
+
+---
+
 class: center, middle, inverse
 
 ## `group_by()` and `summarize()`
@@ -2834,6 +2892,33 @@ summarise(grouped_by_sex, avg_culmen_length_mm = mean(culmen_length_mm, na.rm = 
 #&gt; 3 &lt;NA&gt;                   41.3
 ```
 
+--- 
+class: center, middle, inverse
+
+## `count()`
+
+When you want to count how often a certain value within variables(s) occurs:
+
+---
+
+## `count()`
+
+Now this is a function that I use all the time. Simply specify which variable you want to count:
+
+
+
+```r
+count(penguins_clean, species, sort = T)
+```
+
+```
+#&gt; # A tibble: 3 x 2
+#&gt;   species                                       n
+#&gt;   &lt;chr&gt;                                     &lt;int&gt;
+#&gt; 1 Adelie Penguin (Pygoscelis adeliae)         152
+#&gt; 2 Gentoo penguin (Pygoscelis papua)           124
+#&gt; 3 Chinstrap penguin (Pygoscelis antarctica)    68
+```
 
 
 ---
@@ -3000,8 +3085,6 @@ class: center, middle, inverse
 ---
 
 ## RStudio Tour
-
-RStudio ships out with four panes:
 
 * Program pane
   * Shows R Files, typically .R or .Rmd
