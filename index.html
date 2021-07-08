@@ -1013,8 +1013,7 @@ c("I", "am", "a", "vector", "of", "strings")
 ```
 
 ```
-#&gt; [1] "I"       "am"      "a"      
-#&gt; [4] "vector"  "of"      "strings"
+#&gt; [1] "I"       "am"      "a"       "vector"  "of"      "strings"
 ```
 ]
 
@@ -1042,8 +1041,7 @@ animal_lifespans
 ```
 
 ```
-#&gt; [1] 392.0  24.0 177.0   4.0   0.3
-#&gt; [6]  27.0  27.0  77.0 122.5
+#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0 122.5
 ```
 ]
 
@@ -1074,15 +1072,9 @@ animals
 ```
 
 ```
-#&gt; [1] "greenland_shark"   
-#&gt; [2] "dog"               
-#&gt; [3] "galapagos_tortoise"
-#&gt; [4] "mouse"             
-#&gt; [5] "fly"               
-#&gt; [6] "lion"              
-#&gt; [7] "boar"              
-#&gt; [8] "alligator"         
-#&gt; [9] "human"
+#&gt; [1] "greenland_shark"    "dog"                "galapagos_tortoise"
+#&gt; [4] "mouse"              "fly"                "lion"              
+#&gt; [7] "boar"               "alligator"          "human"
 ```
 ]
 
@@ -1101,11 +1093,8 @@ human_lifespan / animal_lifespans
 ```
 
 ```
-#&gt; [1]   0.3125000   5.1041667
-#&gt; [3]   0.6920904  30.6250000
-#&gt; [5] 408.3333333   4.5370370
-#&gt; [7]   4.5370370   1.5909091
-#&gt; [9]   1.0000000
+#&gt; [1]   0.3125000   5.1041667   0.6920904  30.6250000 408.3333333   4.5370370
+#&gt; [7]   4.5370370   1.5909091   1.0000000
 ```
 ]
 
@@ -1125,8 +1114,7 @@ animal_lifespans &gt; human_lifespan
 ```
 
 ```
-#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE
-#&gt; [6] FALSE FALSE FALSE FALSE
+#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 ]
 
@@ -1192,8 +1180,7 @@ animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "blac
 ```
 
 ```
-#&gt; [1] FALSE FALSE FALSE FALSE FALSE
-#&gt; [6] FALSE FALSE FALSE FALSE
+#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 ]
 
@@ -1219,8 +1206,7 @@ animals %in% animals_to_check
 ```
 
 ```
-#&gt; [1] FALSE FALSE FALSE FALSE FALSE
-#&gt; [6] FALSE FALSE FALSE FALSE
+#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 ---
@@ -1318,8 +1304,7 @@ longer_living
 ```
 
 ```
-#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE
-#&gt; [6] FALSE FALSE FALSE FALSE
+#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 Now we can use square brackets to only keep those animals that have greater lifespans than humans.
@@ -1330,8 +1315,7 @@ animals[longer_living]
 ```
 
 ```
-#&gt; [1] "greenland_shark"   
-#&gt; [2] "galapagos_tortoise"
+#&gt; [1] "greenland_shark"    "galapagos_tortoise"
 ```
 
 
@@ -1742,26 +1726,16 @@ animals_data
 ```
 
 ```
-#&gt;              animals
-#&gt; 1    greenland_shark
-#&gt; 2                dog
-#&gt; 3 galapagos_tortoise
-#&gt; 4              mouse
-#&gt; 5                fly
-#&gt; 6               lion
-#&gt; 7               boar
-#&gt; 8          alligator
-#&gt; 9              human
-#&gt;   animal_lifespans
-#&gt; 1            392.0
-#&gt; 2             24.0
-#&gt; 3            177.0
-#&gt; 4              4.0
-#&gt; 5              0.3
-#&gt; 6             27.0
-#&gt; 7             27.0
-#&gt; 8             77.0
-#&gt; 9            122.5
+#&gt;              animals animal_lifespans
+#&gt; 1    greenland_shark            392.0
+#&gt; 2                dog             24.0
+#&gt; 3 galapagos_tortoise            177.0
+#&gt; 4              mouse              4.0
+#&gt; 5                fly              0.3
+#&gt; 6               lion             27.0
+#&gt; 7               boar             27.0
+#&gt; 8          alligator             77.0
+#&gt; 9              human            122.5
 ```
 
 
@@ -1780,26 +1754,16 @@ animals_data
 ```
 
 ```
-#&gt;              animals
-#&gt; 1    greenland_shark
-#&gt; 2                dog
-#&gt; 3 galapagos_tortoise
-#&gt; 4              mouse
-#&gt; 5                fly
-#&gt; 6               lion
-#&gt; 7               boar
-#&gt; 8          alligator
-#&gt; 9              human
-#&gt;   animal_lifespans
-#&gt; 1            392.0
-#&gt; 2             24.0
-#&gt; 3            177.0
-#&gt; 4              4.0
-#&gt; 5              0.3
-#&gt; 6             27.0
-#&gt; 7             27.0
-#&gt; 8             77.0
-#&gt; 9            122.5
+#&gt;              animals animal_lifespans
+#&gt; 1    greenland_shark            392.0
+#&gt; 2                dog             24.0
+#&gt; 3 galapagos_tortoise            177.0
+#&gt; 4              mouse              4.0
+#&gt; 5                fly              0.3
+#&gt; 6               lion             27.0
+#&gt; 7               boar             27.0
+#&gt; 8          alligator             77.0
+#&gt; 9              human            122.5
 ```
 
 
@@ -1816,8 +1780,7 @@ names(animals_data)
 ```
 
 ```
-#&gt; [1] "animals"         
-#&gt; [2] "animal_lifespans"
+#&gt; [1] "animals"          "animal_lifespans"
 ```
 
 
@@ -1839,8 +1802,7 @@ animals_data$animal_lifespans
 ```
 
 ```
-#&gt; [1] 392.0  24.0 177.0   4.0   0.3
-#&gt; [6]  27.0  27.0  77.0 122.5
+#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0 122.5
 ```
 
 
@@ -1850,16 +1812,10 @@ animals_data$animals
 ```
 
 ```
-#&gt; [1] greenland_shark   
-#&gt; [2] dog               
-#&gt; [3] galapagos_tortoise
-#&gt; [4] mouse             
-#&gt; [5] fly               
-#&gt; [6] lion              
-#&gt; [7] boar              
-#&gt; [8] alligator         
+#&gt; [1] greenland_shark    dog                galapagos_tortoise mouse             
+#&gt; [5] fly                lion               boar               alligator         
 #&gt; [9] human             
-#&gt; 9 Levels: alligator boar ... mouse
+#&gt; 9 Levels: alligator boar dog fly galapagos_tortoise greenland_shark ... mouse
 ```
 
 ---
@@ -1883,36 +1839,16 @@ animals_data
 ```
 
 ```
-#&gt;              animals
-#&gt; 1    greenland_shark
-#&gt; 2                dog
-#&gt; 3 galapagos_tortoise
-#&gt; 4              mouse
-#&gt; 5                fly
-#&gt; 6               lion
-#&gt; 7               boar
-#&gt; 8          alligator
-#&gt; 9              human
-#&gt;   animal_lifespans
-#&gt; 1            392.0
-#&gt; 2             24.0
-#&gt; 3            177.0
-#&gt; 4              4.0
-#&gt; 5              0.3
-#&gt; 6             27.0
-#&gt; 7             27.0
-#&gt; 8             77.0
-#&gt; 9            122.5
-#&gt;   animal_to_human
-#&gt; 1      3.20000000
-#&gt; 2      0.19591837
-#&gt; 3      1.44489796
-#&gt; 4      0.03265306
-#&gt; 5      0.00244898
-#&gt; 6      0.22040816
-#&gt; 7      0.22040816
-#&gt; 8      0.62857143
-#&gt; 9      1.00000000
+#&gt;              animals animal_lifespans animal_to_human
+#&gt; 1    greenland_shark            392.0      3.20000000
+#&gt; 2                dog             24.0      0.19591837
+#&gt; 3 galapagos_tortoise            177.0      1.44489796
+#&gt; 4              mouse              4.0      0.03265306
+#&gt; 5                fly              0.3      0.00244898
+#&gt; 6               lion             27.0      0.22040816
+#&gt; 7               boar             27.0      0.22040816
+#&gt; 8          alligator             77.0      0.62857143
+#&gt; 9              human            122.5      1.00000000
 ```
 
 
@@ -1948,7 +1884,7 @@ animals_data[1, 1]
 
 ```
 #&gt; [1] greenland_shark
-#&gt; 9 Levels: alligator boar ... mouse
+#&gt; 9 Levels: alligator boar dog fly galapagos_tortoise greenland_shark ... mouse
 ```
 
 *If* we want to keep a certain row but all columns we can do this by leaving the *second* value within the square brackets empty.
@@ -1959,12 +1895,8 @@ animals_data[1, ]
 ```
 
 ```
-#&gt;           animals
-#&gt; 1 greenland_shark
-#&gt;   animal_lifespans
-#&gt; 1              392
-#&gt;   animal_to_human
-#&gt; 1             3.2
+#&gt;           animals animal_lifespans animal_to_human
+#&gt; 1 greenland_shark              392             3.2
 ```
 
 ---
@@ -1979,16 +1911,10 @@ animals_data[, 1]
 ```
 
 ```
-#&gt; [1] greenland_shark   
-#&gt; [2] dog               
-#&gt; [3] galapagos_tortoise
-#&gt; [4] mouse             
-#&gt; [5] fly               
-#&gt; [6] lion              
-#&gt; [7] boar              
-#&gt; [8] alligator         
+#&gt; [1] greenland_shark    dog                galapagos_tortoise mouse             
+#&gt; [5] fly                lion               boar               alligator         
 #&gt; [9] human             
-#&gt; 9 Levels: alligator boar ... mouse
+#&gt; 9 Levels: alligator boar dog fly galapagos_tortoise greenland_shark ... mouse
 ```
 
 ---
@@ -2009,16 +1935,57 @@ animals_data[animals_to_check, ]
 ```
 
 ```
-#&gt;              animals
-#&gt; 1    greenland_shark
-#&gt; 3 galapagos_tortoise
-#&gt;   animal_lifespans
-#&gt; 1              392
-#&gt; 3              177
-#&gt;   animal_to_human
-#&gt; 1        3.200000
-#&gt; 3        1.444898
+#&gt;              animals animal_lifespans animal_to_human
+#&gt; 1    greenland_shark              392        3.200000
+#&gt; 3 galapagos_tortoise              177        1.444898
 ```
+
+---
+class: center, middle, inverse
+
+# R Packages
+
+&lt;center&gt;
+&lt;img src="https://media.tenor.com/images/0a9c3d898ea6fb84d7f190b67db91a0e/tenor.gif" style="width: 30%" /&gt;
+&lt;/center&gt;
+
+---
+
+## R Packages
+
+Packages are at the heart of R: 
+
+* R packages are basically a collection of functions that you load into your working environment.
+
+* They contain code that other R users have prepared for the community.
+
+--
+
+* It's good to know your packages, they can really make your life easier.
+
+* I suggest keeping track of package developments either on Twitter via #rstats
+
+* Or [postsyoumighthavemissed.com](https://postsyoumighthavemissed.com/posts/)
+
+---
+
+## R Packages
+
+You can install packages in R like this using the `install.packages` function:
+
+
+```r
+install.packages("janitor")
+```
+
+However, installing is not enough. You also need to load the package via `library`.
+
+
+```r
+library(janitor)
+```
+
+Think of `install.packages` as buying a set of tools (for free!) and `library` as pulling out the tools each time you want to work with them.
 
 ---
 class: center, middle, inverse
@@ -2032,6 +1999,187 @@ class: center, middle, inverse
 The tidyverse describes itself:
 
 &gt; The tidyverse is an opinionated **collection of R packages** designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
+
+
+&lt;center&gt;
+&lt;img src="https://rstudio-education.github.io/tidyverse-cookbook/images/data-science-workflow.png" style="width: 60%" /&gt;
+&lt;/center&gt;
+
+---
+
+## Core principle: tidy data
+
+* Each variable is in its own column
+* Each observation / case is on its own row
+* Each value is in a cell
+
+We have already seen tidy data:
+
+| Animal | Maximum Lifespan | Animal/Human Years Ratio  |
+| --- | --- | --- | 
+| Domestic dog | 24.0 | 5.10 |
+| Domestic cat | 30.0 | 4.08 |
+| American alligator | 77.0 | 1.59 | 
+| Golden hamster | 3.9 | 31.41 |
+| King penguin | 26.0 |  4.71 |
+
+---
+
+## Untidy data I
+
+.leftcol[
+| Animal | Type | Value  |
+| --- | --- | --- | 
+| Domestic dog | lifespan | 24.0 |
+| Domestic dog | ratio | 5.10 |
+| Domestic cat | lifespan | 30.0 |
+| Domestic cat | ratio | 4.08 |
+| American alligator | lifespan | 77.0 | 
+| American alligator | ratio | 1.59 |
+| Golden hamster | lifespan | 3.9 |
+| Golden hamster | ratio | 31.41 |
+| King penguin | lifespan |  26.0 |
+| King penguin | ratio |  4.71 |
+]
+
+.rightcol[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+The data on the right has multiple rows with the same observation (animal).
+
+= not tidy
+
+]
+
+---
+
+## Untidy data II
+
+| Animal | Lifespan/Ratio  |
+| --- | --- | 
+| Domestic dog | 24.0 / 5.10 |
+| Domestic cat | 30.0 / 4.08 |
+| American alligator | 77.0 / 1.59 | 
+| Golden hamster | 3.9 / 31.41 |
+| King penguin | 26.0 /  4.71 |
+
+The data above has multiple variables per column.
+
+= not tidy
+
+---
+
+## Core principle: tidy data
+
+&lt;center&gt;
+&lt;img src="https://www.openscapes.org/img/blog/tidydata/tidydata_2.jpg" style="width: 80%" /&gt;
+&lt;/center&gt;
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+---
+
+## Core principle: tidy data
+
+Tidy data has two decisive advantages:
+
+* Consistently prepared data is easier to read, process, load and save.
+
+* Many procedures (or the associated functions) in R require this type of data.
+
+&lt;center&gt;
+&lt;img src="https://www.openscapes.org/img/blog/tidydata/tidydata_4.jpg" style="width: 50%" /&gt;
+&lt;/center&gt;
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+---
+
+
+## Installing and loading the tidyverse
+
+First we install the packages of the tidyverse like this:
+
+
+```r
+install.packages("tidyverse")
+```
+
+Then we load them:
+
+
+```r
+library(tidyverse)
+```
+
+---
+class: center, middle, inverse
+
+## Data manipulation using dplyr
+
+
+![](https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/dplyr_wrangling.png?raw=true)
+
+---
+
+
+class: center, middle, inverse
+
+## `select()`
+
+helps you select variables
+
+
+---
+
+
+class: center, middle, inverse
+
+## `filter()`
+
+helps you filter rows
+
+
+---
+
+
+class: center, middle, inverse
+
+## `mutate()`
+
+helps you create variables
+
+
+---
+
+class: center, middle, inverse
+
+## `rename()`
+
+helps you rename variables
+
+
+---
+
+class: center, middle, inverse
+
+## `group_by()` and `summarize()`
+
+when you want to aggregate your data (by groups)
+
+
+---
+
+
+class: center, middle, inverse
+
+# **`%&gt;%`**
+
+## The pipe operator
+
+
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

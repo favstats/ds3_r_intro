@@ -1683,6 +1683,51 @@ animals_data[animals_to_check, ]
 ---
 class: center, middle, inverse
 
+# R Packages
+
+<center>
+<img src="https://media.tenor.com/images/0a9c3d898ea6fb84d7f190b67db91a0e/tenor.gif" style="width: 30%" />
+</center>
+
+---
+
+## R Packages
+
+Packages are at the heart of R: 
+
+* R packages are basically a collection of functions that you load into your working environment.
+
+* They contain code that other R users have prepared for the community.
+
+--
+
+* It's good to know your packages, they can really make your life easier.
+
+* I suggest keeping track of package developments either on Twitter via #rstats
+
+* Or [postsyoumighthavemissed.com](https://postsyoumighthavemissed.com/posts/)
+
+---
+
+## R Packages
+
+You can install packages in R like this using the `install.packages` function:
+
+```{r, eval = F}
+install.packages("janitor")
+```
+
+However, installing is not enough. You also need to load the package via `library`.
+
+```{r}
+library(janitor)
+```
+
+Think of `install.packages` as buying a set of tools (for free!) and `library` as pulling out the tools each time you want to work with them.
+
+---
+class: center, middle, inverse
+
 ![](https://predictivehacks.com/wp-content/uploads/2020/11/tidyverse-default.png)
 
 ---
@@ -1692,3 +1737,182 @@ class: center, middle, inverse
 The tidyverse describes itself:
 
 > The tidyverse is an opinionated **collection of R packages** designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
+
+
+<center>
+<img src="https://rstudio-education.github.io/tidyverse-cookbook/images/data-science-workflow.png" style="width: 60%" />
+</center>
+
+---
+
+## Core principle: tidy data
+
+* Each variable is in its own column
+* Each observation / case is on its own row
+* Each value is in a cell
+
+We have already seen tidy data:
+
+| Animal | Maximum Lifespan | Animal/Human Years Ratio  |
+| --- | --- | --- | 
+| Domestic dog | 24.0 | 5.10 |
+| Domestic cat | 30.0 | 4.08 |
+| American alligator | 77.0 | 1.59 | 
+| Golden hamster | 3.9 | 31.41 |
+| King penguin | 26.0 |  4.71 |
+
+---
+
+## Untidy data I
+
+.leftcol[
+| Animal | Type | Value  |
+| --- | --- | --- | 
+| Domestic dog | lifespan | 24.0 |
+| Domestic dog | ratio | 5.10 |
+| Domestic cat | lifespan | 30.0 |
+| Domestic cat | ratio | 4.08 |
+| American alligator | lifespan | 77.0 | 
+| American alligator | ratio | 1.59 |
+| Golden hamster | lifespan | 3.9 |
+| Golden hamster | ratio | 31.41 |
+| King penguin | lifespan |  26.0 |
+| King penguin | ratio |  4.71 |
+]
+
+.rightcol[
+
+<br>
+
+<br>
+
+The data on the right has multiple rows with the same observation (animal).
+
+= not tidy
+
+]
+
+---
+
+## Untidy data II
+
+| Animal | Lifespan/Ratio  |
+| --- | --- | 
+| Domestic dog | 24.0 / 5.10 |
+| Domestic cat | 30.0 / 4.08 |
+| American alligator | 77.0 / 1.59 | 
+| Golden hamster | 3.9 / 31.41 |
+| King penguin | 26.0 /  4.71 |
+
+The data above has multiple variables per column.
+
+= not tidy
+
+---
+
+## Core principle: tidy data
+
+<center>
+<img src="https://www.openscapes.org/img/blog/tidydata/tidydata_2.jpg" style="width: 80%" />
+</center>
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+---
+
+## Core principle: tidy data
+
+Tidy data has two decisive advantages:
+
+* Consistently prepared data is easier to read, process, load and save.
+
+* Many procedures (or the associated functions) in R require this type of data.
+
+<center>
+<img src="https://www.openscapes.org/img/blog/tidydata/tidydata_4.jpg" style="width: 50%" />
+</center>
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+---
+
+
+## Installing and loading the tidyverse
+
+First we install the packages of the tidyverse like this:
+
+```{r, eval = F}
+install.packages("tidyverse")
+```
+
+Then we load them:
+
+```{r}
+library(tidyverse)
+```
+
+---
+class: center, middle, inverse
+
+## Data manipulation using dplyr
+
+
+![](https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/dplyr_wrangling.png?raw=true)
+
+---
+
+
+class: center, middle, inverse
+
+## `select()`
+
+helps you select variables
+
+
+---
+
+
+class: center, middle, inverse
+
+## `filter()`
+
+helps you filter rows
+
+
+---
+
+
+class: center, middle, inverse
+
+## `mutate()`
+
+helps you create variables
+
+
+---
+
+class: center, middle, inverse
+
+## `rename()`
+
+helps you rename variables
+
+
+---
+
+class: center, middle, inverse
+
+## `group_by()` and `summarize()`
+
+when you want to aggregate your data (by groups)
+
+
+---
+
+
+class: center, middle, inverse
+
+# **`%>%`**
+
+## The pipe operator
+
+
+---
