@@ -143,13 +143,14 @@ Fabio Votta
 
 ### Your friendly neighborhood R Instructor
 
-.leftcol20[
-```{r, echo = F}
-knitr::include_graphics("images/me.jpg")
-```
+.leftcol40[
+<img src="https://scontent-frt3-2.xx.fbcdn.net/v/t1.18169-9/11752441_1214700901878556_7482802106323698580_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=mdzfuX-QMKoAX-FMHO1&_nc_ht=scontent-frt3-2.xx&oh=edadc28b605f3f2c280f730aff459cbf&oe=60EBCC4E" style="width: 90%" />
+
+
+
 ]
 
-.rightcol80[
+.rightcol60[
 + Ph.D. Candidate in Political Communication at University of Amsterdam
 
 + Passionate about Data Science
@@ -182,30 +183,6 @@ knitr::include_graphics("images/r_first_then_new.png")
 + Active blogosphere with use cases and examples
 
 
-
----
- 
-
-
-## Overview
-
-
-
-<!-- 10 am to around 2.15-2.30 pm  -->
-
-```{r, echo=F}
-
-times <- c("10:05 - 10:30", "10:30 - 11:30", "11:30 - noon", "noon - 1 pm", "1 - 2:30 pm")
-sections <- c("R & RStudio", "R Basics", "Functions", "tidyverse", "dplyr verbs")
-
-timetable <- tibble(`Time Schedule      ` = times, `Activites & Topics      ` = sections)
-
-knitr::kable(timetable, format = "html")
-```
-
-
-
-<!-- Other IDEs are available of course but in this case we go with the "standard" model. -->
 
 
 ---
@@ -1855,7 +1832,7 @@ library(tidyverse)
 
 ## A new dataset appears..
 
-Before we dive into some functions of the tidyverse, we are going to work with a new data set.
+Before we dive into some functions of the tidyverse, we are going to work with a new data set and clean it a bit.
 
 No worries, we will stay within the animal kingdom but we need a dataset that is a little more complex than what we have seen already.
 
@@ -1864,7 +1841,7 @@ No worries, we will stay within the animal kingdom but we need a dataset that is
 
 ## A new dataset appears..
 
-Before we dive into some functions of the tidyverse, we are going to introduce a new data set.
+Before we dive into some functions of the tidyverse, we are going to work with a new data set and clean it a bit.
 
 Meet the Palmer penguins! Data were collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/).
 
@@ -1921,21 +1898,126 @@ We can also take a look at data set using the `glimpse` function from `dplyr`.
 glimpse(penguins_raw)
 ```
 
+---
+
+class: center, middle, inverse
+
+## initial data cleaning
+
+### using `janitor`
+
+
+<center>
+<img src="https://github.com/sfirke/janitor/raw/main/man/figures/logo_small.png" style="width: 20%" />
+</center>
+
+
+---
+
+## cleaning with `janitor`
+
+`janitor` is not offically part of the tidyverse package compilation but in my view it is incredibly important to know.
+
+Provides some convenient functions for basic cleaning of the data.
+
+Just like any tidverse-style package it fullfills the following criteria for its functions:
+
+> The data is always the first argument.
+
+This helps us to match by position.
+
+---
+
+## cleaning with `janitor`
+
+One annoyance with the `penguins_raw` data is that it has spaces in the variable names. Urgh! 
+
+R has to put quotes around the variable names that have spaces:
+
+```{r, eval=F}
+penguins_raw$`Delta 15 N (o/oo)`
+penguins_raw$`Flipper Length (mm)`
+
+```
+
+`janitor` can help with that: 
+
+using a function called `clean_names()`
+
+---
+
+
+## cleaning with `janitor`
+
+`clean_names()` just magically turns all our messy column names into readable lower-case snake case:
+
 ```{r}
 library(janitor)
 
+penguins_clean <- clean_names(penguins_raw) 
 
-penguins_raw %>% 
-  janitor::clean_names() %>% 
-remove_constant(quiet = F)
 ```
+
+That is how the variables look like now:
+
+```{r, eval=F}
+penguins_clean$delta_15_n_o_oo
+penguins_clean$flipper_length_mm
+```
+
+
+---
+
+## cleaning with `janitor`
+
+
+```{r}
+glimpse(penguins_clean)
+
+```
+
+
+---
+
+## cleaning with `janitor`
+
+Now we have another problem. Not all variables in the `penguins_clean` data set are that useful. 
+
+Some of them are the same across all observations. We don't need those variables, like `region`.
+
+```{r}
+table(penguins_clean$region)
+```
+
+We can use the base R function `table` to quickly get some tabulations of our variable.
+
+---
+
+## cleaning with `janitor`
+
+Here to help get rid of these *constant* columns is the function `remove_constant()`.
+
+```{r, message=T}
+penguins_clean <- remove_constant(penguins_clean, quiet = F)
+```
+
+```{r, echo = F}
+message("Removing 2 constant columns of 17 columns total (Removed: region, stage).")
+```
+
+
+When we set `quiet = F` we even get some input as to what exactly was removed. Neat!
+
+
+Another useful function in `janitor` is `remove_empty()` which removes all rows or columns that just consist of missing values (i.e. `NA`)
+
+
 
 
 ---
 class: center, middle, inverse
 
 ## Data manipulation using `dplyr`
-
 
 <center>
 <img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/dplyr_wrangling.png?raw=true" style="width: 62%" />
@@ -1953,6 +2035,31 @@ class: center, middle, inverse
 helps you select variables
 
 
+
+
+---
+
+## `select()`
+
+![](https://favstats.shinyapps.io/r_intro/_w_bfa1a45e/images/select.png)
+
+`select()` is part of the dplyr package and helps you select variables
+
+Remember: n tidyverse-style functions, **data is always the first argument**.
+
+---
+
+## `select()`
+
+![](https://favstats.shinyapps.io/r_intro/_w_bfa1a45e/images/select.png)
+
+Here we only keep `individual_id`, `sex` and `species`.
+
+```{r}
+select(penguins_clean, individual_id, sex, species)
+```
+
+
 ---
 
 
@@ -1965,7 +2072,33 @@ helps you filter rows
 
 ---
 
+## `filter()`
 
+helps you filter rows
+
+![](https://favstats.shinyapps.io/r_intro/_w_bfa1a45e/images/filter.png)
+
+Here we only keep penguins from the Island `Dream`.
+
+```{r}
+filter(penguins_clean, island == "Dream")
+```
+
+---
+
+## `filter()`
+
+Here the **`%in%`** operator can come in handy again if we want to filter more than one island:
+
+```{r}
+islands_to_keep <- c("Dream", "Biscoe")
+
+filter(penguins_clean, island %in% islands_to_keep)
+```
+
+
+
+---
 class: center, middle, inverse
 
 ## `mutate()`
@@ -1975,11 +2108,51 @@ helps you create variables
 
 ---
 
+## `mutate()`
+
+![](https://favstats.shinyapps.io/r_intro/_w_dfe6b732/images/mutate.png)
+
+`mutate` will take a statement like this:
+
+`variable_name = some_calculation`
+
+and attach `variable_name` at the *end of the dataset*.
+
+---
+
+## `mutate()`
+
+![](https://favstats.shinyapps.io/r_intro/_w_dfe6b732/images/mutate.png)
+
+Let's say we want to calculate penguin bodymass in kg rather than gram.
+
+```{r}
+pg_new <- mutate(penguins_clean, bodymass_kg = body_mass_g/1000)
+```
+
+```{r}
+select(pg_new, bodymass_kg, body_mass_g)
+```
+
+---
+
 class: center, middle, inverse
 
 ## `rename()`
 
 helps you rename variables
+
+
+---
+
+## `rename()`
+
+Just changes the variable name but leaves all else intact:
+
+```{r}
+rename(penguins_clean, sample = sample_number)
+```
+
 
 
 ---

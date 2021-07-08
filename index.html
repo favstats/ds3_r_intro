@@ -115,11 +115,14 @@ July 09 2021
 
 ### Your friendly neighborhood R Instructor
 
-.leftcol20[
-&lt;img src="images/me.jpg" width="94" /&gt;
+.leftcol40[
+&lt;img src="https://scontent-frt3-2.xx.fbcdn.net/v/t1.18169-9/11752441_1214700901878556_7482802106323698580_n.jpg?_nc_cat=101&amp;ccb=1-3&amp;_nc_sid=8bfeb9&amp;_nc_ohc=mdzfuX-QMKoAX-FMHO1&amp;_nc_ht=scontent-frt3-2.xx&amp;oh=edadc28b605f3f2c280f730aff459cbf&amp;oe=60EBCC4E" style="width: 90%" /&gt;
+
+
+
 ]
 
-.rightcol80[
+.rightcol60[
 + Ph.D. Candidate in Political Communication at University of Amsterdam
 
 + Passionate about Data Science
@@ -150,51 +153,6 @@ July 09 2021
 + Active blogosphere with use cases and examples
 
 
-
----
- 
-
-
-## Overview
-
-
-
-&lt;!-- 10 am to around 2.15-2.30 pm  --&gt;
-
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Time Schedule       &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Activites &amp;amp; Topics       &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 10:05 - 10:30 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; R &amp;amp; RStudio &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 10:30 - 11:30 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; R Basics &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 11:30 - noon &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Functions &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; noon - 1 pm &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; tidyverse &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 1 - 2:30 pm &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; dplyr verbs &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-
-
-&lt;!-- Other IDEs are available of course but in this case we go with the "standard" model. --&gt;
 
 
 ---
@@ -1013,8 +971,8 @@ c("I", "am", "a", "vector", "of", "strings")
 ```
 
 ```
-#&gt; [1] "I"       "am"      "a"      
-#&gt; [4] "vector"  "of"      "strings"
+#&gt; [1] "I"       "am"      "a"       "vector"  "of"     
+#&gt; [6] "strings"
 ```
 ]
 
@@ -1042,8 +1000,8 @@ animal_lifespans
 ```
 
 ```
-#&gt; [1] 392.0  24.0 177.0   4.0   0.3
-#&gt; [6]  27.0  27.0  77.0 122.5
+#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0
+#&gt; [9] 122.5
 ```
 ]
 
@@ -1074,14 +1032,10 @@ animals
 ```
 
 ```
-#&gt; [1] "greenland_shark"   
-#&gt; [2] "dog"               
-#&gt; [3] "galapagos_tortoise"
-#&gt; [4] "mouse"             
-#&gt; [5] "fly"               
-#&gt; [6] "lion"              
-#&gt; [7] "boar"              
-#&gt; [8] "alligator"         
+#&gt; [1] "greenland_shark"    "dog"               
+#&gt; [3] "galapagos_tortoise" "mouse"             
+#&gt; [5] "fly"                "lion"              
+#&gt; [7] "boar"               "alligator"         
 #&gt; [9] "human"
 ```
 ]
@@ -1101,10 +1055,8 @@ human_lifespan / animal_lifespans
 ```
 
 ```
-#&gt; [1]   0.3125000   5.1041667
-#&gt; [3]   0.6920904  30.6250000
-#&gt; [5] 408.3333333   4.5370370
-#&gt; [7]   4.5370370   1.5909091
+#&gt; [1]   0.3125000   5.1041667   0.6920904  30.6250000
+#&gt; [5] 408.3333333   4.5370370   4.5370370   1.5909091
 #&gt; [9]   1.0000000
 ```
 ]
@@ -1125,8 +1077,8 @@ animal_lifespans &gt; human_lifespan
 ```
 
 ```
-#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE
-#&gt; [6] FALSE FALSE FALSE FALSE
+#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+#&gt; [9] FALSE
 ```
 ]
 
@@ -1192,8 +1144,8 @@ animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "blac
 ```
 
 ```
-#&gt; [1] FALSE FALSE FALSE FALSE FALSE
-#&gt; [6] FALSE FALSE FALSE FALSE
+#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [9] FALSE
 ```
 ]
 
@@ -1219,8 +1171,8 @@ animals %in% animals_to_check
 ```
 
 ```
-#&gt; [1] FALSE FALSE FALSE FALSE FALSE
-#&gt; [6] FALSE FALSE FALSE FALSE
+#&gt; [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [9] FALSE
 ```
 
 ---
@@ -1318,8 +1270,8 @@ longer_living
 ```
 
 ```
-#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE
-#&gt; [6] FALSE FALSE FALSE FALSE
+#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+#&gt; [9] FALSE
 ```
 
 Now we can use square brackets to only keep those animals that have greater lifespans than humans.
@@ -1330,8 +1282,7 @@ animals[longer_living]
 ```
 
 ```
-#&gt; [1] "greenland_shark"   
-#&gt; [2] "galapagos_tortoise"
+#&gt; [1] "greenland_shark"    "galapagos_tortoise"
 ```
 
 
@@ -1742,26 +1693,16 @@ animals_data
 ```
 
 ```
-#&gt;              animals
-#&gt; 1    greenland_shark
-#&gt; 2                dog
-#&gt; 3 galapagos_tortoise
-#&gt; 4              mouse
-#&gt; 5                fly
-#&gt; 6               lion
-#&gt; 7               boar
-#&gt; 8          alligator
-#&gt; 9              human
-#&gt;   animal_lifespans
-#&gt; 1            392.0
-#&gt; 2             24.0
-#&gt; 3            177.0
-#&gt; 4              4.0
-#&gt; 5              0.3
-#&gt; 6             27.0
-#&gt; 7             27.0
-#&gt; 8             77.0
-#&gt; 9            122.5
+#&gt;              animals animal_lifespans
+#&gt; 1    greenland_shark            392.0
+#&gt; 2                dog             24.0
+#&gt; 3 galapagos_tortoise            177.0
+#&gt; 4              mouse              4.0
+#&gt; 5                fly              0.3
+#&gt; 6               lion             27.0
+#&gt; 7               boar             27.0
+#&gt; 8          alligator             77.0
+#&gt; 9              human            122.5
 ```
 
 
@@ -1780,26 +1721,16 @@ animals_data
 ```
 
 ```
-#&gt;              animals
-#&gt; 1    greenland_shark
-#&gt; 2                dog
-#&gt; 3 galapagos_tortoise
-#&gt; 4              mouse
-#&gt; 5                fly
-#&gt; 6               lion
-#&gt; 7               boar
-#&gt; 8          alligator
-#&gt; 9              human
-#&gt;   animal_lifespans
-#&gt; 1            392.0
-#&gt; 2             24.0
-#&gt; 3            177.0
-#&gt; 4              4.0
-#&gt; 5              0.3
-#&gt; 6             27.0
-#&gt; 7             27.0
-#&gt; 8             77.0
-#&gt; 9            122.5
+#&gt;              animals animal_lifespans
+#&gt; 1    greenland_shark            392.0
+#&gt; 2                dog             24.0
+#&gt; 3 galapagos_tortoise            177.0
+#&gt; 4              mouse              4.0
+#&gt; 5                fly              0.3
+#&gt; 6               lion             27.0
+#&gt; 7               boar             27.0
+#&gt; 8          alligator             77.0
+#&gt; 9              human            122.5
 ```
 
 
@@ -1816,8 +1747,7 @@ names(animals_data)
 ```
 
 ```
-#&gt; [1] "animals"         
-#&gt; [2] "animal_lifespans"
+#&gt; [1] "animals"          "animal_lifespans"
 ```
 
 
@@ -1839,8 +1769,8 @@ animals_data$animal_lifespans
 ```
 
 ```
-#&gt; [1] 392.0  24.0 177.0   4.0   0.3
-#&gt; [6]  27.0  27.0  77.0 122.5
+#&gt; [1] 392.0  24.0 177.0   4.0   0.3  27.0  27.0  77.0
+#&gt; [9] 122.5
 ```
 
 
@@ -1850,16 +1780,12 @@ animals_data$animals
 ```
 
 ```
-#&gt; [1] greenland_shark   
-#&gt; [2] dog               
-#&gt; [3] galapagos_tortoise
-#&gt; [4] mouse             
-#&gt; [5] fly               
-#&gt; [6] lion              
-#&gt; [7] boar              
-#&gt; [8] alligator         
+#&gt; [1] greenland_shark    dog               
+#&gt; [3] galapagos_tortoise mouse             
+#&gt; [5] fly                lion              
+#&gt; [7] boar               alligator         
 #&gt; [9] human             
-#&gt; 9 Levels: alligator boar ... mouse
+#&gt; 9 Levels: alligator boar dog ... mouse
 ```
 
 ---
@@ -1883,26 +1809,16 @@ animals_data
 ```
 
 ```
-#&gt;              animals
-#&gt; 1    greenland_shark
-#&gt; 2                dog
-#&gt; 3 galapagos_tortoise
-#&gt; 4              mouse
-#&gt; 5                fly
-#&gt; 6               lion
-#&gt; 7               boar
-#&gt; 8          alligator
-#&gt; 9              human
-#&gt;   animal_lifespans
-#&gt; 1            392.0
-#&gt; 2             24.0
-#&gt; 3            177.0
-#&gt; 4              4.0
-#&gt; 5              0.3
-#&gt; 6             27.0
-#&gt; 7             27.0
-#&gt; 8             77.0
-#&gt; 9            122.5
+#&gt;              animals animal_lifespans
+#&gt; 1    greenland_shark            392.0
+#&gt; 2                dog             24.0
+#&gt; 3 galapagos_tortoise            177.0
+#&gt; 4              mouse              4.0
+#&gt; 5                fly              0.3
+#&gt; 6               lion             27.0
+#&gt; 7               boar             27.0
+#&gt; 8          alligator             77.0
+#&gt; 9              human            122.5
 #&gt;   animal_to_human
 #&gt; 1      3.20000000
 #&gt; 2      0.19591837
@@ -1948,7 +1864,7 @@ animals_data[1, 1]
 
 ```
 #&gt; [1] greenland_shark
-#&gt; 9 Levels: alligator boar ... mouse
+#&gt; 9 Levels: alligator boar dog ... mouse
 ```
 
 *If* we want to keep a certain row but all columns we can do this by leaving the *second* value within the square brackets empty.
@@ -1959,12 +1875,8 @@ animals_data[1, ]
 ```
 
 ```
-#&gt;           animals
-#&gt; 1 greenland_shark
-#&gt;   animal_lifespans
-#&gt; 1              392
-#&gt;   animal_to_human
-#&gt; 1             3.2
+#&gt;           animals animal_lifespans animal_to_human
+#&gt; 1 greenland_shark              392             3.2
 ```
 
 ---
@@ -1979,16 +1891,12 @@ animals_data[, 1]
 ```
 
 ```
-#&gt; [1] greenland_shark   
-#&gt; [2] dog               
-#&gt; [3] galapagos_tortoise
-#&gt; [4] mouse             
-#&gt; [5] fly               
-#&gt; [6] lion              
-#&gt; [7] boar              
-#&gt; [8] alligator         
+#&gt; [1] greenland_shark    dog               
+#&gt; [3] galapagos_tortoise mouse             
+#&gt; [5] fly                lion              
+#&gt; [7] boar               alligator         
 #&gt; [9] human             
-#&gt; 9 Levels: alligator boar ... mouse
+#&gt; 9 Levels: alligator boar dog ... mouse
 ```
 
 ---
@@ -2009,12 +1917,9 @@ animals_data[animals_to_check, ]
 ```
 
 ```
-#&gt;              animals
-#&gt; 1    greenland_shark
-#&gt; 3 galapagos_tortoise
-#&gt;   animal_lifespans
-#&gt; 1              392
-#&gt; 3              177
+#&gt;              animals animal_lifespans
+#&gt; 1    greenland_shark              392
+#&gt; 3 galapagos_tortoise              177
 #&gt;   animal_to_human
 #&gt; 1        3.200000
 #&gt; 3        1.444898
@@ -2199,7 +2104,7 @@ library(tidyverse)
 
 ## A new dataset appears..
 
-Before we dive into some functions of the tidyverse, we are going to work with a new data set.
+Before we dive into some functions of the tidyverse, we are going to work with a new data set and clean it a bit.
 
 No worries, we will stay within the animal kingdom but we need a dataset that is a little more complex than what we have seen already.
 
@@ -2208,7 +2113,7 @@ No worries, we will stay within the animal kingdom but we need a dataset that is
 
 ## A new dataset appears..
 
-Before we dive into some functions of the tidyverse, we are going to introduce a new data set.
+Before we dive into some functions of the tidyverse, we are going to work with a new data set and clean it a bit.
 
 Meet the Palmer penguins! Data were collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/).
 
@@ -2257,31 +2162,25 @@ penguins_raw
 
 ```
 #&gt; # A tibble: 344 x 17
-#&gt;    studyName `Sample Number`
-#&gt;    &lt;chr&gt;               &lt;dbl&gt;
-#&gt;  1 PAL0708                 1
-#&gt;  2 PAL0708                 2
-#&gt;  3 PAL0708                 3
-#&gt;  4 PAL0708                 4
-#&gt;  5 PAL0708                 5
-#&gt;  6 PAL0708                 6
-#&gt;  7 PAL0708                 7
-#&gt;  8 PAL0708                 8
-#&gt;  9 PAL0708                 9
-#&gt; 10 PAL0708                10
-#&gt; # ... with 334 more rows, and 15
-#&gt; #   more variables:
-#&gt; #   Species &lt;chr&gt;, Region &lt;chr&gt;,
-#&gt; #   Island &lt;chr&gt;, Stage &lt;chr&gt;,
-#&gt; #   `Individual ID` &lt;chr&gt;,
-#&gt; #   `Clutch Completion` &lt;chr&gt;,
-#&gt; #   `Date Egg` &lt;date&gt;, `Culmen
-#&gt; #   Length (mm)` &lt;dbl&gt;, `Culmen
-#&gt; #   Depth (mm)` &lt;dbl&gt;, `Flipper
-#&gt; #   Length (mm)` &lt;dbl&gt;, `Body
-#&gt; #   Mass (g)` &lt;dbl&gt;, Sex &lt;chr&gt;,
-#&gt; #   `Delta 15 N (o/oo)` &lt;dbl&gt;,
-#&gt; #   `Delta 13 C (o/oo)` &lt;dbl&gt;,
+#&gt;    studyName `Sample Number` Species Region Island
+#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; 
+#&gt;  1 PAL0708                 1 Adelie~ Anvers Torge~
+#&gt;  2 PAL0708                 2 Adelie~ Anvers Torge~
+#&gt;  3 PAL0708                 3 Adelie~ Anvers Torge~
+#&gt;  4 PAL0708                 4 Adelie~ Anvers Torge~
+#&gt;  5 PAL0708                 5 Adelie~ Anvers Torge~
+#&gt;  6 PAL0708                 6 Adelie~ Anvers Torge~
+#&gt;  7 PAL0708                 7 Adelie~ Anvers Torge~
+#&gt;  8 PAL0708                 8 Adelie~ Anvers Torge~
+#&gt;  9 PAL0708                 9 Adelie~ Anvers Torge~
+#&gt; 10 PAL0708                10 Adelie~ Anvers Torge~
+#&gt; # ... with 334 more rows, and 12 more variables:
+#&gt; #   Stage &lt;chr&gt;, `Individual ID` &lt;chr&gt;, `Clutch
+#&gt; #   Completion` &lt;chr&gt;, `Date Egg` &lt;date&gt;, `Culmen
+#&gt; #   Length (mm)` &lt;dbl&gt;, `Culmen Depth (mm)` &lt;dbl&gt;,
+#&gt; #   `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass
+#&gt; #   (g)` &lt;dbl&gt;, Sex &lt;chr&gt;, `Delta 15 N
+#&gt; #   (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;,
 #&gt; #   Comments &lt;chr&gt;
 ```
 
@@ -2294,20 +2193,184 @@ We can also take a look at data set using the `glimpse` function from `dplyr`.
 
 
 ```r
-glimpse(penguins)
+glimpse(penguins_raw)
 ```
 
 ```
-#&gt; Rows: 7,820
-#&gt; Columns: 1
-#&gt; $ `&lt;!DOCTYPE html&gt;` &lt;chr&gt; "&lt;h...
+#&gt; Rows: 344
+#&gt; Columns: 17
+#&gt; $ studyName             &lt;chr&gt; "PAL0708", "PAL070...
+#&gt; $ `Sample Number`       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, ...
+#&gt; $ Species               &lt;chr&gt; "Adelie Penguin (P...
+#&gt; $ Region                &lt;chr&gt; "Anvers", "Anvers"...
+#&gt; $ Island                &lt;chr&gt; "Torgersen", "Torg...
+#&gt; $ Stage                 &lt;chr&gt; "Adult, 1 Egg Stag...
+#&gt; $ `Individual ID`       &lt;chr&gt; "N1A1", "N1A2", "N...
+#&gt; $ `Clutch Completion`   &lt;chr&gt; "Yes", "Yes", "Yes...
+#&gt; $ `Date Egg`            &lt;date&gt; 2007-11-11, 2007-...
+#&gt; $ `Culmen Length (mm)`  &lt;dbl&gt; 39.1, 39.5, 40.3, ...
+#&gt; $ `Culmen Depth (mm)`   &lt;dbl&gt; 18.7, 17.4, 18.0, ...
+#&gt; $ `Flipper Length (mm)` &lt;dbl&gt; 181, 186, 195, NA,...
+#&gt; $ `Body Mass (g)`       &lt;dbl&gt; 3750, 3800, 3250, ...
+#&gt; $ Sex                   &lt;chr&gt; "MALE", "FEMALE", ...
+#&gt; $ `Delta 15 N (o/oo)`   &lt;dbl&gt; NA, 8.94956, 8.368...
+#&gt; $ `Delta 13 C (o/oo)`   &lt;dbl&gt; NA, -24.69454, -25...
+#&gt; $ Comments              &lt;chr&gt; "Not enough blood ...
 ```
+
+---
+
+class: center, middle, inverse
+
+## initial data cleaning
+
+### using `janitor`
+
+
+&lt;center&gt;
+&lt;img src="https://github.com/sfirke/janitor/raw/main/man/figures/logo_small.png" style="width: 20%" /&gt;
+&lt;/center&gt;
+
+
+---
+
+## cleaning with `janitor`
+
+`janitor` is not offically part of the tidyverse package compilation but in my view it is incredibly important to know.
+
+Provides some convenient functions for basic cleaning of the data.
+
+Just like any tidverse-style package it fullfills the following criteria for its functions:
+
+&gt; The data is always the first argument.
+
+This helps us to match by position.
+
+---
+
+## cleaning with `janitor`
+
+One annoyance with the `penguins_raw` data is that it has spaces in the variable names. Urgh! 
+
+R has to put quotes around the variable names that have spaces:
+
+
+```r
+penguins_raw$`Delta 15 N (o/oo)`
+penguins_raw$`Flipper Length (mm)`
+```
+
+`janitor` can help with that: 
+
+using a function called `clean_names()`
+
+---
+
+
+## cleaning with `janitor`
+
+`clean_names()` just magically turns all our messy column names into readable lower-case snake case:
+
+
+```r
+library(janitor)
+
+penguins_clean &lt;- clean_names(penguins_raw) 
+```
+
+That is how the variables look like now:
+
+
+```r
+penguins_clean$delta_15_n_o_oo
+penguins_clean$flipper_length_mm
+```
+
+
+---
+
+## cleaning with `janitor`
+
+
+
+```r
+glimpse(penguins_clean)
+```
+
+```
+#&gt; Rows: 344
+#&gt; Columns: 17
+#&gt; $ study_name        &lt;chr&gt; "PAL0708", "PAL0708", ...
+#&gt; $ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8...
+#&gt; $ species           &lt;chr&gt; "Adelie Penguin (Pygos...
+#&gt; $ region            &lt;chr&gt; "Anvers", "Anvers", "A...
+#&gt; $ island            &lt;chr&gt; "Torgersen", "Torgerse...
+#&gt; $ stage             &lt;chr&gt; "Adult, 1 Egg Stage", ...
+#&gt; $ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1"...
+#&gt; $ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "...
+#&gt; $ date_egg          &lt;date&gt; 2007-11-11, 2007-11-1...
+#&gt; $ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, ...
+#&gt; $ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, ...
+#&gt; $ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193...
+#&gt; $ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, ...
+#&gt; $ sex               &lt;chr&gt; "MALE", "FEMALE", "FEM...
+#&gt; $ delta_15_n_o_oo   &lt;dbl&gt; NA, 8.94956, 8.36821, ...
+#&gt; $ delta_13_c_o_oo   &lt;dbl&gt; NA, -24.69454, -25.333...
+#&gt; $ comments          &lt;chr&gt; "Not enough blood for ...
+```
+
+
+---
+
+## cleaning with `janitor`
+
+Now we have another problem. Not all variables in the `penguins_clean` data set are that useful. 
+
+Some of them are the same across all observations. We don't need those variables, like `region`.
+
+
+```r
+table(penguins_clean$region)
+```
+
+```
+#&gt; 
+#&gt; Anvers 
+#&gt;    344
+```
+
+We can use the base R function `table` to quickly get some tabulations of our variable.
+
+---
+
+## cleaning with `janitor`
+
+Here to help get rid of these *constant* columns is the function `remove_constant()`.
+
+
+```r
+penguins_clean &lt;- remove_constant(penguins_clean, quiet = F)
+```
+
+```
+#&gt; Removing 2 constant columns of 17 columns total (Removed: region, stage).
+```
+
+
+
+
+When we set `quiet = F` we even get some input as to what exactly was removed. Neat!
+
+
+Another useful function in `janitor` is `remove_empty()` which removes all rows or columns that just consist of missing values (i.e. `NA`)
+
+
+
 
 ---
 class: center, middle, inverse
 
 ## Data manipulation using `dplyr`
-
 
 &lt;center&gt;
 &lt;img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/dplyr_wrangling.png?raw=true" style="width: 62%" /&gt;
@@ -2325,6 +2388,49 @@ class: center, middle, inverse
 helps you select variables
 
 
+
+
+---
+
+## `select()`
+
+![](https://favstats.shinyapps.io/r_intro/_w_bfa1a45e/images/select.png)
+
+`select()` is part of the dplyr package and helps you select variables
+
+Remember: n tidyverse-style functions, **data is always the first argument**.
+
+---
+
+## `select()`
+
+![](https://favstats.shinyapps.io/r_intro/_w_bfa1a45e/images/select.png)
+
+Here we only keep `individual_id`, `sex` and `species`.
+
+
+```r
+select(penguins_clean, individual_id, sex, species)
+```
+
+```
+#&gt; # A tibble: 344 x 3
+#&gt;    individual_id sex    species                      
+#&gt;    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                        
+#&gt;  1 N1A1          MALE   Adelie Penguin (Pygoscelis a~
+#&gt;  2 N1A2          FEMALE Adelie Penguin (Pygoscelis a~
+#&gt;  3 N2A1          FEMALE Adelie Penguin (Pygoscelis a~
+#&gt;  4 N2A2          &lt;NA&gt;   Adelie Penguin (Pygoscelis a~
+#&gt;  5 N3A1          FEMALE Adelie Penguin (Pygoscelis a~
+#&gt;  6 N3A2          MALE   Adelie Penguin (Pygoscelis a~
+#&gt;  7 N4A1          FEMALE Adelie Penguin (Pygoscelis a~
+#&gt;  8 N4A2          MALE   Adelie Penguin (Pygoscelis a~
+#&gt;  9 N5A1          &lt;NA&gt;   Adelie Penguin (Pygoscelis a~
+#&gt; 10 N5A2          &lt;NA&gt;   Adelie Penguin (Pygoscelis a~
+#&gt; # ... with 334 more rows
+```
+
+
 ---
 
 
@@ -2337,7 +2443,81 @@ helps you filter rows
 
 ---
 
+## `filter()`
 
+helps you filter rows
+
+![](https://favstats.shinyapps.io/r_intro/_w_bfa1a45e/images/filter.png)
+
+Here we only keep penguins from the Island `Dream`.
+
+
+```r
+filter(penguins_clean, island == "Dream")
+```
+
+```
+#&gt; # A tibble: 124 x 15
+#&gt;    study_name sample_number species island
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; 
+#&gt;  1 PAL0708               31 Adelie~ Dream 
+#&gt;  2 PAL0708               32 Adelie~ Dream 
+#&gt;  3 PAL0708               33 Adelie~ Dream 
+#&gt;  4 PAL0708               34 Adelie~ Dream 
+#&gt;  5 PAL0708               35 Adelie~ Dream 
+#&gt;  6 PAL0708               36 Adelie~ Dream 
+#&gt;  7 PAL0708               37 Adelie~ Dream 
+#&gt;  8 PAL0708               38 Adelie~ Dream 
+#&gt;  9 PAL0708               39 Adelie~ Dream 
+#&gt; 10 PAL0708               40 Adelie~ Dream 
+#&gt; # ... with 114 more rows, and 11 more variables:
+#&gt; #   individual_id &lt;chr&gt;, clutch_completion &lt;chr&gt;,
+#&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;,
+#&gt; #   culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
+#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
+#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
+#&gt; #   comments &lt;chr&gt;
+```
+
+---
+
+## `filter()`
+
+Here the **`%in%`** operator can come in handy again if we want to filter more than one island:
+
+
+```r
+islands_to_keep &lt;- c("Dream", "Biscoe")
+
+filter(penguins_clean, island %in% islands_to_keep)
+```
+
+```
+#&gt; # A tibble: 292 x 15
+#&gt;    study_name sample_number species island
+#&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; 
+#&gt;  1 PAL0708               21 Adelie~ Biscoe
+#&gt;  2 PAL0708               22 Adelie~ Biscoe
+#&gt;  3 PAL0708               23 Adelie~ Biscoe
+#&gt;  4 PAL0708               24 Adelie~ Biscoe
+#&gt;  5 PAL0708               25 Adelie~ Biscoe
+#&gt;  6 PAL0708               26 Adelie~ Biscoe
+#&gt;  7 PAL0708               27 Adelie~ Biscoe
+#&gt;  8 PAL0708               28 Adelie~ Biscoe
+#&gt;  9 PAL0708               29 Adelie~ Biscoe
+#&gt; 10 PAL0708               30 Adelie~ Biscoe
+#&gt; # ... with 282 more rows, and 11 more variables:
+#&gt; #   individual_id &lt;chr&gt;, clutch_completion &lt;chr&gt;,
+#&gt; #   date_egg &lt;date&gt;, culmen_length_mm &lt;dbl&gt;,
+#&gt; #   culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
+#&gt; #   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;,
+#&gt; #   delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
+#&gt; #   comments &lt;chr&gt;
+```
+
+
+
+---
 class: center, middle, inverse
 
 ## `mutate()`
@@ -2347,11 +2527,93 @@ helps you create variables
 
 ---
 
+## `mutate()`
+
+![](https://favstats.shinyapps.io/r_intro/_w_dfe6b732/images/mutate.png)
+
+`mutate` will take a statement like this:
+
+`variable_name = some_calculation`
+
+and attach `variable_name` at the *end of the dataset*.
+
+---
+
+## `mutate()`
+
+![](https://favstats.shinyapps.io/r_intro/_w_dfe6b732/images/mutate.png)
+
+Let's say we want to calculate penguin bodymass in kg rather than gram.
+
+
+```r
+pg_new &lt;- mutate(penguins_clean, bodymass_kg = body_mass_g/1000)
+```
+
+
+```r
+select(pg_new, bodymass_kg, body_mass_g)
+```
+
+```
+#&gt; # A tibble: 344 x 2
+#&gt;    bodymass_kg body_mass_g
+#&gt;          &lt;dbl&gt;       &lt;dbl&gt;
+#&gt;  1        3.75        3750
+#&gt;  2        3.8         3800
+#&gt;  3        3.25        3250
+#&gt;  4       NA             NA
+#&gt;  5        3.45        3450
+#&gt;  6        3.65        3650
+#&gt;  7        3.62        3625
+#&gt;  8        4.68        4675
+#&gt;  9        3.48        3475
+#&gt; 10        4.25        4250
+#&gt; # ... with 334 more rows
+```
+
+---
+
 class: center, middle, inverse
 
 ## `rename()`
 
 helps you rename variables
+
+
+---
+
+## `rename()`
+
+Just changes the variable name but leaves all else intact:
+
+
+```r
+rename(penguins_clean, sample = sample_number)
+```
+
+```
+#&gt; # A tibble: 344 x 15
+#&gt;    study_name sample species island individual_id
+#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;        
+#&gt;  1 PAL0708         1 Adelie~ Torge~ N1A1         
+#&gt;  2 PAL0708         2 Adelie~ Torge~ N1A2         
+#&gt;  3 PAL0708         3 Adelie~ Torge~ N2A1         
+#&gt;  4 PAL0708         4 Adelie~ Torge~ N2A2         
+#&gt;  5 PAL0708         5 Adelie~ Torge~ N3A1         
+#&gt;  6 PAL0708         6 Adelie~ Torge~ N3A2         
+#&gt;  7 PAL0708         7 Adelie~ Torge~ N4A1         
+#&gt;  8 PAL0708         8 Adelie~ Torge~ N4A2         
+#&gt;  9 PAL0708         9 Adelie~ Torge~ N5A1         
+#&gt; 10 PAL0708        10 Adelie~ Torge~ N5A2         
+#&gt; # ... with 334 more rows, and 10 more variables:
+#&gt; #   clutch_completion &lt;chr&gt;, date_egg &lt;date&gt;,
+#&gt; #   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;,
+#&gt; #   flipper_length_mm &lt;dbl&gt;, body_mass_g &lt;dbl&gt;,
+#&gt; #   sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;,
+#&gt; #   delta_13_c_o_oo &lt;dbl&gt;, comments &lt;chr&gt;
+```
+
 
 
 ---
