@@ -574,16 +574,16 @@ The observed maximum lifespan of a human is 122.5 years. For dogs it is 24.
 ```
 ]
 
-So for every year a human ages, a dog "ages" 5.08 human years. How old is a 15 year old dog in human years?
+So for every year a human ages, a dog "ages" 5.1 human years. How old is a 15 year old dog in human years?
 
 .details[
 
 ```r
-5.08333333333333*15
+5.104167*15
 ```
 
 ```
-#&gt; [1] 76.25
+#&gt; [1] 76.56251
 ```
 ]
 
@@ -1407,6 +1407,33 @@ seq(from = 1, to = 10, by = 1)
 
 ---
 
+### A tip
+
+There is however a much simpler way to create sequences that increment by one.
+
+Simply use a *`:`* between two number and it generates a sequence:
+
+
+```r
+1:10
+```
+
+```
+#&gt;  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+
+
+```r
+1000:1010
+```
+
+```
+#&gt;  [1] 1000 1001 1002 1003 1004 1005 1006 1007 1008 1009 1010
+```
+
+---
+
 ### Passing Values
 
 Now there are two ways to pass values to functions in R:
@@ -1583,6 +1610,29 @@ my_function_name("I am output!")
 
 ---
 
+## Creating our own functions
+
+We can also specify *default values* for our arguments:
+
+
+```r
+my_function_name &lt;- function(argument = "I am a default value"){
+  # function body
+  output &lt;- argument
+  return(output)
+}
+```
+
+
+```r
+my_function_name()
+```
+
+```
+#&gt; [1] "I am a default value"
+```
+
+---
 
 ## Creating our own functions
 
@@ -1590,8 +1640,8 @@ Let's create a slightly more useful function: a function which squares numeric v
 
 
 ```r
-square &lt;- function(input) { 
-  output &lt;- input^2        
+square &lt;- function(here_goes_my_number) { 
+  output &lt;- here_goes_my_number^2        
   
   return(output)                  
 }
@@ -1953,6 +2003,12 @@ library(janitor)
 ```
 
 Think of `install.packages` as buying a set of tools (for free!) and `library` as pulling out the tools each time you want to work with them.
+
+---
+class: center, middle, inverse
+
+## Break?
+
 
 ---
 class: center, middle, inverse
@@ -2376,7 +2432,7 @@ helps you select variables
 
 `select()` is part of the dplyr package and helps you select variables
 
-Remember: n tidyverse-style functions, **data is always the first argument**.
+Remember: with tidyverse-style functions, **data is always the first argument**.
 
 ---
 
@@ -2783,6 +2839,24 @@ class: center, middle, inverse
 &lt;/center&gt;
 
 Google Colab: [tinyurl.com/hackr4321](https://tinyurl.com/hackr4321)
+
+---
+class: center, middle, inverse
+
+# Some Final Things
+
+---
+
+## RStudio Panes
+
+![](https://bookdown.org/ageraci/STAT160Companion/images/rstudiopanes.png)
+
+
+---
+
+
+
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
