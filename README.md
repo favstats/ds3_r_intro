@@ -20,5 +20,5 @@ Introduction to R Programming.
 
 
 
-![](images/title.png)
+![](images/title2.png)
 
