@@ -192,13 +192,17 @@ knitr::include_graphics("images/r_first_then_new.png")
   + Operators
   + Objects (inc. vectors)
   + Functions
+  + Exercises
   + Data frames
+  
+$\text{B R E A K at noon}$
   
 + Data Manipulation
   + the tidyverse and friends
   + `janitor`
   + `tidyr`
   + `dplyr`
+  + Exercises
 
 ---
 
