@@ -40,5 +40,7 @@ If you prefer to use RStudio to run the scripts, you have two options:
 
 
 The Slides are knitted with the help of the {[xaringan](https://github.com/yihui/xaringan)} R package and the source code can be found [here](https://github.com/favstats/ds3_r_intro/blob/main/index.Rmd).
+
+
 ![](images/title2.png)
 
