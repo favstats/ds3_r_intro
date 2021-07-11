@@ -1,3 +1,5 @@
+[![Binder](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/favstats/ds3_r_intro/rstudio?filepath=rstudio)
+
 # Data Science Summer School
 
 ![](https://socialdatascience.network/courses/poster/r.png)
@@ -10,6 +12,10 @@ Introduction to R Programming.
 + [Link to Slides](https://favstats.github.io/ds3_r_intro)
 
 **Scripts:**
+
++ If you prefer to use Rmarkdown for the scripts then simply start a **Binder** instance which will create a session of RStudio in your Browser:
+
+    + [Binder Link](https://binder.pangeo.io/v2/gh/favstats/ds3_r_intro/rstudio?filepath=rstudio)
 
 + Part I (R Basics)
 
