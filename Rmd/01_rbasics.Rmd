@@ -1,0 +1,1157 @@
+---
+title: "Introduction to R Programming: Part I"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Welcome
+
+![](https://socialdatascience.network/courses/poster/r.png)
+
+**Welcome to the Intro to R Programming Workshop!**
+
+This is Part I. For a link to Part II click [here](https://colab.research.google.com/drive/14CRElnKewnp5MnlxhqVu6OOcIXd-Bkaj?usp=sharing).
+
+Link to Slides: https://favstats.github.io/ds3_r_intro/
+
+**Workshop description:**
+
+This workshop focuses on the very beginnings of a great journey ahead of you: learning how to use and be comfortable with the statistical programming language R. Together we will explore the basics, from the working environment itself, creating functions for simplifying your tasks, to data management with the tidyverse package. The overarching goal of the workshop is for you to receive the necessary skill set that will enable you to soon embark on your own data science adventures. That being said, the most important aspect of the workshop will be to have fun along the way so that your journey can begin as smoothly and easily as possible.
+
+
+
+For the purposes of this workshop we are going to use **Google Colab**.
+
+
+## Google Colab
+
+Google Colab is a free coding environment (*a Jupyter notebook*) that runs entirely in the cloud. 
+
+Think: Google Docs but for *code*.
+
+$\color{blue}{\text{Upsides}}$ of using Google Colab
+
++ No need to set up R and RStudio on your own computer. 
++ We can dive in right in now
+
+
+$\color{red}{\text{Downsides}}$
+
++ You will have to set up R and RStudio on your own computer (when you want to use R on your own)
+
+
+
+
+<br>
+
+**For future reference (you won't need this for the workshop)**
+
+
++ Download R from here: https://cran.r-project.org/
++ Download RStudio from here: https://www.rstudio.com/products/rstudio/download/
+
+
+# R as Calculator
+
+At its core R is just a fancy *calculator*
+
+![](https://cdn.iconscout.com/icon/free/png-256/math-1963506-1657007.png)
+
+R can do:
+
+* `+` addition
+* `-` subtraction
+* `*` multiplication
+* `/` division
+* `^` exponentiate
+
+
+
+
+
+
+
+## Try it out
+
+```{r}
+15 + 5
+```
+
+## Mix operators
+
+```{r}
+(15 + 5) / (2 * 5)
+```
+
+> Note: when put a hashtag in front of our code then that is a **comment**. 
+
+Comments are just a useful way for us to add some text to our code, for example to explain what we are doing.
+
+```{r}
+## I will be ignored
+2*2*2
+## Me too
+```
+
+## Animal Lifespan Data
+
+Say you want to know how old an animal is in human years.
+
+
+
+We can use the following simple formula to determine that:
+
+$\frac{\text{Maximum lifespan human}}{\text{Maximum lifespan non-human animal}} =  \text{animal to human years conversion ratio}$
+
+*Note: This is just a **very rough** way to determine the conversion ratio. It is much more complicated in [reality](https://www.akc.org/expert-advice/health/how-to-calculate-dog-years-to-human-years/).*
+
+
+Why are we using longevity instead of.. let's say *average life expectancy*? 
+
+According to the [Animal Ageing and Longevity Database](https://www.johnsnowlabs.com/marketplace/the-animal-aging-and-longevity-database/) (John Snow Labs):
+
+> "[...] [M]aximum longevity (also called maximum lifespan) [...] is the most widely used parameter for comparing the rate of aging between species."
+
+
+
+
+First some important data points.
+
+
+**Human Longevity**
+
+The longest human to ever live is a woman named: [Jeanne Calment](https://en.wikipedia.org/wiki/Jeanne_Calment). The french woman reached the age of **122 (!)**. She was born in 1875 and lived until 1997.
+
+**Animal Longevity Stats**
+
+ Here is a table of maximum longevity for various animals:
+
+| Animal | Maximum Longevity (in years)|
+| --- | --- | 
+| Human | 122.5 | 
+| Domestic dog | 24.0 | 
+| Domestic cat | 30.0 | 
+| American alligator | 77.0 | 
+| Golden hamster | 3.9 | 
+| King penguin | 26.0 | 
+| Lion|	27.0 | 
+| Greenland shark	 | 392.0 | 
+| Galapagos tortoise | 177.0 | 
+| African bush elephant	 | 65.0 | 
+| California sea lion	| 35.7	 | 
+| Fruit fly		| 0.3	 | 
+| House mouse		| 4.0	 |
+| Giraffe		| 39.5	 |
+| Wild boar		| 27.0	|
+
+
+	
+*Source: [Animal Ageing and Longevity Database](https://www.johnsnowlabs.com/marketplace/the-animal-aging-and-longevity-database/)*.
+
+### Dog to Human years
+
+Calculating the animal to human conversion ratio
+
+```{r}
+122.5/24
+```
+
+
+So for every year a human ages, a dog "ages" 5.1 human years.
+
+
+
+
+How old is a 15 year old dog in human years?
+
+```{r}
+5.104167*15
+```
+
+# R Objects 
+
+Now it can be quite tedious to juggle all those numbers around.
+
+Especially if we want to keep reusing numbers we calculated before.
+
+Here to simplify that process are: **R objects**.
+
+You can think of R objects as *saving information*, for example simple numbers or just plain text. 
+
+By creating an object we *save* the information to our working environment and we can recall it whenever we want by just running the name of the object.
+
+We create R objects by using the assignment operator:
+
+
+> **<-**
+
+or 
+
+> **=**
+
+[tidyverse style guide](https://style.tidyverse.org/) recommends to use **<-** for assignment so that is what we are going to use here. 
+
+Here is an example using the small exercise from earlier:
+
+1. First, we assign the human max lifespan to a variable called `human_lifespan`. The we assign the maximum lifespan of a dog to `dog_lifespan`.
+
+```{r}
+human_lifespan  <- 122.5
+dog_lifespan <- 24
+```
+
+If we now run the respective objects we retrieve the saved numbers.
+
+
+```{r}
+human_lifespan
+```
+
+```{r}
+dog_lifespan
+```
+
+Now we can perform the same calculation as before but this time using objects!
+
+
+```{r}
+dogs_to_human <- human_lifespan / dog_lifespan
+```
+
+The variable `dogs_to_human` now holds the dog to human years conversion ratio.
+
+```{r}
+dogs_to_human
+```
+
+*Now* we ask again: how old is a 15 year old dog in human years?
+
+```{r}
+dogs_to_human*15
+```
+
+Same result as earlier!
+
+
+### Cat to Human years
+
+```{r}
+cat_lifespan <- 30
+```
+
+```{r}
+cats_to_humans <- human_lifespan/cat_lifespan
+
+cats_to_humans * 15
+```
+
+
+> Note that object names could be anything here! I chose to go with short but self-explanatory names but I could have chosen to just name them **`x`**, **`y`** or **`z`**.
+
+
+
+## A note on naming stuff
+
+
+> $$\color{blue}{\text{"There are only two hard things in Computer Science:}}$$
+> $$\color{blue}{\text{cache invalidation and naming things. ~ Phil Karlton"}}$$
+
+![](https://pbs.twimg.com/media/ELuERYrU0AAI_7b?format=jpg&name=4096x4096)
+
+
+Artist: [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
+
+
+There are many approaches to name things in programming. 
+
+In this case we will be using a technique called *lower snake case*, which is also part of the [tidyverse style guide](https://style.tidyverse.org/syntax.html).  
+
+Use underscores (`_`) to separate lower case letter words within a name.
+
+Example:
+
+```markdown
+# Recommended
+animal_lifespan
+
+# Not recommended
+AnimalLifespan
+animal.lifespan
+```
+
+
+
+
+# Logical Operators
+
+But wait there are more operators! R knows a ton of them.
+
+Logical operators are used for logical tests which can result in either: 
+
+$\text{TRUE}$ or $\text{FALSE}$
+
+*(sometimes this is also called a boolean variable)*
+
+Let's first create some more objects to try some logical tests!
+
+```{r}
+lion_lifespan <- 27
+mouse_lifespan <- 4
+fly_lifespan <- 0.3
+boar_lifespan <- 27
+alligator_lifespan <- 77
+greenland_shark_lifespan <- 392
+galapagos_tortoise_lifespan <- 177
+```
+
+
+## Equal
+
+**`==`** asks whether two values are the same or equal
+
+```{r}
+lion_lifespan == boar_lifespan
+```
+
+The code above tests the following statement: 
+>  The lifespan of a lion equals the lifespan of a boar. 
+
+Since both maximum lifespans are `27` this is of course a **`TRUE`** statement.
+
+## Not Equal
+
+**`!=`** asks whether two values are the not the same or unequal
+
+
+```{r}
+lion_lifespan != boar_lifespan
+```
+
+The code above tests the reverse of the above statement: 
+>  The lifespan of a lion **does not equal** the lifespan of a boar. 
+
+Since both maximum lifespans are `27` this is of course a **`FALSE`** statement.
+
+## Greater or Smaller
+
+We can also test whether certain values are **greater or smaller** than others:
+
+`>` greater than
+
+
+```{r}
+human_lifespan > fly_lifespan
+```
+
+The code above tests the statement: 
+>  The lifespan of a human is greater than the lifespan of a fly. 
+
+Since the maximum human lifespan is `122.5` and a fly does not live longer than `0.3` years this is of course a **`TRUE`** statement.
+
+```{r}
+alligator_lifespan < mouse_lifespan
+```
+
+The code above tests the statement: 
+>  The lifespan of an alligator is smaller than the lifespan of a mouse. 
+
+Since the maximum alligator lifespan is `77` and a mouse lives for `4` years maximum, this is of course a **`FALSE`** statement.
+
+Also note the following options:
+
+*   `>=` greater or equals
+*   `<=` smaller or equals
+
+```{r}
+20 >= 20
+```
+
+# Combine Logical Operators
+
+We can also combine logical tests by testing multiple statements at the same time:
+
+* `&` stands for "and" (unsurprisingly)
+* `|` stands for "or"
+
+For example both `alligator_lifespan` and `fly_lifespan` have to be greater than `mouse_lifespan` for the code below to evaluate as `TRUE`.
+
+
+
+```{r}
+alligator_lifespan > mouse_lifespan & fly_lifespan > mouse_lifespan
+```
+
+If we say `|` (= or) instead, it means either statement evaluation to `TRUE` is enough!
+
+
+
+```{r}
+alligator_lifespan > mouse_lifespan | fly_lifespan > mouse_lifespan
+```
+
+
+# Vectors
+
+
+
+Now we learned about objects. But so far they have only ever held a single numeric value.
+
+R is of course much more powerful than that and objects can hold any number and types of data.
+
+In fact it is good to remember that:
+
+
+> $\color{blue}{\text{"Everything that exists in R is an object."}}$
+~John M. Chambers
+
+Now we will take a look at **vectors**, or objects that include more than one value.
+
+
+You can simply imagine vectors as a list of values. They can consist of numbers but also strings (or: text).
+
+In order to create a vector in R we make use of `c()` (which stands for concatenate)
+
+```{r}
+c(1, 2, 3, 4)
+```
+
+We can combine the lifespans we assigned into objects earlier:
+
+```{r}
+c(greenland_shark_lifespan, dog_lifespan, 
+  galapagos_tortoise_lifespan,
+  mouse_lifespan, fly_lifespan,
+  lion_lifespan, boar_lifespan,
+  alligator_lifespan, human_lifespan)
+```
+
+We can also create a vector of strings by using quotes:
+
+
+```{r}
+c("greenland_shark", "dog", 
+  "galapagos_tortoise", "mouse", 
+  "fly", "lion", "boar",
+  "alligator", "human")
+```
+
+Of course we can also assign these vectors to objects.
+
+Let's say we have a vector `animal_lifespans` with different life spans of animals.
+
+```{r}
+animal_lifespans <- c(greenland_shark_lifespan, dog_lifespan, 
+  galapagos_tortoise_lifespan,
+  mouse_lifespan, fly_lifespan,
+  lion_lifespan, boar_lifespan, 
+  alligator_lifespan, human_lifespan)
+```
+
+Now if we wanted to get the different year conversation ratios we can simply divide the maximum human age number by the vector.
+
+```{r}
+human_lifespan/animal_lifespans
+```
+
+
+
+Notice how the operation is performed for each item separately and the result is yet another vector.
+
+
+```{r}
+animal_to_human_ratios <- human_lifespan/animal_lifespans
+```
+
+We can also use logical operators with vectors:
+
+
+```{r}
+animal_to_human_ratios < 1
+```
+
+Again, notice how the operation is performed for each item separately and the result is yet another vector, this time consisting of `TRUE` and `FALSE`.
+
+
+
+
+
+
+## Small note on Variable Types
+
+There are four main types of variables:
+
+* **logical**: Boolean/binary, is either `TRUE` or `FALSE`
+
+```{r}
+class(TRUE)
+```
+
+* **character (or string)**: simple text, including symbols and numbers `"text"`
+
+```{r}
+class("I am a character")
+```
+
+* **numeric**: Numbers. Mathmatical operators can be used here.
+
+
+```{r}
+class(2020)
+```
+
+
+
+* **factor**: characters or strings but ordered in some way
+
+```{r}
+class(as.factor(c("I", "am", "a", "factor")))
+```
+
+Another important value to know is `NA`. It stands for "Not Available" and simply denotes a *missing value*.
+
+There also more like dates and datetimes but we won't focus on that now. 
+
+```{r}
+c(NA, 1, 2, NA)
+```
+
+## A logical operator for vectors: `%in%`
+
+An incredibly useful operator for vectors is **`%in%`**. 
+
+The operator checks whether multiple elements occur somewhere in your vectors.
+
+This basic usage looks like this:
+
+$\color{red}{\text{vector1}}$ %in% $\color{orange}{\text{vector2}}$
+
+Let's first create a vector called `animals` which includes all the animals in the same
+
+```{r}
+animals <- c("greenland_shark", "dog", 
+  "galapagos_tortoise", "mouse", 
+  "fly", "lion", "boar",
+  "alligator", "human")
+
+```
+
+Let's say we want to check whether `giraffe`, `greenland_shark` or `lion` occur in `animals`. 
+
+If we use `|` we would have to write something like this:
+
+```{r}
+animals == "giraffe" | animals == "greenland_shark"  | animals == "lion"
+```
+
+With `%in%` we can simply pass a vector like this:
+
+
+
+```{r}
+animals_to_check <-  c("giraffe", "greenland_shark", "lion")
+animals %in% animals_to_check
+```
+
+Does `greenlands_shark` or `giraffe` occur within our `animals` vector?
+
+```{r}
+c("greenland_shark", "giraffe") %in% animals 
+```
+
+```{r}
+animals %in%  c("greenland_shark", "giraffe") 
+```
+
+# Indexing
+
+Indexing is done via square brackets `[]` for when you want to know a specific value within your object.
+
+> $$\color{red}{\text{vector}}[\color{orange}{\text{elements}}]$$
+
+Exracting the first element of a vector:
+
+```{r}
+animal_lifespans[1]
+```
+
+```{r}
+animals[1]
+```
+
+Exracting the fifth element of a vector:
+
+```{r}
+animal_lifespans[5]
+```
+
+```{r}
+animals[5]
+```
+
+```{r}
+animals[c(1, 3, 5)]
+```
+
+## Indexing with logical tests
+
+You can also index using logical tests. 
+
+So if an expression evaluates to `TRUE` it will **keep** that element and when it evaluates to `FALSE` it will remove the **element**.
+
+> $$\color{red}{\text{vector}}[\color{orange}{\text{vector of TRUE/FALSE of same length}}]$$
+
+
+Let's first take a look at a logical test that extracts all animals that have greater lifespans than humans:
+
+```{r}
+animal_lifespans > human_lifespan
+```
+
+Now we can use square brackets to only keep those animals that have greater lifespans than humans.
+
+```{r}
+animals[animal_lifespans > human_lifespan]
+```
+
+# Functions
+
+
+
+> $\color{blue}{\text{"Everything that happens in R is a function."}}$
+~John M. Chambers
+
+
+You can think of functions as little machines that (in most cases) process some **input** and create an **output**. 
+
+Input is everything that goes *into* a function:
+
+*   **arguments** you can think of as (pre-determined) input types like a lever or numpad.
+
+*   **values** you can think of as the various settings that the levers or numpads can have.
+
+
+
+
+
+## The Star Producer
+
+Let's consider the following function (that does not exist unfortunately):
+A `star_producer`!
+
+This little machine creates tiny hand-drawn stars depending on some input. It takes two arguments:
+
+* `how_many` tells the machine how many stars to produce
+* `type` tells the machine how the stars should look like (in this case the machine only supports `"squiggly"` stars but it could be upgraded in the future when we learn how to create our own functions later on)
+
+![Image](https://raw.githubusercontent.com/favstats/hertieschool_datasciencesummerschool/master/img/starproducer2.png)
+
+
+
+Note: just like levers or numpads you also have to be careful what value type an argument expects. You can't type numbers into a lever and a numpad doesn't do much when you pull it (other than break). Similarly, a certain argument might require you to input a numeric value, or more complex R objects.
+
+
+## Get `?help`
+
+But how do you know which function takes what kind of values?
+
+ You can find the documentation of a function when you type in `?function_name`. This should tell you about the arguments, how to use the function and what to expect from its output.
+
+## Example function: seq
+
+Let's try this with a function that is included in every fresh R installation: `seq`.
+
+```{r, eval = F}
+?seq
+```
+
+From the description we can learn that this function is used to 
+
+> "[g]enerate regular sequences".
+
+Its first three arguments are this:
+
+* `from`, `to`: the starting and (maximal) end values of the sequence. 
+
+* `by`: number: increment of the sequence.
+
+So we specify from when to where our sequence should go and by which number it should increment. 
+
+Let's first take a look at this within our machine allegory.
+
+
+
+![Image](https://raw.githubusercontent.com/favstats/hertieschool_datasciencesummerschool/master/img/seq2.png)
+
+If we would want to create a vector from 1 to 10 that increments by 1 we can simple specify the following input values for the arguments:
+
+* `from`: 1
+* `to`: 10
+* `by`: 1
+
+
+This is how that looks like in code:
+
+
+
+```{r}
+seq(from = 1, to = 10, by = 1)
+```
+
+### Passing Values
+
+Now there are two ways to pass values to functions in R:
+
+1.   Pass by argument *names* (we already did this above!)
+2.   Pass by argument *position*
+
+In the former case, we specifically mention which arguments we want to pass our values to. 
+
+For that, it doesn't matter in which **order** we pass our arguments.
+
+So this is perfectly valid code that produces the same result as above even if it seems less intuitive:
+
+
+
+```{r}
+seq(to = 10, by = 1, from = 1)
+```
+
+But: **coders are lazy**.
+
+ There is no need to always specify which argument you mean exactly when you can just match *by position*.
+
+So our sequence example could just as well look like this:
+
+```{r}
+seq(1, 10, 1)
+```
+
+And it works because the documentation tells us that the first three arguments are `from`, `to`, and `by`.
+
+In the future you will see it often that people just leave out the arguments completely so it's good to get used to it. 
+
+## More examples: Mean and Median
+
+In fact, most of the time functions have such intuitive structures that we often wouldn't need to even look up the documentation (even though it's advisable to do).
+
+An easy function to use is `mean` which simply calculates the average of a numeric vectors. 
+
+Let's try this with the `animal_lifespans` we created earlier.
+
+```{r}
+mean(animal_lifespans)
+```
+
+*Quite* old mean value!
+
+```{r}
+median(animal_lifespans)
+```
+
+Well when we take the median instead of the mean we can see that this is due to high outliers (the median is of course more robust to extreme values).
+
+
+There are of course many more functions in R and we will get to learn some of them during this workshop.
+
+# Creating our own functions
+
+We can create our own function using the call: `function()`.
+
+We encode what is supposed to happen within curly brackets `{}`.
+
+Here is the anatomy of a function:
+
+
+$\color{purple}{\text{name}}$ <- $\text{function}(\color{orange}{\text{argument}})${
+
+
+> $\color{green}{\text{# function body}}$
+
+> $\color{lightblue}{\text{value}}$ <- $\color{orange}{\text{argument}}$
+
+
+> $\text{return(}\color{lightblue}{\text{value}}\text{)}$
+
+}
+
+* $\color{purple}{\text{Function name}}$:
+  * An identifier by which the function is called 
+
+* $\color{orange}{\text{Argument(s)}}$:
+  * Contains a list of values passed to the function
+  * Can also contain a default value like this: `argument = 1`
+
+* $\color{green}{\text{Function body}}$:
+  * This is executed each time the function is called
+
+* $\color{lightblue}{\text{Return value}}$:
+  * Ends function call & sends the value back to the global environment
+
+
+
+
+## Square functions
+
+Let's define a function which squares numeric values.
+
+```{r}
+square <- function(number_to_be_squared) { 
+  
+  squared_number <- number_to_be_squared^2
+
+  return(squared_number)                  
+  
+}
+```
+
+```{r}
+square(4)
+```
+
+> Tip: In RStudio we can just type fun and enter after the popup and RStudio will just automatically generate a template for a function. Unfortunately, this doesn't work in Google Colab.
+
+
+## Dog to Human years function
+
+Let's create a function that is able to calculate dog years into human years. We call the function `dog_to_human_years`.
+
+```{r}
+dog_to_human_years <- function(animal_years){
+
+  human_lifespan <- 122.5
+  dog_lifespan <- 24
+
+  ratio <- human_lifespan/dog_lifespan
+
+  human_years <- animal_years*ratio
+
+  return(human_years)
+}
+```
+
+```{r}
+dog_to_human_years(8)
+```
+
+Works perfect!
+
+# Exercises I
+
+The following includes a list of exercises that you can complete on your own. 
+
+## Task 1
+
+Take a look at the table below. 
+
+Pick three animals from the Animal Lifespan data we haven't talked about yet. 
+
+Assign the lifespan values to **single** objects with appropriate names.
+
+| Animal | Maximum Longevity (in years)|
+| --- | --- | 
+| Human | 122.5.5 | 
+| Domestic dog | 24.0 | 
+| Domestic cat | 30.0 | 
+| American alligator | 77.0 | 
+| Golden hamster | 3.9 | 
+| King penguin | 26.0 | 
+| Lion|	27.0 | 
+| Greenland shark	 | 392.0 | 
+| Galapagos tortoise | 177.0 | 
+| African bush elephant	 | 65.0 | 
+| California sea lion	| 35.7	 | 
+| Fruit fly		| 0.3	 | 
+| House mouse		| 4.0	 |
+| Giraffe		| 39.5	 |
+| Wild boar		| 27.0	|
+
+```{r}
+
+```
+
+## Task 2
+
+Create three (different) logical tests which compare the maximum longevity between your chosen animal lifespans.
+
+Does the output you get make sense?
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+## Task 3
+
+Create two vectors with the help of `c()`: 
+
+1.  strings (i.e. texts) of all the animals you chose
+2.  the respective lifespan values (in the same order)
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+## Task 4
+
+Calculate the mean of your lifespan vector.
+
+```{r}
+
+```
+
+## Task 5
+
+5.1 Retrieve the *second* value of the vector that contains your animal names.
+
+> Tip: Square brackets are your friend.
+
+```{r}
+
+```
+
+
+5.2 Using code, find out which animals in your lifespans vector have a maximum longevity of above 25.
+
+> Tip: For an elegant solution you need to use *both* vectors, square brackets and a logical test. If you need help revisit [Indexing with logical tests](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu#scrollTo=5cAxOXBv8KZ6)
+
+```{r}
+
+```
+
+## Task 6
+
+Calculate the animal to human conversion ratios for the animals you've picked and assign the results to an object.
+
+
+```{r}
+
+```
+
+## Task 7
+
+Calculate the human years for your picked animals and assume they are all 5 years old.
+
+
+```{r}
+
+```
+
+## Task 8
+
+Pick one of the animals you chose and create a function which takes as input animal years and outputs human years. Test the function and validate with results from the seventh exercise.
+
+You can name the function in this style: 
+
+`[you_animal_name]_to_human_years`
+
+> Tip: If you need help revisit the section [Dog to Human years function](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu#scrollTo=wOvZ0HEWjaHQ&line=3&uniqifier=1)
+
+Create the function here:
+
+
+```{r}
+
+```
+
+Try it out here:
+
+```{r}
+
+```
+
+# Data frames
+
+Data frames are the main R object that we will be interacting with. In many ways you already know about them too. 
+
+An example for a dataframe would be the table from the [Animal Ageing and Longevity Database](https://www.johnsnowlabs.com/marketplace/the-animal-aging-and-longevity-database/) we already saw earlier.
+
+
+| Animal | Maximum Longevity (in years)|
+| --- | --- | 
+| Human | 122.5 | 
+| Domestic dog | 24.0 | 
+| Domestic cat | 30.0 | 
+| American alligator | 77.0 | 
+| Golden hamster | 3.9 | 
+| King penguin | 26.0 | 
+| Lion|	27.0 | 
+| Greenland shark	 | 392.0 | 
+| Galapagos tortoise | 177.0 | 
+| African bush elephant	 | 65.0 | 
+| California sea lion	| 35.7	 | 
+| Fruit fly		| 0.3	 | 
+| House mouse		| 4.0	 |
+| Giraffe		| 39.5	 |
+| Wild boar		| 27.0	|
+
+
+
+
+```{r}
+human_lifespan <- 122.5
+dog_lifespan <- 24
+lion_lifespan <- 27
+mouse_lifespan <- 4
+fly_lifespan <- 0.3
+boar_lifespan <- 27
+alligator_lifespan <- 77
+greenland_shark_lifespan <- 392
+galapagos_tortoise_lifespan <- 177
+
+animal_lifespans <- c(greenland_shark_lifespan, dog_lifespan, 
+  galapagos_tortoise_lifespan,
+  mouse_lifespan, fly_lifespan,
+  lion_lifespan, boar_lifespan, 
+  alligator_lifespan, human_lifespan)
+
+animals <- c("greenland_shark", "dog", 
+  "galapagos_tortoise", "mouse", 
+  "fly", "lion", "boar",
+  "alligator", "human")
+
+```
+
+To create a data frame from scratch we can simply pass two (same-sized) vectors to the function `data.frame`. 
+
+
+```{r}
+data.frame(animals, animal_lifespans)
+```
+
+We can also assign data frames.
+
+```{r}
+animals_data <- data.frame(animals, animal_lifespans)
+
+animals_data
+```
+
+### Data Dimenions
+
+We can use functions to determine the shape of our data.
+
+#### How many columns does the data have?
+
+We can simply use the function `ncol()` to determine the number of columns.
+
+```{r}
+ncol(animals_data)
+```
+
+#### How many rows does the data have?
+
+Run `nrow()` to determine the number of rows.
+
+```{r}
+nrow(animals_data)
+```
+
+#### `dim()`
+
+We can also use `dim()` to get the same information in one call:
+
+```{r}
+dim(animals_data)
+```
+
+1st value counts the rows, 2nd value counts the columns.
+
+## Variable Names
+
+We can also retrieve the variable names of any data frame by passing it to `names()`.
+
+```{r}
+names(animals_data)
+```
+
+## Retrieve variables
+
+If we want to retrieve specific variables from a data frame we can do that via the `$` operator. 
+
+> $$\color{red}{\text{dataset}}$\color{orange}{\text{variable_name}}$$
+
+
+Think of the `$` symbol as a door opener that helps you check what is inside an object.
+
+```{r}
+animals_data$animal_lifespans
+```
+
+```{r}
+animals_data$animals
+```
+
+## (Re-)Code variables
+
+We can also use the `$` data access to add **new variables**.
+
+In the below case we create a variable called `animal_to_human` which holds all the human to animal years conversions. 
+
+We do that by simply assigning a vector containing that information to `animals_data$animal_to_human` even if that variable doesn't exist yet.
+
+```{r}
+animals_data$animal_to_human <- animals_data$animal_lifespans / human_lifespan
+```
+
+```{r}
+animals_data
+```
+
+## Indexing
+
+Just as we did before with vectors we can also index data frames with square brackets: `[]`. However, unlike vectors, data frames have **two dimensions**.
+
+So that is why the square brackets in this case take two inputs, separated by a comma:
+
+> $$\color{red}{\text{dataset}}[\color{orange}{\text{rows}},\color{lightblue}{\text{columns}}]$$
+
+* The first value after the opening square bracket refers to $\color{orange}{\text{which rows}}$ you want to keep.
+
+* The second value refers to $\color{lightblue}{\text{which columns}}$ you want to keep.
+
+So if we only want to keep the first row of the first column of our `animals_data` that is how we would do that:
+
+```{r}
+animals_data[1, 1]
+```
+
+*If* we want to keep a certain row but all columns we can do this by leaving the *second* value within the square brackets empty.
+
+```{r}
+animals_data[1, ]
+```
+
+The same works for columns but keep all rows.
+
+This actually returns a vector:
+
+```{r}
+animals_data[, 1]
+```
+
+## Indexing with logical tests
+
+
+We can also do more complex indexing by keeping only the rows that fulfill a certain condition. Let's say we only want to keep the rows that contain animals that have longer lifespans than humans.
+
+```{r}
+animals_data$animal_lifespans > human_lifespan
+```
+
+```{r}
+animals_data[animals_data$animal_lifespans > human_lifespan, ]
+```
+
