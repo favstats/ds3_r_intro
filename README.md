@@ -11,7 +11,7 @@ Introduction to R Programming.
 
 **Scripts:**
 
-The Workshop was held with Google Colab. Google Colab runs instantaneously runs Jupyter Notebooks in your browser with an R Kernel.
+The Workshop was held with Google Colab. Google Colab instantaneously runs Jupyter Notebooks in your browser with an R Kernel.
 
 + Google Colab Links:
 
@@ -21,13 +21,13 @@ The Workshop was held with Google Colab. Google Colab runs instantaneously runs 
 
 If you prefer to use RStudio to run the scripts, you have two options:
 
-+ You can find the **raw Rmarkdown files** [here](https://github.com/favstats/ds3_r_intro/tree/main/Rmd) in this Repository. Download them and open them in your local RStudio.
++ You can find the **raw Rmarkdown files** [here](https://github.com/favstats/ds3_r_intro/tree/main/Rmd) in this repository. Download them and open them in your local RStudio.
 
 + Simply start a **Binder** instance which will create a session of RStudio in your Browser (may take a little bit):
 
    [![Binder](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/favstats/ds3_r_intro/rstudio?urlpath=rstudio)
    
- Don't forget to download the files before you close out the session because otherwise anything you added will be lost!
+ Note: If you are using Binder don't forget to download the files before you close out the session because otherwise anything you added will be lost!
 
 + If you just want to look a look at the scripts (not interactive) you can check it out here:
 
@@ -39,7 +39,7 @@ If you prefer to use RStudio to run the scripts, you have two options:
 
 
 
-The Slides are knitted with the help of the {[xaringan](https://github.com/yihui/xaringan)} R package and the source code can be found [here](https://github.com/favstats/ds3_r_intro/blob/main/index.Rmd).
+The slides are knitted with the help of the {[xaringan](https://github.com/yihui/xaringan)} R package and the source code can be found [here](https://github.com/favstats/ds3_r_intro/blob/main/index.Rmd).
 
 
 ![](images/title2.png)
