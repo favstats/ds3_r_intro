@@ -1107,7 +1107,7 @@ An incredibly useful operator for vectors is **`%in%`**.
 
 The operator checks whether multiple elements occur somewhere in your vectors.
 
-This basic usage looks like this:
+Its basic usage looks like this:
 
 `\(\color{red}{\text{vector1}}\)` %in% `\(\color{orange}{\text{vector2}}\)`
 
@@ -1487,7 +1487,7 @@ seq(from = 1, to = 10, by = 1)
 
 There is however a much simpler way to create sequences that increment by one.
 
-Simply use a *`:`* between two number and it generates a sequence:
+Simply use a *`:`* between two numbers and it generates a sequence:
 
 
 ```r
@@ -1514,7 +1514,7 @@ Simply use a *`:`* between two number and it generates a sequence:
 
 Now there are two ways to pass values to functions in R:
 
-1.   Pass by argument *names* (we already did this above!)
+1.   Pass by argument *names* (we already did this!)
 2.   Pass by argument *position*
 
 In the former case, we specifically mention which arguments we want to pass our values to. 
@@ -1562,9 +1562,9 @@ In the future you will see it often that people just leave out the arguments com
 
 Many functions have so intuitive arguments that we often don't need to even look up the documentation.
 
-An easy function to use is `mean` which simply calculates the average of a numeric vectors. 
+An easy function to use is `mean` which simply calculates the average of a numeric vector. 
 
-Let's try this with the `animal_lifespans` we created earlier.
+Let's try this with the `animal_lifespans` vector we created earlier.
 
 
 ```r
@@ -1789,7 +1789,7 @@ So you encountered an error:
 
 
 ```
-#&gt; Error: subset of type closure is not subsettable
+#&gt; Error: object of type 'closure' is not subsettable
 ```
 
 Steps to take:
@@ -1808,7 +1808,7 @@ So you encountered an error:
 
 
 ```
-#&gt; Error: subset of type closure is not subsettable
+#&gt; Error: object of type 'closure' is not subsettable
 ```
 
 Steps to take:
@@ -1829,7 +1829,7 @@ So you encountered an error:
 
 
 ```
-#&gt; Error: subset of type closure is not subsettable
+#&gt; Error: object of type 'closure' is not subsettable
 ```
 
 Steps to take:
@@ -1850,7 +1850,7 @@ So you encountered an error:
 
 
 ```
-#&gt; Error: subset of type closure is not subsettable
+#&gt; Error: object of type 'closure' is not subsettable
 ```
 
 Steps to take:
@@ -1890,7 +1890,7 @@ class: center, middle, inverse
 
 Data frames are the main R object that we will be interacting with. In many ways you already know about them too. 
 
-An example for a dataframe would be the table from the [Animal Ageing and Longevity Database](https://www.johnsnowlabs.com/marketplace/the-animal-aging-and-longevity-database/) we already saw earlier.
+An example for a data frame would be the table from the [Animal Ageing and Longevity Database](https://www.johnsnowlabs.com/marketplace/the-animal-aging-and-longevity-database/) we already saw earlier.
 
 
 | Animal | Maximum Longevity (in years)|
@@ -2066,7 +2066,7 @@ animals_data[1, ]
 
 ## Indexing
 
-The same works for columns but all rows:
+*If* we want to keep a certain column but keep all rows we can do this by leaving the *first* value within the square brackets empty.
 
 
 ```r
@@ -2682,7 +2682,7 @@ But what if that is not the case?
 
 ### `pivot_wider()` and `pivot_longer()`
 
-`tidyr` also comes equipped to deal with data that has more that one observation per row. 
+`tidyr` also comes equipped to deal with data that has more than one observation per row. 
 
 The function to use here is called `pivot_wider`.
 
@@ -2876,7 +2876,7 @@ names(select(penguins_clean, -individual_id, -sex, -species))
 #&gt; [13] "comments"
 ```
 
-`individual_id`, `sex` and `species` are missing!
+`individual_id`, `sex` and `species` are now removed, just as we wanted!
 
 ---
 
