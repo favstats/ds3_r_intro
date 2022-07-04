@@ -8,7 +8,7 @@ output:
 
 # Welcome
 
-![](https://socialdatascience.network/courses/poster/r.png)
+![](https://ds3.ai/2022/assets/r.png)
 
 **Welcome to the Intro to R Programming Workshop!**
 
@@ -554,15 +554,31 @@ animals_to_check <-  c("giraffe", "greenland_shark", "lion")
 animals %in% animals_to_check
 ```
 
-Does `greenlands_shark` or `giraffe` occur within our `animals` vector?
-
-```{r}
-c("greenland_shark", "giraffe") %in% animals 
-```
+Where (if at all) does `greenlands_shark` or `giraffe` occur within our `animals` vector?
 
 ```{r}
 animals %in%  c("greenland_shark", "giraffe") 
 ```
+
+> This might not look too important of an improvement. But what if we had dozens or hundreds of animals to check?
+
+```{r}
+animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "black_garden_ant" | animals == "pheidole_dentata" | animals == "squinting_bush_brown" | animals == "american_lobster" | animals == "firebelly_toad" | animals == "oriental_firebelly_toad" | animals == "yellow_bellied_toad" | animals == "greenland_shark" | animals == "western_toad" | animals == "yosemite_toad" | animals == "great_plains_toad" | animals == "green_toad" | animals == "canadian_toad" | animals == "red_spotted_toad" | animals == "sonoran_green_toad" | animals == "southern_toad" | animals == "veragoa_stubfoot_toad" | animals == "common_european_toad" | animals == "colorado_river_toad" | animals == "kihansi_spray_toad" | animals == "ridge_headed_toad" | animals == "cuban_toad" | animals == "european_green_toad" | animals == "colombian_giant_toad" | animals == "argentine_toad" | animals == "cane_toad" | animals == "eurura_toad" | animals == "common_horned_frog" | animals == "colombian_horned_frog" | animals == "amazonian_horned_frog" | animals == "ornate_horned_frog" | animals == "green_and_black_dart_poison_frog" 
+```
+
+With **`%in%`** it's much more readable:
+
+```{r}
+animals_to_check <-  c("honey_bee", "cardiocondyla_obscurior", "black_garden_ant", "pheidole_dentata", "squinting_bush_brown", "american_lobster", "firebelly_toad", "oriental_firebelly_toad", "yellow_bellied_toad",  "greenland_shark", "western_toad", "yosemite_toad", "great_plains_toad", "green_toad", "canadian_toad", "red_spotted_toad", "sonoran_green_toad", "southern_toad", "veragoa_stubfoot_toad", "common_european_toad",  "colorado_river_toad", "kihansi_spray_toad", "ridge_headed_toad", "cuban_toad", "european_green_toad","colombian_giant_toad", "argentine_toad", "cane_toad", "eurura_toad", "common_horned_frog", "colombian_horned_frog", "amazonian_horned_frog", "ornate_horned_frog")
+```
+
+
+```{r}
+animals %in% animals_to_check
+
+```
+
+
 
 # Indexing
 

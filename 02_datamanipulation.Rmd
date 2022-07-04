@@ -8,7 +8,7 @@ output:
 
 # Welcome
 
-![](https://socialdatascience.network/courses/poster/r.png)
+![](https://ds3.ai/2022/assets/r.png)
 
 **Welcome to the Intro to R Programming Workshop!**
 
