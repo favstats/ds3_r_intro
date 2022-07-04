@@ -11,7 +11,7 @@ Introduction to R Programming.
 
 **Scripts:**
 
-The Workshop was held with Google Colab. Google Colab instantaneously runs Jupyter Notebooks in your browser with an R Kernel.
+The workshop is held with Google Colab. Google Colab instantaneously runs Jupyter Notebooks in your browser with an R Kernel.
 
 + Google Colab Links:
 

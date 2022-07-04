@@ -78,7 +78,7 @@ meta() %>%
 
 ```{r setup, include=FALSE}
 # dateWritten <- format(as.Date('2020-05-04'), format="%B %d %Y")
-workshop_day <- format(as.Date("2021-07-09"), format="%B %d %Y")
+workshop_day <- format(as.Date("2022-07-20"), format="%B %d %Y")
 pacman::p_load(tidyverse, fontawesome, tidyverse, knitr)
 
 options(
@@ -100,7 +100,7 @@ xaringanExtra::use_tile_view()
 xaringanExtra::use_panelset()
 xaringanExtra::use_clipboard()
 xaringanExtra::use_share_again()
-xaringanExtra::style_share_again(share_buttons = "all")
+# xaringanExtra::style_share_again(share_buttons = "all")
 xaringanExtra::use_extra_styles(
   hover_code_line = TRUE,
   mute_unhighlighted_code = FALSE
@@ -1068,7 +1068,7 @@ animals %in% animals_to_check
 
 ## A logical operator for vectors: `%in%`
 
-Doesn't look that much better? 
+Doesn't that look much better? 
 
 Now imagine you have dozens or hundreds of animals to check!
 
@@ -1076,7 +1076,7 @@ Now imagine you have dozens or hundreds of animals to check!
 
 ## A logical operator for vectors: `%in%`
 
-With **`|`** it's utter chaos.
+With **`|`** it's very repetitive and utter chaos.
 
 .fifty[
 ```{r}
@@ -1089,7 +1089,7 @@ animals == "honey_bee" | animals == "cardiocondyla_obscurior" | animals == "blac
 ## A logical operator for vectors: `%in%`
 
 
-With **`%in%`** it's much more sensible.
+With **`%in%`** it's much more readable.
 
 
 .fifty[
