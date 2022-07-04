@@ -4,6 +4,9 @@ output:
   html_document:
     toc: true
     toc_float: true
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 # Welcome
