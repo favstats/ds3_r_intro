@@ -2,7 +2,8 @@
 (function () {
   function inIframe () {
     try {
-      return window.self !== window.top
+      return window.self !== window.top &&
+        !window.self.location.href.match('viewer_pane=1') // in RStudio
     } catch (e) {
       return true
     }
@@ -126,11 +127,13 @@
 
     // button touch events (block remarkjs slide change on touch)
     btnSlidePrev.addEventListener('touchend', function (ev) {
+      ev.preventDefault()
       slideshow.gotoPreviousSlide()
       ev.stopPropagation()
     })
 
     btnSlideNext.addEventListener('touchend', function (ev) {
+      ev.preventDefault()
       slideshow.gotoNextSlide()
       ev.stopPropagation()
     });

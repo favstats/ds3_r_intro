@@ -58,7 +58,7 @@ layout: true
 </style>
 
 
-```{r meta, echo=FALSE}
+```{r meta, echo=FALSE, warning = F, message=F}
 library(metathis)
 meta() %>%
   meta_general(
@@ -144,7 +144,7 @@ Fabio Votta
 ### Your friendly neighborhood R Instructor
 
 .leftcol40[
-<img src="https://scontent-frt3-2.xx.fbcdn.net/v/t1.18169-9/11752441_1214700901878556_7482802106323698580_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=mdzfuX-QMKoAX-FMHO1&_nc_ht=scontent-frt3-2.xx&oh=edadc28b605f3f2c280f730aff459cbf&oe=60EBCC4E" style="width: 90%" />
+<img src="https://github.com/favstats/WarwickSpringCamp_QTA/blob/main/docs/slides/day1/images/me.jpg?raw=true" style="width: 90%" />
 
 
 
@@ -505,8 +505,9 @@ But adding up numbers for no reason is no fun.
 That's why we will use a data set about .fancy[animals] to learn some R Basics.
 
 
+
 .leftcol45[
-<img src="https://www.pngitem.com/pimgs/m/553-5539545_cartoon-animal-png-humans-and-animals-png-transparent.png" style="width: 100%" />
+<img src="images/kisspng-animal-clip-art-portable-network-graphics-illustra-cartoon-animal-transparent-amp-png-clipart-free-5c7ccdbb1c9c98.7009291415516830031172.png" style="width: 100%" />
 ]
 
 .rightcol55[

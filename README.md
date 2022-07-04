@@ -1,6 +1,6 @@
 # Data Science Summer School
 
-![](https://socialdatascience.network/courses/poster/r.png)
+![](https://ds3.ai/2022/assets/r.png)
 
 
 Here you can find the materials for the R Workshop:
@@ -38,7 +38,7 @@ If you prefer to use RStudio to run the scripts, you have two options:
 
 + If you prefer the **raw Jupyter Notebooks file**, you can find them [here](https://github.com/favstats/ds3_r_intro/tree/main/jupyter).
 
-**Recording:**
+**Recording 2021 Workshop:**
 
 Click here for recording on YouTube:
 
