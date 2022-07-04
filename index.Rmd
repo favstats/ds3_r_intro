@@ -99,7 +99,7 @@ knitr::opts_chunk$set(
 xaringanExtra::use_tile_view()
 xaringanExtra::use_panelset()
 xaringanExtra::use_clipboard()
-xaringanExtra::use_share_again()
+# xaringanExtra::use_share_again()
 # xaringanExtra::style_share_again(share_buttons = "all")
 xaringanExtra::use_extra_styles(
   hover_code_line = TRUE,
