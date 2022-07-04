@@ -1,6 +1,4 @@
-# Data Science Summer School
-
-![](https://ds3.ai/2022/assets/r.png)
+# Data Science Summer School (DS3) <img src="images/rrrrrrr.png" align="right" width="220"/>
 
 
 Here you can find the materials for the R Workshop:
