@@ -39,7 +39,7 @@ First of all, we want to download R. Find below install links depending on your 
 
 Next, please download & install RStudio. 
 
-RStudio is a graphical interfance in which we can program in R. You can write, save and open R Code (.R/.Rmd files) within RStuio an it also provides syntax-highlighting, auto-completion & much more conveniences!
+RStudio is a graphical interface in which we can program in R. You can write, save and open R Code within RStudio an it also provides syntax-highlighting, auto-completion & many more conveniences!
 
 The newest version of RStudio (`2022.07.0+548`) can be [**downloaded here**](https://www.rstudio.com/products/rstudio/download/#download).
 

@@ -10,11 +10,15 @@ Here you can find the materials for the R Workshop.
 
 ## Preperation:
 
-First, please follow the steps of the **pre-workshop preparation guide**:
+Before starting your adventure, please follow the steps of the **pre-workshop preparation guide**:
 
+[favstats.github.io/ds3_r_intro/prep/instructions.html](https://favstats.github.io/ds3_r_intro/prep/instructions.html)
 
+It includes detailed instructions to:
 
-
+1. Install R
+2. Install RStudio (make sure you have the **latest version!**)
+3. Install necessary R packages
 
 
 ## Scripts:
