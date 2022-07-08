@@ -1,5 +1,6 @@
-# Data Science Summer School (DS3) <img src="images/rrrrrrr.png" align="right" width="300"/>
+# Introduction to R Programming <img src="images/rrrrrrr.png" align="right" width="300"/>
 
+## Data Science Summer School (DS3)
 
 This workshop focuses on the very beginnings of a great journey ahead of you: learning how to use and be comfortable with the statistical programming language R. Together we will explore the basics, from the working environment itself, creating functions for simplifying your tasks, to data management with the tidyverse package. The overarching goal of the workshop is for you to receive the necessary skill set that will enable you to soon embark on your own data science adventures. That being said, the most important aspect of the workshop will be to have fun along the way so that your journey can begin as smoothly and easily as possible.
 

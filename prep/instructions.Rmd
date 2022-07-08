@@ -13,13 +13,15 @@ output:
 knitr::opts_chunk$set(cache = TRUE)
 ```
 
-<img src="images/rrrrrrr.png" align="right" width="200"/>
+<img src="https://github.com/favstats/ds3_r_intro/blob/main/images/rrrrrrr.png?raw=true" align="right" width="200"/>
 
 Welcome to the **pre-workshop to-do list** for the [`Intro to R Programming workshop`](https://ds3.ai/2022/rprogramming.html) during the [*Data Science Summer School (DS3) 2022*](https://ds3.ai/)!
 
 This workshop is taught using `R` and `RStudio` on your computer. So some minor preparations are necessary for a smooth experience. They should not take too long for you to complete and hopefully we can avoid any surprises on the day of the workshop!
 
-##  Install <img src="images/Rlogo.svg" width="25px"/>
+##  Install <img src="https://github.com/favstats/ds3_r_intro/blob/main/images/Rlogo.svg?raw=true" width="25px"/>
+
+
 
 First of all, we want to download R. Find below install links depending on your operating system:
 
@@ -35,7 +37,9 @@ First of all, we want to download R. Find below install links depending on your 
 	
 
 
-## Install  <img src="images/rstudio.png" width="70px"/>
+## Install  <img src="https://github.com/favstats/ds3_r_intro/blob/main/images/rstudio.png?raw=true" width="70px"/>
+
+
 
 Next, please download & install RStudio. 
 
@@ -57,11 +61,11 @@ Please download the workshop files from this [**Dropbox folder**](https://www.dr
 
 The link will download a `.zip` file. Extract it to **its own folder**:
 
-![](images/extract.png)
+![](https://github.com/favstats/ds3_r_intro/blob/main/images/extract.png?raw=true)
 
 The contents of the new folder should look like this:
 
-![](images/files.png)
+![](https://github.com/favstats/ds3_r_intro/blob/main/images/files.png?raw=true)
 On to the final step!
 
 ## `r emo::ji("package")` Install R packages
@@ -78,16 +82,18 @@ Finally, we need some R packages. It will be convenient if you already have the 
 
 1. *Double-click* on the `install.R` file
 
-![](images/click_on_install.png)
+![](https://github.com/favstats/ds3_r_intro/blob/main/images/click_on_install.png?raw=true)
 
 This will open your RStudio environment with the `install.R` script open. 
 
 2. Next, click on the `Source` tab which will run all the R code in your script (as opposed to `Run`, which will only run the R code you select!).
 
-![](images/install2.png)
+![](https://github.com/favstats/ds3_r_intro/blob/main/images/install2.png?raw=true)
 3. You should see some code running in your console like this:
 
-![](images/install_packages.png)
+
+
+![](https://github.com/favstats/ds3_r_intro/blob/main/images/install_packages.png?raw=true)
 
 Let it run and it should be done after a few moments.
 
