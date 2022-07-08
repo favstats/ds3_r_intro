@@ -2,7 +2,13 @@
 
 ## Data Science Summer School (DS3)
 
-This workshop focuses on the very beginnings of a great journey ahead of you: learning how to use and be comfortable with the statistical programming language R. Together we will explore the basics, from the working environment itself, creating functions for simplifying your tasks, to data management with the tidyverse package. The overarching goal of the workshop is for you to receive the necessary skill set that will enable you to soon embark on your own data science adventures. That being said, the most important aspect of the workshop will be to have fun along the way so that your journey can begin as smoothly and easily as possible.
+This workshop focuses on the very beginnings of a great journey ahead of you: learning how to use and be comfortable with the statistical programming language R. 
+
+Together we will explore the basics, from the working environment itself, creating functions for simplifying your tasks, to data management with the tidyverse package. 
+
+The overarching goal of the workshop is for you to receive the necessary skill set that will enable you to soon embark on your own data science adventures. 
+
+That being said, the most important aspect of the workshop will be to have fun along the way so that your journey can begin as smoothly and easily as possible.
 
 # Materials
 
@@ -11,15 +17,16 @@ Here you can find the materials for the R Workshop.
 
 ## Preperation:
 
-Before starting your adventure, please follow the steps of the **pre-workshop preparation guide**:
+Before starting your adventure, please follow the steps of the [**pre-workshop preparation guide**](https://favstats.github.io/ds3_r_intro/prep/instructions.html):
 
-[favstats.github.io/ds3_r_intro/prep/instructions.html](https://favstats.github.io/ds3_r_intro/prep/instructions.html)
+[**favstats.github.io/ds3_r_intro/prep/instructions.html**](https://favstats.github.io/ds3_r_intro/prep/instructions.html)
 
 It includes detailed instructions to:
 
 1. Install R
 2. Install RStudio (make sure you have the **latest version!**)
-3. Install necessary R packages
+3. Download workshop materials
+4. Install necessary R packages
 
 
 ## Scripts:
@@ -45,7 +52,7 @@ The slides are knitted with the help of the {[xaringan](https://github.com/yihui
 
 ## Alternatives to local RStudio
 
-If you cannot install R or RStudio on your computer for any reason, you have two options to follow along:
+If you cannot install R or RStudio on your computer for any reason, you have two options to follow along: *Binder* or *Google Colab*.
 
 + Simply start a **Binder** instance which will create a session of RStudio in your Browser (may take a little bit):
 
@@ -54,7 +61,7 @@ If you cannot install R or RStudio on your computer for any reason, you have two
 > Note: If you are using Binder don't forget to download the files before you close out the session because otherwise anything you added will be lost!
 
 
-+ Google Colab (note this is based on an older version of the workshop)
++ **Google Colab** (note this is based on an older version of the workshop)
 
 Google Colab instantaneously runs Jupyter Notebooks in your browser with an R Kernel.
 
