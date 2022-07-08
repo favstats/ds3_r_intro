@@ -1,0 +1,108 @@
+---
+title: "A {fun} Intro to R Programming"
+subtitle: "Pre-Workshop To-Do List"
+author: "Instructor: Fabio Votta"
+date: "July 20th 2022"
+output:
+  rmdformats::robobook:
+    highlight: kate
+---
+
+```{r setup, include=FALSE}
+## Global options
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+<img src="images/rrrrrrr.png" align="right" width="200"/>
+
+Welcome to the **pre-workshop to-do list** for the [`Intro to R Programming workshop`](https://ds3.ai/2022/rprogramming.html) during the [*Data Science Summer School (DS3) 2022*](https://ds3.ai/)!
+
+This workshop is taught using `R` and `RStudio` on your computer. So some minor preparations are necessary for a smooth experience. They should not take too long for you to complete and hopefully we can avoid any surprises on the day of the workshop!
+
+##  Install <img src="images/Rlogo.svg" width="25px"/>
+
+First of all, we want to download R. Find below install links depending on your operating system:
+
+<ul>
+	  <li><a href="https://cran.r-project.org/bin/linux/">Download R for Linux</a>
+	    (<a href="https://cran.r-project.org/bin/linux/debian">Debian</a>,
+	    <a href="https://cran.r-project.org/bin/linux/fedora">Fedora/Redhat</a>,
+	    <a href="https://cran.r-project.org/bin/linux/ubuntu">Ubuntu)
+	  </a></li><a href="https://cran.r-project.org/bin/linux/ubuntu">
+	  </a><li><a href="https://cran.r-project.org/bin/linux/ubuntu"></a><a href="https://cran.r-project.org/bin/macosx/">Download R for macOS</a></li>
+	  <li><a href="https://cran.r-project.org/bin/windows/">Download R for Windows</a></li>
+	</ul>
+	
+
+
+## Install  <img src="images/rstudio.png" width="70px"/>
+
+Next, please download & install RStudio. 
+
+RStudio is a graphical interfance in which we can program in R. You can write, save and open R Code (.R/.Rmd files) within RStuio an it also provides syntax-highlighting, auto-completion & much more conveniences!
+
+The newest version of RStudio (`2022.07.0+548`) can be [**downloaded here**](https://www.rstudio.com/products/rstudio/download/#download).
+
+### **VERY IMPORTANT:** 
+
+**Please make sure you have the *latest version* of RStudio installed.** 
+
+We are going to use some brand new features in RStudio during this workshop, so please make sure you update to this latest version!
+
+
+
+## `r emo::ji("computer")` Download Workshop files
+
+Please download the workshop files from this [**Dropbox folder**](https://www.dropbox.com/sh/jievqgwl43nwnbf/AADhoYQW5oMZ-JygK7aNklHra?dl=0).
+
+The link will download a `.zip` file. Extract it to **its own folder**:
+
+![](images/extract.png)
+
+The contents of the new folder should look like this:
+
+![](images/files.png)
+On to the final step!
+
+## `r emo::ji("package")` Install R packages
+
+Finally, we need some R packages. It will be convenient if you already have the necessary R packages installed for the workshop.
+
+*Packages are at the heart of R:*
+
+* R packages are basically a collection of additional R functionalities that you can use.
+
+* They contain code that other R users have prepared for the community.
+
+### Instructions
+
+1. *Double-click* on the `install.R` file
+
+![](images/click_on_install.png)
+
+This will open your RStudio environment with the `install.R` script open. 
+
+2. Next, click on the `Source` tab which will run all the R code in your script (as opposed to `Run`, which will only run the R code you select!).
+
+![](images/install2.png)
+3. You should see some code running in your console like this:
+
+![](images/install_packages.png)
+
+Let it run and it should be done after a few moments.
+
+*Note:* If you use Ubuntu Linux then you need to install the following non-R packages on your computer before you can install the `tidyverse`:
+
+```{bash, eval = F}
+sudo apt install libcurl4-openssl-dev libssl-dev libxml2-dev
+```
+
+
+## `r emo::ji("popper")` All Set `r emo::ji("popper")`
+
+**Congratulations!** 
+
+Now you have everything installed on your computer and the fun can begin! `r emo::ji("popper")``r emo::ji("popper")``r emo::ji("popper")`
+
+
+

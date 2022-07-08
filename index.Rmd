@@ -186,6 +186,18 @@ knitr::include_graphics("images/r_first_then_new.png")
 
 ---
 
+class: inverse, middle, center
+
+# Where are you from?
+
+---
+
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/83011a917cf296849a860a5afd997657/b1d8690226f8/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+
+
+
+---
+
 ## Overview
 
 + R Basics
@@ -416,6 +428,164 @@ RStudio is an IDE (Integrated Development Environment).
 
 ---
 
+## R vs. Rmarkdown
+
+.seventy[
+There are two (main) ways you can create scripts in R
+]
+
+
+
+.pull-left[
+
+.seventy[
+
+R scripts (file ending `.R`):
+
+]
+
+![](images/rcode.png)
+
+]
+
+.pull-right[
+
+.seventy[
+Rmarkdown (`.Rmd`) scripts produce:
+
+]
+
+<img src="images/rmarkown_html.png" style="width: 72%" />
+
+
+
+]
+
+
+
+
+---
+
+## R vs. Rmarkdown
+
+.seventy[
+There are two (main) ways you can create scripts in R
+]
+
+
+
+.pull-left[
+
+.seventy[
+
+R scripts (file ending `.R`):
+
+]
+
+![](images/rcode.png)
+
+]
+
+.pull-right[
+
+.seventy[
+Rmarkdown (`.Rmd`) scripts produce:
+
+]
+
+![](images/rmarkown_pdf.png)
+
+
+]
+
+
+
+
+---
+
+## Rmarkdown
+
+<center>
+<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 72%" />
+</center>
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+
+---
+
+
+## Rmarkdown
+
+.leftcol[
+<center>
+<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 100%" />
+</center>
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+]
+
+.rightcol[
+* create *documents* with R
+  
+* mix code, text and graphs as you like
+
+* write your thesis, create slides, automated reports, dashboards and interactive web apps all from within [Rmarkdown](https://rmarkdown.rstudio.com/docs/articles/rmarkdown.html)
+  
+]
+
+
+
+---
+
+
+
+## Rmarkdown
+
+.leftcol[
+<center>
+<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 100%" />
+</center>
+
+.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
+]
+
+.rightcol[
+* create *documents* with R
+  
+* mix code, text and graphs as you like
+
+* write your thesis, create slides, automated reports, dashboards and interactive web apps all from within Rmarkdown
+  
+]
+
+
+---
+
+
+
+## RStudio Tour
+
+<center>
+<img src="https://bookdown.org/ageraci/STAT160Companion/images/rstudiopanes.png" style="width: 82%" />
+</center>
+
+---
+
+## RStudio Tour
+
+* Program pane
+  * Shows R Files, typically .R or .Rmd
+  
+* Environment pane
+  * All the objects that you created during your session
+  
+* Console pane
+  * For executing short snippets of R code
+  
+* Files pane
+  * Gives access to files, but  also help, and plots
+  
+---
 
 ## Google Colab
 
@@ -1871,7 +2041,7 @@ Packages are at the heart of R:
 
 * I suggest keeping track of package developments either on Twitter via #rstats
 
-* Or [postsyoumighthavemissed.com](https://postsyoumighthavemissed.com/posts/)
+
 
 ---
 
@@ -2864,30 +3034,6 @@ class: center, middle, inverse
 
 ---
 
-## RStudio Tour
-
-<center>
-<img src="https://bookdown.org/ageraci/STAT160Companion/images/rstudiopanes.png" style="width: 82%" />
-</center>
-
----
-
-## RStudio Tour
-
-* Program pane
-  * Shows R Files, typically .R or .Rmd
-  
-* Environment pane
-  * All the objects that you created during your session
-  
-* Console pane
-  * For executing short snippets of R code
-  
-* Files pane
-  * Gives access to files, but  also help, and plots
-  
----
-
 ## Using RStudio Projects
 
 
@@ -2898,65 +3044,7 @@ class: center, middle, inverse
 ---
 
 
-## Rmarkdown
 
-<center>
-<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 72%" />
-</center>
-
-.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
-
----
-
-
-## Rmarkdown
-
-.leftcol[
-<center>
-<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 100%" />
-</center>
-
-.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
-]
-
-.rightcol[
-* create *documents* with R
-  
-* mix code, text and graphs as you like
-
-* write your thesis, create slides, automated reports, dashboards and interactive web apps all from within [Rmarkdown](https://rmarkdown.rstudio.com/docs/articles/rmarkdown.html)
-  
-]
-
-
-
----
-
-
-## Rmarkdown
-
-.leftcol[
-<center>
-<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 100%" />
-</center>
-
-.fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
-]
-
-.rightcol[
-* create *documents* with R
-  
-* mix code, text and graphs as you like
-
-* write your thesis, create slides, automated reports, dashboards and interactive web apps all from within Rmarkdown
-  
-]
-
-
-
-
-
----
 
 ## Further Resources to learn R
 
