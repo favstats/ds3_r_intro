@@ -25,7 +25,7 @@ It includes detailed instructions to:
 
 1. Install R
 2. Install RStudio (make sure you have the **latest version!**)
-3. Download workshop materials
+3. [Download workshop materials](https://www.dropbox.com/sh/jievqgwl43nwnbf/AADhoYQW5oMZ-JygK7aNklHra?dl=0)
 4. Install necessary R packages
 
 
@@ -71,9 +71,20 @@ Google Colab instantaneously runs Jupyter Notebooks in your browser with an R Ke
 
 
 
+## Further Resources to learn R
 
 
+* [Book: R for Data Science](https://r4ds.had.co.nz/)
 
+* [Danielle Navarro's YouTube channel](https://www.youtube.com/channel/UCfNGzUFfsy_3udMY8UyaqBA)
+
+* [Start coding using RStudio.cloud Primers](https://rstudio.cloud/learn/primers)
+
+* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
+
+* [Book: A ModernDive into R and the Tidyverse](https://moderndive.com/)
+
+* [TidyTuesday - Community](https://www.tidytuesday.com/)
 
 
 ## Recording 2021 Workshop
