@@ -969,6 +969,14 @@ mutate(grouped_by_sex, avg_culmen_length = mean(culmen_length_mm, na.rm = T))
 
 ```
 
+Once we are done with `group_by` we should **ungroup** our data gain.
+
+```{r}
+next_data <- ungroup(grouped_by_sex)
+```
+
+![](https://pbs.twimg.com/media/EJ2v_J8UcAAV_zw?format=jpg&name=4096x4096){width="414"}
+
 ### `count()`
 
 Now this is a function that I use all the time.
@@ -1062,7 +1070,8 @@ but this time with pipes.
 
 penguins_clean %>% 
   group_by(sex) %>% 
-  summarise(avg_culmen_length = mean(culmen_length_mm , na.rm = T))
+  summarise(avg_culmen_length = mean(culmen_length_mm , na.rm = T)) %>%
+  ungroup()
 
 ```
 

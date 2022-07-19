@@ -85,6 +85,7 @@ That's why we will use a data set about animals to learn some R Basics.
 
 [Animal Ageing and Longevity
 Database](https://www.johnsnowlabs.com/marketplace/the-animal-aging-and-longevity-database/)
+(John Snow Labs)
 
 Data on over 4200 animals.
 
@@ -179,6 +180,11 @@ Here to simplify that process are: **R objects**.
 You can think of R objects as *saving information*, for example simple
 numbers or just plain text.
 
+In fact it is good to remember that:
+
+> $\color{blue}{\text{"Everything that exists in R is an object."}}$
+> \~John M. Chambers
+
 By creating an object we *save* the information to our working
 environment and we can recall it whenever we want by just running the
 name of the object.
@@ -251,17 +257,18 @@ Same result as earlier!
 
 ### Cat to Human years
 
+![](https://pbs.twimg.com/media/FWvCwP_XoAIY-S6?format=jpg&name=large){width="169"}
+
+1.  Calculate cats to human years conversion ratio **using objects**
+2.  How old is a 15 year old cat in *"human years"*?
+
 ```{r}
 
-cat_lifespan <- 30
 
 ```
 
 ```{r}
 
-cats_to_humans <- human_lifespan/cat_lifespan
-
-cats_to_humans * 15
 
 ```
 
@@ -429,11 +436,6 @@ single numeric value.
 
 R is of course much more powerful than that and objects can hold any
 number and types of data.
-
-In fact it is good to remember that:
-
-> $\color{blue}{\text{"Everything that exists in R is an object."}}$
-> \~John M. Chambers
 
 Now we will take a look at **vectors**, or objects that include more
 than one value.
@@ -725,6 +727,8 @@ Input is everything that goes *into* a function:
 -   **values** you can think of as the various settings that the levers
     or numpads can have.
 
+> $$\text{function_name}(\color{orange}{\text{argument}}=\color{lightblue}{\text{value}})$$
+
 ## The Star Producer
 
 Let's consider the following function (that does not exist
@@ -925,7 +929,6 @@ square(4)
 
 > Tip: In RStudio we can just type fun and enter after the popup and
 > RStudio will just automatically generate a template for a function.
-> Unfortunately, this doesn't work in Google Colab.
 
 ## Dog to Human years function
 
@@ -955,6 +958,24 @@ dog_to_human_years(8)
 ```
 
 Works perfect!
+
+## A quick note on errors and debugging
+
+So you encountered an error:
+
+```{r, echo = F, message = T}
+message("Error: object of type 'closure' is not subsettable")
+```
+
+Steps to take:
+
+* Try to understand what it says.
+
+* Google (or other search engines)
+
+* If the error occurs in a function check whether you passed an object type that isn't expected by it.
+
+* Ask for help! Create a *reproducible example* (reprex) and post to online communities
 
 # Exercises I
 
