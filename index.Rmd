@@ -637,12 +637,7 @@ Hopefully at this point you have already followed the **pre-workshop instruction
 [tinyurl.com/ds3prep](https://favstats.github.io/ds3_r_intro/prep/instructions.html)
 
 
-It includes detailed instructions to:
-
-1. Install R
-2. Install RStudio (make sure you have the **latest version!**)
-3. Download workshop materials
-4. Install necessary R packages
+*Once in RStudio, feel free to code along with me, changing a few bits here and there and see how results change.*
 
 
 
@@ -2136,6 +2131,11 @@ class: center, middle, inverse
 
 ## Break?
 
+Break!
+
+---
+
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/13f1b9495ab01a2793d9ca706978f74e/6bc48d76d1f1/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 
 
 ---
