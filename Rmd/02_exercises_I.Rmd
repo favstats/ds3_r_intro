@@ -1,0 +1,189 @@
+---
+title: "Introduction to R Programming"
+subtitle: "Exercises I"
+author: "Instructor: Fabio Votta"
+date: "July 20th 2022"
+output:
+  rmdformats::robobook:
+    highlight: kate
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+![](https://ds3.ai/2022/assets/r.png)
+
+**Now it's your turn to write some R code!**
+
+<img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%"/>
+
+The following includes a list of exercises that you can complete on your
+own.
+
+## Task 1
+
+Take a look at the table below.
+
+Pick three animals from the Animal Lifespan data we haven't talked about
+yet.
+
+Assign the lifespan values to **single** objects with appropriate names.
+
+| Animal                | Maximum Longevity (in years) |
+|-----------------------|------------------------------|
+| Human                 | 122.5.5                      |
+| Domestic dog          | 24.0                         |
+| Domestic cat          | 30.0                         |
+| American alligator    | 77.0                         |
+| Golden hamster        | 3.9                          |
+| King penguin          | 26.0                         |
+| Lion                  | 27.0                         |
+| Greenland shark       | 392.0                        |
+| Galapagos tortoise    | 177.0                        |
+| African bush elephant | 65.0                         |
+| California sea lion   | 35.7                         |
+| Fruit fly             | 0.3                          |
+| House mouse           | 4.0                          |
+| Giraffe               | 39.5                         |
+| Wild boar             | 27.0                         |
+
+```{r}
+
+
+
+```
+
+## Task 2
+
+Create three (different) logical tests which compare the maximum
+longevity between your chosen animal lifespans.
+
+Does the output you get make sense?
+
+```{r}
+
+
+
+```
+
+```{r}
+
+
+
+```
+
+```{r}
+
+
+
+```
+
+## Task 3
+
+Create two vectors with the help of `c()`:
+
+1.  strings (i.e. texts) of all the animals you chose
+2.  the respective lifespan values (in the same order)
+
+```{r}
+
+
+
+```
+
+```{r}
+
+
+
+```
+
+## Task 4
+
+Calculate the mean of your lifespan vector.
+
+```{r}
+
+
+
+```
+
+## Task 5
+
+5.1 Retrieve the *second* value of the vector that contains your animal
+names.
+
+> Tip: Square brackets are your friend.
+
+```{r}
+
+
+
+```
+
+5.2 Using code, find out which animals in your lifespans vector have a
+maximum longevity of above 25.
+
+> Tip: For an elegant solution you need to use *both* vectors, square
+> brackets and a logical test. If you need help revisit [Indexing with
+> logical
+> tests](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu#scrollTo=5cAxOXBv8KZ6)
+
+```{r}
+
+
+
+```
+
+## Task 6
+
+Calculate the animal to human conversion ratios for the animals you've
+picked and assign the results to an object.
+
+```{r}
+
+
+
+```
+
+## Task 7
+
+Calculate the human years for your picked animals and assume they are
+all 5 years old.
+
+```{r}
+
+
+
+
+```
+
+## Task 8
+
+Pick one of the animals you chose and create a function which takes as
+input animal years and outputs human years. Test the function and
+validate with results from the seventh exercise.
+
+You can name the function in this style:
+
+`[you_animal_name]_to_human_years`
+
+> Tip: If you need help revisit the section [Dog to Human years
+> function](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu#scrollTo=wOvZ0HEWjaHQ&line=3&uniqifier=1)
+
+Create the function here:
+
+```{r}
+
+
+
+
+```
+
+Try it out here:
+
+```{r}
+
+
+
+
+```
