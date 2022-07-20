@@ -67,7 +67,7 @@ Google Colab instantaneously runs Jupyter Notebooks in your browser with an R Ke
 
 + [Part I (R Basics)](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu?usp=sharing)
 + [Part II (Data Manipulation with the `tidyverse`)](https://colab.research.google.com/drive/14CRElnKewnp5MnlxhqVu6OOcIXd-Bkaj?usp=sharing)
-+ [Solutions to the Exercises](https://colab.research.google.com/drive/11UXpilfyMAFQtvdMvD7MhS2_XXKvUT9f?usp=sharing)
+
 
 
 
