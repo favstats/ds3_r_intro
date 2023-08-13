@@ -2,7 +2,7 @@
 title: "A {fun} Intro to R Programming"
 subtitle: "Pre-Workshop To-Do List"
 author: "Instructor: Fabio Votta"
-date: "July 20th 2022"
+date: "July 13th 2023"
 output:
   rmdformats::robobook:
     highlight: kate
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(cache = TRUE)
 
 <img src="https://github.com/favstats/ds3_r_intro/blob/main/images/rrrrrrr.png?raw=true" align="right" width="200"/>
 
-Welcome to the **pre-workshop to-do list** for the [`Intro to R Programming workshop`](https://ds3.ai/2022/rprogramming.html) during the [*Data Science Summer School (DS3) 2022*](https://ds3.ai/)!
+Welcome to the **pre-workshop to-do list** for the [`Intro to R Programming workshop`](https://ds3.ai/2023/rprogramming.htmll) during the [*Data Science Summer School (DS3) 2023*](https://ds3.ai/)!
 
 This workshop is taught using `R` and `RStudio` on your computer. So some minor preparations are necessary for a smooth experience. They should not take too long for you to complete and hopefully we can avoid any surprises on the day of the workshop!
 
@@ -45,13 +45,12 @@ Next, please download & install RStudio.
 
 RStudio is a graphical interface in which we can program in R. You can write, save and open R Code within RStudio an it also provides syntax-highlighting, auto-completion & many more conveniences!
 
-The newest version of RStudio (`2022.07.0+548`) can be [**downloaded here**](https://www.rstudio.com/products/rstudio/download/#download).
 
 ### **VERY IMPORTANT:** 
 
-**Please make sure you have the *latest version* of RStudio installed.** 
+**Please make sure you have the *latest version* of RStudio installed.**
 
-We are going to use some brand new features in RStudio during this workshop, so please make sure you update to this latest version!
+It should be at least any version more recent than July 2022 (`2022.07.0+548`) which can be [**downloaded here**](https://www.rstudio.com/products/rstudio/download/#download). We are going to use some brand new features in RStudio during this workshop, so please make sure you have an updated version!
 
 
 

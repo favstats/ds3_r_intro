@@ -155,7 +155,7 @@ Fabio Votta
 
 + Passionate about R and Data Science
 
-+ I love to travel (when there is no pandemic)
++ I love to travel
 
 + I enjoy and (occasionally) create R memes
 
@@ -188,14 +188,16 @@ class: middle, center
 
 </center>
 
-Go to `menti.com` and type in the code: 6702 9347
+Go to `menti.com` and type in the code: 6410 5559
 
-or visit this website: [menti.com/xg6vk14154](https://www.menti.com/xg6vk14154)
+or visit this website: [menti.com/aloxtiea8mx3](https://www.menti.com/aloxtiea8mx3)
 
 ---
 
 
-<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/83011a917cf296849a860a5afd997657/9098ae146ac6/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/al367t83vwruzc9sy2tu65mrpwjfqqtt/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+
+
 
 
 ---
@@ -216,9 +218,21 @@ knitr::include_graphics("images/r_first_then_new.png")
   + My experience is that this stuff isn't super easy... but it gets better!
   
 --
+
+
   
 + Awesome inclusive community that is always ready to help
 + Active blogosphere with use cases and examples
+
+
+---
+
+### A Note on Live-Coding
+
+
+```{r, echo = F, out.width="80%", fig.align = 'center'}
+knitr::include_graphics("https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/118ae091-4329-4382-8cb8-012035593dfc_rw_1920.png?h=29e95985575f458232d53ad93d1860cb")
+```
 
 
 ---
@@ -303,7 +317,7 @@ RStudio is an IDE (Integrated Development Environment).
 .rightcol[
 
 
-![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/welcome_to_rstats_twitter.png)
+![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/main/rstats-artwork/welcome_to_rstats_twitter.png)
 
 .fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
 
@@ -342,7 +356,7 @@ RStudio is an IDE (Integrated Development Environment).
 
 <br>
 
-![](https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidyverse_celestial.png?raw=true)
+![](https://github.com/allisonhorst/stats-illustrations/blob/main/rstats-artwork/tidyverse_celestial.png?raw=true)
 
 .fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
 
@@ -465,14 +479,14 @@ RStudio is an IDE (Integrated Development Environment).
 .rightcol25[
 
 
-```{r, echo = F, out.width=100, out.height=120, fig.align='right'}
+```{r, echo = F, out.width=80, out.height=100, fig.align='right'}
 knitr::include_graphics("https://rmarkdown.rstudio.com/docs/reference/figures/logo.png")
 ```
 
 ]
 
 <center>
-<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 76%" />
+<img src="https://github.com/allisonhorst/stats-illustrations/blob/main/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 76%" />
 </center>
 
 .fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
@@ -498,7 +512,7 @@ knitr::include_graphics("https://rmarkdown.rstudio.com/docs/reference/figures/lo
 
 .leftcol[
 <center>
-<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 100%" />
+<img src="https://github.com/allisonhorst/stats-illustrations/blob/main/rstats-artwork/rmarkdown_wizards.png?raw=true" style="width: 100%" />
 </center>
 
 .fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]
@@ -1001,7 +1015,7 @@ Also recommended by the [tidyverse style guide](https://style.tidyverse.org/synt
 
 
 .rightcol[
-<img src="https://pbs.twimg.com/media/DzH3mPlWwAAYE7q.jpg" style="width: 90%" />
+<img src="images/in_that_case.png" style="width: 90%" />
 
 ]
 
@@ -2327,13 +2341,13 @@ Meet the Palmer penguins! Data were collected and made available by [Dr. Kristen
 
 .leftcol[
 <center>
-<img src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png" style="width: 80%" />
+<img src="https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/lter_penguins.png" style="width: 80%" />
 </center>
 ]
 
 .rightcol[
 <center>
-<img src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/culmen_depth.png" style="width: 80%" />
+<img src="https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/culmen_depth.png" style="width: 80%" />
 </center>
 .right[
 .fifty[Artist: [Allison Horst](https://github.com/allisonhorst)]]
@@ -2352,7 +2366,7 @@ However, we are going to use a different method: directly load a .csv file (comm
 We can use the `readr` package which provides many convenient functions to load data into R. Here we need `read_csv`:
 
 ```{r}
-penguins_raw <- read_csv("https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins_raw.csv")
+penguins_raw <- read_csv("https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins_raw.csv")
 
 ```
 
@@ -2844,7 +2858,7 @@ class: center, middle, inverse
 ## Data manipulation using `dplyr`
 
 <center>
-<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/dplyr_wrangling.png?raw=true" style="width: 62%" />
+<img src="https://github.com/allisonhorst/stats-illustrations/blob/main/rstats-artwork/dplyr_wrangling.png?raw=true" style="width: 62%" />
 </center>
 
 
@@ -3657,6 +3671,8 @@ class: center, middle, inverse
 # Some Final Things
 
 ## If only we had more time..
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/de7f2fcf-0f01-43bb-8580-d489c877d672_rw_1920.png?h=d651e514f5a4cfd0128ed6972bed764e)
 
 ---
 
