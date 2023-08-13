@@ -1,10 +1,11 @@
 ---
 title: "Introduction to R Programming"
 subtile: "Part I: R basics"
+author: "Instructor: Fabio Votta"
+date: "July 20th 2022"
 output:
-  html_document:
-    toc: true
-    toc_float: true
+  rmdformats::robobook:
+    highlight: kate
 editor_options: 
   markdown: 
     wrap: 72
@@ -12,7 +13,7 @@ editor_options:
 
 # Welcome
 
-![](https://ds3.ai/2022/assets/r.png)
+![](https://ds3.ai/2023/assets/r.png)
 
 **Welcome to the Intro to R Programming Workshop!**
 
@@ -281,7 +282,7 @@ Same result as earlier!
 > $$\color{blue}{\text{"There are only two hard things in Computer Science:}}$$
 > $$\color{blue}{\text{cache invalidation and naming things. ~ Phil Karlton"}}$$
 
-![](https://pbs.twimg.com/media/ELuERYrU0AAI_7b?format=jpg&name=4096x4096)
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/dbb99049-2916-4bc8-824f-1816f5c4f06d_rw_1920.png?h=f0b45a30ba31ad414562d1085cd6c172)
 
 Artist: [Allison
 Horst](https://github.com/allisonhorst/stats-illustrations)
@@ -713,6 +714,11 @@ animals[animal_lifespans > human_lifespan]
 
 # Functions
 
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/9718f461-8060-433b-b014-b294da38d172_rw_1920.png?h=5749aa3c82e02c0c4c9428a6788714da)
+
+Artist: [Allison
+Horst](https://github.com/allisonhorst/stats-illustrations)
+
 > $\color{blue}{\text{"Everything that happens in R is a function."}}$
 > \~John M. Chambers
 
@@ -961,6 +967,11 @@ Works perfect!
 
 ## A quick note on errors and debugging
 
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/51084276-ab7f-4c57-a0e7-5cf14a277359_rw_1920.png?h=825c5593149a63edef46664796766751)
+
+Artist: [Allison
+Horst](https://github.com/allisonhorst/stats-illustrations)
+
 So you encountered an error:
 
 ```{r, echo = F, message = T}
@@ -969,18 +980,47 @@ message("Error: object of type 'closure' is not subsettable")
 
 Steps to take:
 
-* Try to understand what it says.
+-   Try to understand what it says.
 
-* Google (or other search engines)
+-   Google (or other search engines)
 
-* If the error occurs in a function check whether you passed an object type that isn't expected by it.
+    -   Search for the error
+    -   Search for what you were trying to do (add R or rstats)
 
-* Ask for help! Create a *reproducible example* (reprex) and post to online communities
+-   If the error occurs in a function check whether you passed an object
+    type that isn't expected by it.
+
+    -   Checking the documentation can help here! Type: `?function_name`
+
+-   Ask for help! Create a *reproducible example* (reprex) and post to
+    online communities
+
+    -   Stackoverflow
+    -   Twitter (use #rstats)
+    -   RStudio community (forum)
+
+-   Ask a Large Language Model (LLM) like ChatGPT, Claude or Bard
+
+    -   LLMs can be *extremely* useful, just copy-paste your code and
+        error
+
+    -   **However**, be careful because they will make up things: always
+        double check!
+
+-   And if all doesn't work: it's ok to to *take a break* and come back
+    later!
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/d6b4f8cb-53bf-49d5-822c-e45cd01204a4_rw_1920.png?h=9f4b33568bc02517ffe006cd7bba24f7)
+
+Artist: [Allison
+Horst](https://github.com/allisonhorst/stats-illustrations)
 
 # Exercises I
 
 **Now it's your turn to write some R code!**
 
-Please open `02_exercises_I.Rmd` for some *fun* exercises.
+Please open
+[`02_exercises_I.Rmd`](https://favstats.github.io/ds3_r_intro/Rmd/02_exercises_I.html)
+for some *fun* exercises.
 
 <img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%"/>

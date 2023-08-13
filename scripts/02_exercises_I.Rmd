@@ -1,16 +1,17 @@
 ---
 title: "Introduction to R Programming"
 subtitle: "Exercises I"
+author: "Instructor: Fabio Votta"
+date: "July 20th 2022"
 output:
-  html_document:
-    toc: true
-    toc_float: true
+  rmdformats::robobook:
+    highlight: kate
 editor_options: 
   markdown: 
     wrap: 72
 ---
 
-![](https://ds3.ai/2022/assets/r.png)
+![](https://ds3.ai/2023/assets/r.png)
 
 **Now it's your turn to write some R code!**
 

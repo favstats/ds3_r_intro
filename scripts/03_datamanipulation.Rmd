@@ -1,10 +1,11 @@
 ---
 title: "Introduction to R Programming"
 subtitle: "Part II: Data Manipulation"
+author: "Instructor: Fabio Votta"
+date: "July 20th 2022"
 output:
-  html_document:
-    toc: true
-    toc_float: true
+  rmdformats::robobook:
+    highlight: kate
 editor_options: 
   markdown: 
     wrap: 72
@@ -12,7 +13,7 @@ editor_options:
 
 # Welcome
 
-![](https://ds3.ai/2022/assets/r.png)
+![](https://ds3.ai/2023/assets/r.png)
 
 **Welcome to the *data manipulation part* of the Intro to R Programming
 Workshop!**
@@ -394,9 +395,9 @@ Data were collected and made available by [Dr. Kristen
 Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php)
 and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/).
 
-<img src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png" style="width: 80%"/>
+![](https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/lter_penguins.png)
 
-<img src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/culmen_depth.png" style="width: 80%"/>
+![](https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/culmen_depth.png)
 
 Artist: [Allison Horst](https://github.com/allisonhorst)
 
@@ -650,7 +651,7 @@ pivot_longer(tidy_animals,  cols = c(lifespan, ratio))
 
 ## Data manipulation using `dplyr`
 
-<img src="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/dplyr_wrangling.png?raw=true" style="width: 62%"/>
+![](https://github.com/allisonhorst/stats-illustrations/blob/main/rstats-artwork/dplyr_wrangling.png?raw=true)
 
 Artist: [Allison Horst](https://github.com/allisonhorst)
 
@@ -1093,6 +1094,7 @@ sake of simplicity we will stick with the `magrittr` pipe.
 
 ### It's time to type some R code
 
-Open `04_exercises_II.Rmd`
+Open
+[`04_exercises_II.Rmd`](https://favstats.github.io/ds3_r_intro/Rmd/02_exercises_I.html)
 
 <img src="https://media1.tenor.com/images/72bf7922ac0b07b2f7f8f630e4ae01d2/tenor.gif?itemid=11364811" style="width: 50%"/>
