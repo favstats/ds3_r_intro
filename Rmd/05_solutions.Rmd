@@ -8,47 +8,49 @@ output:
 
 # Welcome
 
-![](https://ds3.ai/2022/assets/r.png)
+![](https://ds3.ai/2023/assets/r.png)
 
 **Welcome to the Intro to R Programming Workshop!**
 
 This is the solutions notebook. Only check this out if you want to see the solutions to the exercises!
 
-For Part I click [here](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu?usp=sharing)
+For Part I (Google Colab) click [here](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu?usp=sharing)
 
-For Part II click [here](https://colab.research.google.com/drive/14CRElnKewnp5MnlxhqVu6OOcIXd-Bkaj?usp=sharing).
+For Part II (Google Colab) click [here](https://colab.research.google.com/drive/14CRElnKewnp5MnlxhqVu6OOcIXd-Bkaj?usp=sharing).
 
-Link to Slides: https://favstats.github.io/ds3_r_intro/
+Link to Slides: <https://favstats.github.io/ds3_r_intro/>
+
+Link to all Materials: <https://github.com/favstats/ds3_r_intro>
 
 # Exercises I
 
-The following includes a list of exercises that you can complete on your own. 
+The following includes a list of exercises that you can complete on your own.
 
 ## Task 1
 
-Take a look at the table below. 
+Take a look at the table below.
 
-Pick three animals from the Animal Lifespan data we haven't talked about yet. 
+Pick three animals from the Animal Lifespan data we haven't talked about yet.
 
 Assign the lifespan values to respective objects with appropriate names.
 
-| Animal | Maximum Longevity (in years)|
-| --- | --- | 
-| Human | 122.5.5 | 
-| Domestic dog | 24.0 | 
-| Domestic cat | 30.0 | 
-| American alligator | 77.0 | 
-| Golden hamster | 3.9 | 
-| King penguin | 26.0 | 
-| Lion|	27.0 | 
-| Greenland shark	 | 392.0 | 
-| Galapagos tortoise | 177.0 | 
-| African bush elephant	 | 65.0 | 
-| California sea lion	| 35.7	 | 
-| Fruit fly		| 0.3	 | 
-| House mouse		| 4.0	 |
-| Giraffe		| 39.5	 |
-| Wild boar		| 27.0	|
+| Animal                | Maximum Longevity (in years) |
+|-----------------------|------------------------------|
+| Human                 | 122.5.5                      |
+| Domestic dog          | 24.0                         |
+| Domestic cat          | 30.0                         |
+| American alligator    | 77.0                         |
+| Golden hamster        | 3.9                          |
+| King penguin          | 26.0                         |
+| Lion                  | 27.0                         |
+| Greenland shark       | 392.0                        |
+| Galapagos tortoise    | 177.0                        |
+| African bush elephant | 65.0                         |
+| California sea lion   | 35.7                         |
+| Fruit fly             | 0.3                          |
+| House mouse           | 4.0                          |
+| Giraffe               | 39.5                         |
+| Wild boar             | 27.0                         |
 
 ```{r}
 giraffe_lifespan <- 29.5
@@ -82,7 +84,7 @@ elephant_lifespan != penguin_lifespan
 
 ## Task 3
 
-Create two vectors with the help of `c()`: 
+Create two vectors with the help of `c()`:
 
 1.  strings (i.e. texts) of all the animals you chose
 2.  the respective lifespan values (in the same order)
@@ -113,7 +115,6 @@ mean(lifespans)
 theanimals[2]
 ```
 
-
 5.2 Using code, find out which animals in your lifespans vector have a maximum longevity of above 25.
 
 > Tip: For an elegant solution you need to use *both* vectors, square brackets and a logical test. If you need help revisit [Indexing with logical tests](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu#scrollTo=5cAxOXBv8KZ6)
@@ -126,7 +127,6 @@ theanimals[lifespans > 25]
 
 Calculate the animal to human conversion ratios for the animals you've picked and assign the results to an object.
 
-
 ```{r}
 conversions <- 122.5/lifespans
 ```
@@ -134,7 +134,6 @@ conversions <- 122.5/lifespans
 ## Task 7
 
 Calculate the human years for your picked animals and assume they are all 5 years old.
-
 
 ```{r}
 conversions*5
@@ -144,14 +143,13 @@ conversions*5
 
 Pick one of the animals you chose and create a function which takes as input animal years and outputs human years. Test the function and validate with results from the seventh exercise.
 
-You can name the function in this style: 
+You can name the function in this style:
 
 `[you_animal_name]_to_human_years`
 
 > Tip: If you need help revisit the section [Dog to Human years function](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu#scrollTo=wOvZ0HEWjaHQ&line=3&uniqifier=1)
 
 Create the function here:
-
 
 ```{r}
 penguin_to_human_years <- function(animal_years, human_lifespan = 122.5, penguin_lifespan = 26){
@@ -172,83 +170,81 @@ penguin_to_human_years(5)
 
 # Exercises II
 
-The following includes a list of exercises that you can complete on your own. 
+The following includes a list of exercises that you can complete on your own.
 
 We are going to use the `palmerpenguins` dataset for the tasks ahead!
 
+![](https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/lter_penguins.png)
 
-
-![](https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png)
-
-![](https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/culmen_depth.png)
+![](https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/culmen_depth.png)
 
 ## Functions reference list
 
-For reference, here is a list of some useful  functions.
+For reference, here is a list of some useful functions.
 
 If you have trouble with any of these functions, try reading the documentation with `?function_name`
 
 Remember: all these functions take the **data** first.
 
-* `filter()`
+-   `filter()`
 
-  * Subset rows using column values
+    -   Subset rows using column values
 
-* `mutate()`
+-   `mutate()`
 
-  * Create and modify delete columns
+    -   Create and modify delete columns
 
-* `rename()`
+-   `rename()`
 
-  * Rename columns
+    -   Rename columns
 
-* `select()`
+-   `select()`
 
-  * Subset columns using their names and types
+    -   Subset columns using their names and types
 
-* `summarise()`; `summarize()`
+-   `summarise()`; `summarize()`
 
-  * Summarise each group to fewer rows
+    -   Summarise each group to fewer rows
 
-* `group_by()`; `ungroup()`
+-   `group_by()`; `ungroup()`
 
-  * Group by one or more variables
+    -   Group by one or more variables
 
-* `arrange()`
+-   `arrange()`
 
-  * Arrange rows by column values
+    -   Arrange rows by column values
 
-* `count()`; `tally()` 
+-   `count()`; `tally()`
 
-  * Count observations by group
+    -   Count observations by group
 
-* `distinct()`
+-   `distinct()`
 
-  * Subset distinct/unique rows
+    -   Subset distinct/unique rows
 
-* `pull()`
+-   `pull()`
 
-  * Extract a single column
+    -   Extract a single column
 
-* `ifelse()`
+-   `ifelse()`
 
-  * useful for coding of binary variables
+    -   useful for coding of binary variables
 
-* `case_when()`
+-   `case_when()`
 
-  * useful for recoding (when `ifelse` is not enough)
+    -   useful for recoding (when `ifelse` is not enough)
 
-* `separate()`
+-   `separate()`
 
-  * separate two variables by some separator
+    -   separate two variables by some separator
 
-* `pivot_wider()`
+-   `pivot_wider()`
 
-  * turn data into wide format
+    -   turn data into wide format
 
-* `pivot_longer()`
+-   `pivot_longer()`
 
-  * turn data into long format
+    -   turn data into long format
 
 ## Task 1
 
@@ -263,14 +259,14 @@ library(janitor)
 
 ## Task 2
 
-Read in the already cleaned `palmerpenguins` dataset using 
+Read in the already cleaned `palmerpenguins` dataset using
 
-* `read_csv`
-* the following url: https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv
+-   `read_csv`
+-   the following url: [https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins.csv](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv){.uri}
 
 Assign the resulting data to `penguins`.
 
-Then take a look a look at it using `glimpse`. 
+Then take a look a look at it using `glimpse`.
 
 What kind of variables can you recognize?
 
@@ -356,8 +352,6 @@ penguins %>%
 
 Filter the data so that `species` only includes `Chinstrap` or `Gentoo`.
 
-
-
 ```{r}
 filter(penguins, species %in% c("Chinstrap", "Gentoo"))
 ```
@@ -381,7 +375,7 @@ penguins %>%
 ## Task 6
 
 Create three new variables that calculates `bill_length_mm` and `bill_depth_mm` and `flipper_length_mm` from milimeter to centimeter.
-  
+
 Tip: divide the length value by 10.
 
 ```{r}
@@ -401,8 +395,8 @@ penguins %>%
 
 Create a new variable called `bill_depth_cat` which has two values:
 
-* Everything above a bill depth of 18mm and 18mm itself is "high"
-* Everything below a bill depth of 18mm is "low"
+-   Everything above a bill depth of 18mm and 18mm itself is "high"
+-   Everything below a bill depth of 18mm is "low"
 
 ```{r}
 mutate(penguins, bill_depth_cat = ifelse(bill_depth_mm >= 18, "high", "low"))
@@ -415,9 +409,9 @@ penguins %>%
 
 Create a new variable called `species_short`.
 
-* `Adelie` should become `A`
-* `Chinstrap` should become `C`
-* `Gentoo` should become `G`
+-   `Adelie` should become `A`
+-   `Chinstrap` should become `C`
+-   `Gentoo` should become `G`
 
 ```{r}
 mutate(penguins, 
@@ -441,7 +435,6 @@ penguins %>%
 
 Calculate the average `body_mass_g` per `island`.
 
-
 ```{r}
 grouped_by_island <- group_by(penguins, island) 
 
@@ -460,13 +453,11 @@ penguins %>%
 
 Use the pipe operator (`%>%`) to do all the operations below.
 
-
-
-1. Filter the `penguins` data so that it only includes `Chinstrap` or `Adelie`.
-2. Rename `sex` to `observed_sex`
-3. Only keep the variables `species`, `observed_sex`, `bill_length_mm` and `bill_depth_mm`
-4. Calculate the ratio between `bill_length_mm` and `bill_depth_mm`
-5. Sort the data by the highest ratio
+1.  Filter the `penguins` data so that it only includes `Chinstrap` or `Adelie`.
+2.  Rename `sex` to `observed_sex`
+3.  Only keep the variables `species`, `observed_sex`, `bill_length_mm` and `bill_depth_mm`
+4.  Calculate the ratio between `bill_length_mm` and `bill_depth_mm`
+5.  Sort the data by the highest ratio
 
 Try to create the pipe step by step and execute code as you go to see if it works.
 
@@ -537,4 +528,3 @@ If you are done, turn the final data into long format.
 tidy_animal_friends %>%
   pivot_longer(cols = c(sex, age, year_adopted, condition))
 ```
-

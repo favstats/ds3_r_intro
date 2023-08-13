@@ -11,7 +11,7 @@ editor_options:
     wrap: 72
 ---
 
-![](https://ds3.ai/2022/assets/r.png)
+![](https://ds3.ai/2023/assets/r.png)
 
 **Now it's your turn to write some R code!**
 

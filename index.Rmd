@@ -78,7 +78,7 @@ meta() %>%
 
 ```{r setup, include=FALSE}
 # dateWritten <- format(as.Date('2020-05-04'), format="%B %d %Y")
-workshop_day <- format(as.Date("2022-07-20"), format="%B %d %Y")
+workshop_day <- format(as.Date("2023-08-14"), format="%B %d %Y")
 pacman::p_load(tidyverse, fontawesome, tidyverse, knitr)
 
 options(
@@ -246,7 +246,7 @@ knitr::include_graphics("https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b14
   + Exercises
   + Data frames
   
-$\text{B R E A K at 2pm}$
+$\text{B R E A K at 2pm (CET) - (5:30 PM IST) - (8:00 PM CST)}$
   
 + Data Manipulation
   + the tidyverse and friends
@@ -1529,6 +1529,14 @@ class: inverse, middle, center
 
 ---
 
+# Functions
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/9718f461-8060-433b-b014-b294da38d172_rw_1920.png?h=5749aa3c82e02c0c4c9428a6788714da)
+
+Artist: [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
+
+---
+
 ## Functions
 
 > Everything that happens in R is *.red[a function]*. .fifty[~John M. Chambers]
@@ -2142,8 +2150,7 @@ Break!
 
 ---
 
-<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/13f1b9495ab01a2793d9ca706978f74e/6bc48d76d1f1/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
-
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alm31w5ojicxzhdkv4poagbty1vvbmjp/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 
 ---
 

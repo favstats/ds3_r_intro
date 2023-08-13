@@ -11,7 +11,7 @@ editor_options:
     wrap: 72
 ---
 
-![](https://ds3.ai/2022/assets/r.png)
+![](https://ds3.ai/2023/assets/r.png)
 
 **Now it's your turn to write some R code!**
 
@@ -22,9 +22,9 @@ own.
 
 We are going to use the `palmerpenguins` data set for the tasks ahead!
 
-![](https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png)
+![](https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/lter_penguins.png)
 
-![](https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/culmen_depth.png)
+![](https://github.com/allisonhorst/palmerpenguins/raw/main/man/figures/culmen_depth.png)
 
 ## Functions reference list
 
@@ -115,7 +115,7 @@ Read in the already cleaned `palmerpenguins` data set using
 
 -   `read_csv`
 -   the following URL:
-    <https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv>
+    [https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins.csv](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv){.uri}
 
 Assign the resulting data to `penguins`.
 
