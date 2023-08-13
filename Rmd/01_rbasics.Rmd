@@ -284,7 +284,8 @@ Same result as earlier!
 
 ![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/dbb99049-2916-4bc8-824f-1816f5c4f06d_rw_1920.png?h=f0b45a30ba31ad414562d1085cd6c172)
 
-Artist: [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
+Artist: [Allison
+Horst](https://github.com/allisonhorst/stats-illustrations)
 
 There are many approaches to name things in programming.
 
@@ -715,8 +716,8 @@ animals[animal_lifespans > human_lifespan]
 
 ![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/9718f461-8060-433b-b014-b294da38d172_rw_1920.png?h=5749aa3c82e02c0c4c9428a6788714da)
 
-Artist: [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
-
+Artist: [Allison
+Horst](https://github.com/allisonhorst/stats-illustrations)
 
 > $\color{blue}{\text{"Everything that happens in R is a function."}}$
 > \~John M. Chambers
@@ -968,7 +969,8 @@ Works perfect!
 
 ![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/51084276-ab7f-4c57-a0e7-5cf14a277359_rw_1920.png?h=825c5593149a63edef46664796766751)
 
-Artist: [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
+Artist: [Allison
+Horst](https://github.com/allisonhorst/stats-illustrations)
 
 So you encountered an error:
 
@@ -988,7 +990,7 @@ Steps to take:
 -   If the error occurs in a function check whether you passed an object
     type that isn't expected by it.
 
-    -   Checking the documentation can help here! Type: `?function`
+    -   Checking the documentation can help here! Type: `?function_name`
 
 -   Ask for help! Create a *reproducible example* (reprex) and post to
     online communities
@@ -996,11 +998,22 @@ Steps to take:
     -   Stackoverflow
     -   Twitter (use #rstats)
     -   RStudio community (forum)
-    
-    
+
+-   Ask a Large Language Model (LLM) like ChatGPT, Claude or Bard
+
+    -   LLMs can be *extremely* useful, just copy-paste your code and
+        error
+
+    -   **However**, be careful because they will make up things: always
+        double check!
+
+-   And if all doesn't work: it's ok to to *take a break* and come back
+    later!
+
 ![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/d6b4f8cb-53bf-49d5-822c-e45cd01204a4_rw_1920.png?h=9f4b33568bc02517ffe006cd7bba24f7)
 
-Artist: [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
+Artist: [Allison
+Horst](https://github.com/allisonhorst/stats-illustrations)
 
 # Exercises I
 
